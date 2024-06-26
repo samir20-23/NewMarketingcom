@@ -1,0 +1,189 @@
+@font-face {
+  font-family: "uniteaSans";
+  src: url("fonts/UniteaSans-Regular.ttf") format("truetype");
+  font-weight: 700;
+  size: 19px;
+  font-style: normal;
+  line-height: 25px;
+}
+
+* {
+  padding: 0;
+  border: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "uniteaSans";
+}
+:root {
+  --color1: #1dbf73;
+  --color2: white;
+  --color3: #000000b8;
+}
+header {
+  height: 10vh;
+  background-color: var(--color2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color1);
+}
+
+header .fa-bars {
+  font-size: 35px !important;
+}
+
+.page {
+  padding: 0 40px;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  margin: 35px 0 0 0;
+  gap: 20px;
+}
+.content .service {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.service img {
+  width: 100%;
+}
+.content h3 {
+  color: var(--color1);
+}
+.content #title {
+  color: black;
+  text-shadow: 0 0 1px black;
+}
+.content span {
+  color: var(--color1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+span h1 {
+  color: black;
+}
+
+#btns {
+  display: flex;
+  gap: 10px;
+}
+#btns button {
+  background: white;
+  border-radius: 8px;
+  padding: 10px 20px;
+  color: var(--color1);
+  border: 2px solid var(--color1);
+  cursor: pointer;
+}
+#selects {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.select {
+  width: 208px;
+  height: 40px;
+  border-radius: 8px;
+  border: 0.5px solid rgba(0, 0, 0, 0.742);
+}
+#btn {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 0 0 20px 0;
+}
+#confirm,
+#cancel {
+  cursor: pointer;
+  width: 325px;
+  height: 45.25px;
+  border-radius: 6.93px;
+  padding: 12.13px 20.79px 12.13px 20.79px;
+}
+
+#confirm {
+  background: var(--color1);
+  color: white;
+}
+#cancel {
+  color: var(--color1);
+  border: 2px solid var(--color1);
+  cursor: pointer;
+  background: white;
+}
+
+.form {
+  display: none;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(92, 192, 116, 0.5);
+  z-index: 10;
+}
+
+.form .subform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  width: 450px;
+  padding: 25px;
+  gap: 20px;
+  border-radius: 7px;
+}
+
+.subform input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 7px;
+  border: 2px solid #828282;
+  outline: none;
+}
+
+#submit {
+  width: 100%;
+  padding: 15px;
+  border-radius: 7px;
+  background: var(--color1);
+  color: white;
+  cursor: pointer;
+
+}
+
+#whatsapp {
+  width: 100%;
+  padding: 15px;
+  border-radius: 7px;
+  background: var(--color1);
+  color: white;
+  cursor: pointer;
+}
+
+.subform #cancelForm {
+  width: 100%;
+  color: var(--color1);
+  border: 2px solid var(--color1);
+  padding: 15px;
+  border-radius: 7px;
+  text-align: center;
+  cursor: pointer;
+}
+
+@media (max-width: 500px) {
+  .form .subform {
+    width: 90%;
+    min-width: 250px;
+  }
+}
+
+/* <div id="btn">
+<button id="confirm">Confirm</button>
+<button id="cancel">Cancel</button>
+</div> */

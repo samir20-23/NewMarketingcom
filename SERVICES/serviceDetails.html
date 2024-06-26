@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="serviceDetails.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="form" id="form">
+      <div class="subform">
+        <h2 id="confirmTitle">Identify yourself</h2>
+        <p id="confirmP">Enter your name and password to continue</p>
+        <input
+          type="text"
+          name="fullname"
+          id="fullname"
+          placeholder="Full name"
+        />
+        <input
+          type="text"
+          name="number"
+          id="number"
+          placeholder="Phone number"
+        />
+        <p id="error"></p>
+        <button id="submit">Submit</button>
+        <div id="cancelForm">Cancel</div>
+      </div>
+    </div>
+    <div class="page" id="page">
+      <header>
+        <h1>LOGO</h1>
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </header>
+      <div class="content">
+        <div class="service">
+          <img id="serimg" src="imgs/Rectangle 72.png" alt="" />
+          <h2 class="nameService" id="title"></h2>
+        </div>
+        <h3 class="nameService"></h3>
+        <span
+          ><h1 id="price"></h1>
+          <p>per month</p>
+        </span>
+        <h2>Select Gender</h2>
+        <div id="btns">
+          <button id="man">Man</button> <button id="woman">Woman</button>
+        </div>
+        <label class="lableOne">Select Voice Type</label>
+        <div id="selects">
+          <select class="select">
+            <option value="">Select Voice type</option>
+            <option value="Moroccan">Moroccan</option>
+            <option value="Emarati">Emarati</option>
+            <option value="African">African</option>
+          </select>
+          <select class="select">
+            <option value="">Select Voice age</option>
+            <option value="Moroccan">Moroccan</option>
+            <option value="Emarati">Emarati</option>
+            <option value="African">African</option>
+          </select>
+        </div>
+        <div id="btn">
+          <button id="confirm">Confirm</button>
+          <button id="cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <script src="serviceDetails.js">
+    </script>
+  </body>
+</html>
