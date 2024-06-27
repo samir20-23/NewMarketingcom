@@ -1,0 +1,85 @@
+<!-- XXXXXXXXXXXX -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="style/serviceDetails.css" />
+    <link rel="stylesheet" href="style/navBar.css" />
+
+    <title>Document</title>
+  </head>
+  <!-- navBar element -->
+  <div id="allNavBar"></div>
+  <!-- navBar element -->
+  <body>
+    <div class="form" id="form">
+      <div class="subform">
+        <h2 id="confirmTitle">Identify yourself</h2>
+        <p id="confirmP">Enter your name and password to continue</p>
+        <input
+          type="text"
+          name="fullname"
+          id="fullname"
+          placeholder="Full name"
+        />
+        <input
+          type="text"
+          name="number"
+          id="number"
+          placeholder="Phone number"
+        />
+        <input
+          type="hidden"
+          id="selected_options"
+          disabled="true"
+        />
+        <button id="submit">Confirm command</button>
+        <p id="error"></p>
+        <p>or continue with</p>
+        <button id="whatsapp">Whatsapp</button>
+        <div id="cancelForm">Cancel</div>
+      </div>
+    </div>
+    <div class="page" id="page">
+      <header>
+        <h1>LOGO</h1>
+        <i class="fa fa-bars" id="iconNavBar" aria-hidden="true"></i>
+      </header>
+      <div class="content">
+        <div class="service">
+          <img id="serimg" src="" alt="" />
+          <h2 class="nameService" id="title"></h2>
+        </div>
+        <h3 class="nameService"></h3>
+        <span
+          ><h1 id="price"></h1>
+          <p>per month</p>
+        </span>
+        <h2 id="serviceOptions">Select Options</h2>
+        <div id="btns"></div>
+        <label class="lableOne">Select Secondary Options</label>
+        <div id="selects">
+          <select id="second" class="secondary_options select">
+          </select>
+          <select id="last" class="last_options select">
+          </select>
+        </div>
+        <p style="color: red;" id="selecterr"></p>
+        <div id="btn">
+          <button id="confirm">Confirm</button>
+          <button id="cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <script src="script/serviceDetails.js"></script>
+    <!-- navBar js -->
+    <script src="script/NavBar.js"></script>
+  </body>
+</html>
