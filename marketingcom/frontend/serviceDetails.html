@@ -32,6 +32,11 @@
           id="number"
           placeholder="Phone number"
         />
+        <input
+          type="hidden"
+          id="selected_options"
+          disabled="true"
+        />
         <button id="submit">Confirm command</button>
         <p id="error"></p>
         <p>or continue with</p>
@@ -46,7 +51,7 @@
       </header>
       <div class="content">
         <div class="service">
-          <img id="serimg" src="imgs/Rectangle 72.png" alt="" />
+          <img id="serimg" src="" alt="" />
           <h2 class="nameService" id="title"></h2>
         </div>
         <h3 class="nameService"></h3>
@@ -55,15 +60,15 @@
           <p>per month</p>
         </span>
         <h2 id="serviceOptions">Select Options</h2>
-        <div id="btns">
-        </div>
+        <div id="btns"></div>
         <label class="lableOne">Select Secondary Options</label>
         <div id="selects">
-          <select class="secondary_options select">
+          <select id="second" class="secondary_options select">
           </select>
-          <select class="last_options select">
+          <select id="last" class="last_options select">
           </select>
         </div>
+        <p style="color: red;" id="selecterr"></p>
         <div id="btn">
           <button id="confirm">Confirm</button>
           <button id="cancel">Cancel</button>

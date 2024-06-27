@@ -1,5 +1,4 @@
 let man = document.getElementById("man");
-let woman = document.getElementById("woman");
 let nameService = document.querySelectorAll(".nameService");
 let price = document.getElementById("price");
 let serimg = document.getElementById("serimg");
@@ -8,7 +7,9 @@ let confirmTitle = document.getElementById("confirmTitle");
 let confirmP = document.getElementById("confirmP");
 let btns = document.getElementById("btns");
 let selects = document.getElementById("selects");
-let whatsapp = document.getElementById("whatsapp")
+let whatsapp = document.getElementById("whatsapp");
+let selecterr = document.getElementById("selecterr");
+let selected_options = document.getElementById("selected_options");
 
 // id
 const urlParams = new URLSearchParams(window.location.search);
@@ -84,64 +85,81 @@ xhr.onload = function () {
     serimg.src = response[0].service_img;
 
     if (response.primary_options) {
-      response.primary_options.forEach(element => {
-        btns.innerHTML+=`
-       <button id="woman">${element}</button>
+      response.primary_options.forEach((element) => {
+        btns.innerHTML += `
+       <button class="options">${element}</button>
       `;
       });
-    }else{
-      document.getElementById('serviceOptions').style.display = 'none'
+      let options = document.querySelectorAll(".options");
+      options.forEach((element) => {
+        element.addEventListener("click", () => {
+          element.classList.toggle("selected");
+        });
+      });
+    } else {
+      document.getElementById("serviceOptions").style.display = "none";
     }
     if (response.secondary_options) {
-      let secondaryOptions = document.querySelector('.secondary_options')
-      response.secondary_options.forEach(element => {
-      secondaryOptions.innerHTML+=`
+      let secondaryOptions = document.querySelector(".secondary_options");
+      response.secondary_options.forEach((element) => {
+        secondaryOptions.innerHTML += `
             <option value="${element}">${element}</option>
-      `
+      `;
       });
-    }else{
-      document.querySelector('.secondary_options').style.display = 'none'
+    } else {
+      document.querySelector(".secondary_options").style.display = "none";
     }
 
     if (response.last_options) {
-      let secondaryOptions = document.querySelector('.last_options')
-      response.last_options.forEach(element => {
-      secondaryOptions.innerHTML+=`
+      let secondaryOptions = document.querySelector(".last_options");
+      response.last_options.forEach((element) => {
+        secondaryOptions.innerHTML += `
             <option value="${element}">${element}</option>
-      `
+      `;
       });
-    }else{
-      document.querySelector('.last_options').style.display = 'none'
+    } else {
+      document.querySelector(".last_options").style.display = "none";
     }
-    if (!response.secondary_options && !response.last_options ) {
-      document.querySelector('.lableOne').style.display = 'none'
+    if (!response.secondary_options && !response.last_options) {
+      document.querySelector(".lableOne").style.display = "none";
     }
-
-    
 
     confirm.addEventListener("click", () => {
-      // check login
+      //selected options
+      let second_option = document.getElementById("second").value;
+      let last_option = document.getElementById("last").value;
+      let primary_options = document.querySelectorAll(".selected");
+      let selectedInnerHTML = Array.from(primary_options)
+        .map((element) => element.innerHTML)
+        .join(", ");
+      if (selectedInnerHTML != "") {
+        let command = `Selected primary options: ${selectedInnerHTML}, Selected secondary option: ${second_option}, selected last Option: ${last_option}`;
+        selecterr.innerHTML = "";
+        // check login
+        let userName = localStorage.getItem("userName");
+        let userPhone = localStorage.getItem("userPhone");
+        if (userName == null || userPhone == null) {
+          form.style.display = "flex";
+          page.style.filter = "blur(10px)";
+        } else {
+          form.style.display = "flex";
+          page.style.filter = "blur(10px)";
 
-      let userName = localStorage.getItem("userName");
-      let userPhone = localStorage.getItem("userPhone");
-      if (userName == null || userPhone == null) {
-        form.style.display = "flex";
-        page.style.filter = "blur(10px)";
-      } else {
-        form.style.display = "flex";
-        page.style.filter = "blur(10px)";
-
-        fullname.value = userName;
-        number.value = userPhone;
-        fullname.type = "hidden";
-        number.type = "hidden";
-        confirmTitle.innerHTML = "Cofirm command";
-        confirmP.innerHTML = ""; 
-
+          fullname.value = userName;
+          number.value = userPhone;
+          fullname.type = "hidden";
+          number.type = "hidden";
+          confirmTitle.innerHTML = "Cofirm command";
+          confirmP.innerHTML = "";
+        }
+        selected_options.value = command;
+        //whatsapp send
         let mynumber = "+2120718087106";
-        whatsapp.addEventListener("click",function(){
-          window.location=`https://web.whatsapp.com/send?phone=${mynumber}`;
-        })
+        whatsapp.addEventListener("click", function () {
+          window.location = `https://web.whatsapp.com/send?phone=${mynumber}`;
+        });
+      } else {
+        selecterr.innerHTML = "please select a primary option!";
       }
     });
   } else {
@@ -172,6 +190,7 @@ submit.addEventListener("click", () => {
   formData.append("phone_number", number.value);
   formData.append("user_name", fullname.value);
   formData.append("service_id", id);
+  formData.append("service_details", selected_options.value);
 
   // Send the request with the data
   xhr.send(formData);
@@ -200,6 +219,8 @@ submit.addEventListener("click", () => {
         fullname.type = "hidden";
         number.type = "hidden";
         confirmP.innerHTML = "";
+
+        console.log(selected_options.value);
       }
     } else {
       console.error("Request failed with status:", xhr.status);
@@ -211,4 +232,12 @@ submit.addEventListener("click", () => {
   xhr.onerror = function () {
     console.error("Request failed");
   };
+
+  // let second_option = document.getElementById("second").value;
+  // let last_option = document.getElementById("last").value;
+  // let primary_options = document.querySelectorAll(".selected");
+  // primary_options.forEach((element) => {
+  //   console.log(element.innerHTML);
+  // });
+  // console.log(second_option, last_option);
 });
