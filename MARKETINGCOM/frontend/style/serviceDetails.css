@@ -172,6 +172,7 @@ span h1 {
   color: var(--color1); 
   border: var(--color1);
 }
+/* active button */
 
 .subform #cancelForm {
   width: 100%;
