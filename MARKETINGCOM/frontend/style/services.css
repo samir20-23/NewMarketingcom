@@ -1,0 +1,115 @@
+@font-face {
+  font-family: "uniteaSans";
+  src: url("../fonts/UniteaSans-Regular.ttf") format("truetype");
+  font-weight: 700;
+  size: 19px;
+  font-style: normal;
+  line-height: 25px;
+}
+
+* {
+  padding: 0;
+  border: 0;
+  margin: 0;
+  font-family: "uniteaSans";
+}
+:root {
+  --color1: #1497df;
+  --color2: white;
+  --color3: #000000b8;
+}
+/* nav bar  */
+
+header {
+  height: 10vh;
+  background-color: var(--color2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color1);
+  padding: 0 40px;
+}
+
+header .fa-bars {
+  font-size: 35px !important;
+}
+
+/* services */
+#services { 
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+#services_add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  gap: 50px;
+}
+
+#serviceTitle {
+  display: flex;
+  text-shadow: 0 0 2px var(--color3);
+}
+/* imgs */
+#serviceImg {
+  display: flex;
+  flex-wrap: wrap;
+  gap:20px 100px;
+  justify-content: center;
+
+}
+
+#serviceImg img {
+  width: 200px;
+  height: 200px;
+  box-shadow: 0 0 19px -12px var(--color1);
+}
+#serviceImg div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+}
+#serviceImg div:hover {
+  cursor: pointer;
+}
+#serviceImg div h3 {
+  font-size: 25px;
+  text-shadow: 0 0 2px var(--color3);
+}
+/*                               imgs */
+
+#service button {
+  width: 85px;
+  height: 52px;
+  border-radius: 8px;
+  padding: 14px 24px 14px 24px;
+  background: var(--color1);
+  color: var(--color2);
+}
+
+#service button:hover {
+  background: white;
+  border: 2px solid var(--color1);
+  color: var(--color1);
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 510px) {
+  #serviceImg {
+    gap: 5px;
+    transition: 2s;
+  }
+  #serviceImg img {
+    width: 150px;
+    height: 150px;
+    transition: 2s;
+  }
+}
