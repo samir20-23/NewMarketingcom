@@ -11,7 +11,8 @@ let whatsapp = document.getElementById("whatsapp");
 let selecterr = document.getElementById("selecterr");
 let selected_options = document.getElementById("selected_options");
 let reload = document.getElementById("reload");
-reload.style.display="none" ;
+reload.style.display = "none";
+let responsestate = document.getElementById("response_state");
 // RELOAD
 // id
 const urlParams = new URLSearchParams(window.location.search);
@@ -87,6 +88,7 @@ xhr.onload = function () {
     serimg.src = response[0].service_img;
 
     if (response.primary_options) {
+      responsestate.value = "full";
       response.primary_options.forEach((element) => {
         btns.innerHTML += `
        <button class="options">${element}</button>
@@ -99,6 +101,7 @@ xhr.onload = function () {
         });
       });
     } else {
+      responsestate.value = "empty";
       document.getElementById("serviceOptions").style.display = "none";
     }
     if (response.secondary_options) {
@@ -134,7 +137,7 @@ xhr.onload = function () {
       let selectedInnerHTML = Array.from(primary_options)
         .map((element) => element.innerHTML)
         .join(", ");
-      if (selectedInnerHTML != "") {
+      if (selectedInnerHTML != "" || responsestate.value == "empty") {
         let command = `Selected primary options: ${selectedInnerHTML}, Selected secondary option: ${second_option}, selected last Option: ${last_option}`;
         selecterr.innerHTML = "";
         // check login
@@ -158,10 +161,12 @@ xhr.onload = function () {
         //whatsapp send
         let mynumber = "+2120718087106";
         whatsapp.addEventListener("click", function () {
-          reload.style.display="flex";
-          setTimeout(()=>{reload.style.display="none";},2500);
-          window.location = `https://web.whatsapp.com/send?phone=${mynumber}`;
-         });
+          reload.style.display = "flex";
+          setTimeout(() => {
+            reload.style.display = "none";
+          }, 2500);
+          window.open(`https://web.whatsapp.com/send?phone=${mynumber}`, '_blank');
+        });
       } else {
         selecterr.innerHTML = "please select a primary option!";
       }
