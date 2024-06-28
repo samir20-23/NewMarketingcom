@@ -33,7 +33,7 @@
         </div>
     </div>
     <!-- navBar js -->
-    <script src="../frontend/script/NavBar.js"></script>
+    <script src="adminNav.js"></script>
 </body>
 
 </html>
