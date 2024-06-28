@@ -26,6 +26,7 @@
 }
 
 #serName {
+  margin-top: 50px;
   font-family: "uniteaSansBold";
 }
 
@@ -49,7 +50,6 @@ header {
   align-items: center;
   justify-content: space-between;
   color: var(--color1);
-  padding: 0 40px;
 }
 
 header .fa-bars {
@@ -73,9 +73,12 @@ header .fa-bars {
   gap: 50px;
 }
 
+.servicePage {
+  padding: 0 40px;
+}
+
 #serviceTitle {
-  display: flex;
-  text-shadow: 0 0 2px var(--color3);
+  width: 100%;
 }
 /* imgs */
 #serviceImg {
