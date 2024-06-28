@@ -10,6 +10,8 @@ let selects = document.getElementById("selects");
 let whatsapp = document.getElementById("whatsapp");
 let selecterr = document.getElementById("selecterr");
 let selected_options = document.getElementById("selected_options");
+let reload = document.getElementById("reload");
+reload.style.display="none";
 
 // id
 const urlParams = new URLSearchParams(window.location.search);
@@ -156,8 +158,10 @@ xhr.onload = function () {
         //whatsapp send
         let mynumber = "+2120718087106";
         whatsapp.addEventListener("click", function () {
+          reload.style.display="flex";
+          setTimeout(()=>{reload.style.display="none";},2500);
           window.location = `https://web.whatsapp.com/send?phone=${mynumber}`;
-        });
+         });
       } else {
         selecterr.innerHTML = "please select a primary option!";
       }
