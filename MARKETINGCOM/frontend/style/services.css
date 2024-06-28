@@ -7,6 +7,28 @@
   line-height: 25px;
 }
 
+@font-face {
+  font-family: "uniteaSansBold";
+  src: url("../fonts/UniteaSans-ExtraBold.ttf") format("truetype");
+  font-weight: 700;
+  size: 19px;
+  font-style: normal;
+  line-height: 25px;
+}
+
+@font-face {
+  font-family: "uniteaSansSemiBold";
+  src: url("../fonts/UniteaSans-SemiBold.ttf") format("truetype");
+  font-weight: 700;
+  size: 19px;
+  font-style: normal;
+  line-height: 25px;
+}
+
+#serName {
+  font-family: "uniteaSansBold";
+}
+
 * {
   padding: 0;
   border: 0;
@@ -35,12 +57,11 @@ header .fa-bars {
 }
 
 /* services */
-#services { 
+#services {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
 #services_add {
@@ -60,9 +81,8 @@ header .fa-bars {
 #serviceImg {
   display: flex;
   flex-wrap: wrap;
-  gap:20px 100px;
+  gap: 20px 100px;
   justify-content: center;
-
 }
 
 #serviceImg img {
@@ -82,9 +102,9 @@ header .fa-bars {
 }
 #serviceImg div h3 {
   font-size: 25px;
-  text-shadow: 0 0 2px var(--color3);
+  font-family: "uniteaSansSemiBold";
 }
-/*                               imgs */
+/* imgs */
 
 #service button {
   width: 85px;
