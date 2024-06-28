@@ -1,0 +1,102 @@
+@font-face {
+  font-family: "uniteaSans";
+  src: url("../frontend/fonts/UniteaSans-Regular.ttf") format("truetype");
+  font-weight: 700;
+  size: 19px;
+  font-style: normal;
+  line-height: 25px;
+}
+
+@font-face {
+  font-family: "uniteaSansBold";
+  src: url("../frontend/fonts/UniteaSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  size: 19px;
+  font-style: normal;
+  line-height: 25px;
+}
+
+@font-face {
+  font-family: "uniteaSansSemiBold";
+  src: url("../frontend/fonts/UniteaSans-SemiBold.ttf") format("truetype");
+  font-weight: 700;
+  size: 19px;
+  font-style: normal;
+  line-height: 25px;
+}
+
+:root {
+  --color1: #1497df;
+  --color2: white;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "uniteaSans";
+}
+
+.mainPage {
+  background-color: white;
+  padding: 0 25px;
+}
+
+header {
+  height: 10vh;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color1);
+}
+
+header .fa-bars {
+  font-size: 35px !important;
+  cursor: pointer;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  padding: 25px 0;
+  font-family: "uniteaSansBold";
+}
+
+.statsBox {
+  border: 2px solid rgb(194, 194, 194);
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#total_services {
+  font-family: "uniteaSansBold";
+  font-size: 70px;
+}
+
+.statsBox p {
+  font-size: 25px;
+  font-family: "uniteaSansSemiBold";
+}
+
+.btn {
+  padding: 10px 14px;
+  border-radius: 20px;
+  background-color: var(--color1);
+  color: white;
+  border: 2px solid var(--color1);
+  max-width: 300px !important;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: white;
+  border: 2px solid var(--color1);
+  color: var(--color1);
+}
