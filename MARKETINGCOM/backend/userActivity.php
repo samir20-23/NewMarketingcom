@@ -3,7 +3,7 @@ require_once 'config/connect.php';
 
 if (isset($_POST['command']) && !empty($_POST['phone_number'])) {
     // if phone number pushed means new user so this code creates new user
-    $sql = 'SELECT user_phone FROM `user` WHERE user_phone = ' . $_POST['phone_number'];
+    $sql = 'SELECT user_phone FROM user WHERE user_phone = ' . $_POST['phone_number'];
     $stmt = $conn->prepare($sql);
     $stmt->execute();
 
@@ -17,18 +17,20 @@ if (isset($_POST['command']) && !empty($_POST['phone_number'])) {
             if (empty($_POST['user_name']) || strlen($_POST['user_name']) < 5) {
                 die(json_encode("nameinvalid"));
             } else {
-                $sql = 'INSERT INTO user (`user_id`, `user_name`, `user_phone`) VALUES (NULL, " ' . $_POST['user_name'] . '", "' . $_POST['phone_number'] . '")';
+                $sql = 'INSERT INTO user (user_id, user_name, user_phone) VALUES (NULL, " ' . $_POST['user_name'] . '", "' . $_POST['phone_number'] . '")';
                 $stmt = $conn->prepare($sql);
                 $stmt->execute();
             }
         }
     }
     // after created new user if needed a command is created in db
-    $sql = 'INSERT INTO commander (user_id, service_id, date)
-    VALUES ((SELECT user_id FROM user WHERE user_phone = "' . $_POST['phone_number'] . '"), ' . $_POST['service_id'] . ', NOW());';
+    $serviceOptions = str_replace(['"', '\\'], '', $_POST['service_details']);
+    $sql = 'INSERT INTO commander
+    VALUES ((SELECT user_id FROM user WHERE user_phone = "' . $_POST['phone_number'] . '"), ' . $_POST['service_id'] . ', NOW(), "' . $serviceOptions . '");';
     $stmt = $conn->prepare($sql);
     $stmt->execute();
-    echo json_encode("verified");
+    echo json_encode('verified');
+    // echo json_encode($sql);
 } else {
     echo json_encode("phoneempty");
 }

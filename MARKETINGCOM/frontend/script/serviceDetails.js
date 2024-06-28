@@ -138,7 +138,11 @@ xhr.onload = function () {
         .map((element) => element.innerHTML)
         .join(", ");
       if (selectedInnerHTML != "" || responsestate.value == "empty") {
-        let command = `Selected primary options: ${selectedInnerHTML}, Selected secondary option: ${second_option}, selected last Option: ${last_option}`;
+        let commandOptions = JSON.stringify({
+          primary_options: selectedInnerHTML.split(","),
+          second_option: second_option,
+          last_option: last_option,
+        });
         selecterr.innerHTML = "";
         // check login
         let userName = localStorage.getItem("userName");
@@ -157,7 +161,7 @@ xhr.onload = function () {
           confirmTitle.innerHTML = "Cofirm command";
           confirmP.innerHTML = "";
         }
-        selected_options.value = command;
+        selected_options.value = commandOptions;
         //whatsapp send
         let mynumber = "+2120718087106";
         whatsapp.addEventListener("click", function () {
@@ -165,7 +169,10 @@ xhr.onload = function () {
           setTimeout(() => {
             reload.style.display = "none";
           }, 2500);
-          window.open(`https://web.whatsapp.com/send?phone=${mynumber}`, '_blank');
+          window.open(
+            `https://web.whatsapp.com/send?phone=${mynumber}`,
+            "_blank"
+          );
         });
       } else {
         selecterr.innerHTML = "please select a primary option!";
