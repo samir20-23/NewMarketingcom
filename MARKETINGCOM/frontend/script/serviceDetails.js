@@ -11,8 +11,8 @@ let whatsapp = document.getElementById("whatsapp");
 let selecterr = document.getElementById("selecterr");
 let selected_options = document.getElementById("selected_options");
 let reload = document.getElementById("reload");
-reload.style.display="none";
-
+reload.style.display="none" ;
+// RELOAD
 // id
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
