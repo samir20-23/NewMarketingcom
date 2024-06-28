@@ -162,7 +162,7 @@ xhr.onload = function () {
           confirmP.innerHTML = "";
         }
         selected_options.value = commandOptions;
-        //whatsapp send
+        //whatsapp wwwwwwwwwwww
         let serviceName = document.getElementById("title").innerHTML;
         let mynumber = "+2120718087106";
         let message = `SERVICE: ${serviceName} | PRIMARY OPTIONS: [${selectedInnerHTML.split(",")}] | SECONDARY OPTIONS: [${second_option}, ${last_option}]`;

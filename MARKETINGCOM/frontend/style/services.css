@@ -26,7 +26,6 @@
 }
 
 #serName {
-  padding: 50px 0;
   font-family: "uniteaSansBold";
 }
 
@@ -50,6 +49,7 @@ header {
   align-items: center;
   justify-content: space-between;
   color: var(--color1);
+  padding: 0 40px;
 }
 
 header .fa-bars {
@@ -70,14 +70,12 @@ header .fa-bars {
   align-items: center;
   flex-direction: column;
   width: 100%;
-}
-
-.servicePage {
-  padding: 0 40px;
+  gap: 50px;
 }
 
 #serviceTitle {
-  width: 100%;
+  display: flex;
+  text-shadow: 0 0 2px var(--color3);
 }
 /* imgs */
 #serviceImg {
@@ -107,13 +105,6 @@ header .fa-bars {
   font-family: "uniteaSansSemiBold";
 }
 /* imgs */
-
-#service {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 50px 0;
-}
 
 #service button {
   width: 85px;
