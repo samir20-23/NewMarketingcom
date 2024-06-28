@@ -1,9 +1,9 @@
 <?php
-  $host = "localhost";
-  $database = "marketingcom";
-  $table = "service";
-  $usrname = "root";
-  $passcode = "";
+$host = "localhost";
+$database = "marketingcom";
+$table = "service";
+$usrname = "root";
+$passcode = "";
 
 $connection = new PDO("mysql:host=$host;dbname=$database", $usrname, $passcode);
 $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -18,15 +18,16 @@ $result = $select->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="adminPage.css">
+    <link rel="stylesheet" href="../frontend/style/navBar.css">
     <title>Document</title>
 </head>
 
 <body>
+    <!-- navBar element -->
+    <div id="allNavBar"></div>
+    <!-- navBar element -->
     <div class="mainPage">
         <header>
             <h1>LOGO</h1>
@@ -41,6 +42,8 @@ $result = $select->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </div>
+    <!-- navBar js -->
+    <script src="../frontend/script/NavBar.js"></script>
 </body>
 
 </html>
