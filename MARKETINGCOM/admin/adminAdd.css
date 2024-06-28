@@ -1,0 +1,145 @@
+@font-face {
+  font-family: "uniteaSans";
+  src: url("../frontend/fonts/UniteaSans-Regular.ttf") format("truetype");
+  font-weight: 700;
+  size: 19px;
+  font-style: normal;
+  line-height: 25px;
+}
+
+@font-face {
+  font-family: "uniteaSansBold";
+  src: url("../frontend/fonts/UniteaSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  size: 19px;
+  font-style: normal;
+  line-height: 25px;
+}
+
+@font-face {
+  font-family: "uniteaSansSemiBold";
+  src: url("../frontend/fonts/UniteaSans-SemiBold.ttf") format("truetype");
+  font-weight: 700;
+  size: 19px;
+  font-style: normal;
+  line-height: 25px;
+}
+
+:root {
+  --color1: #1497df;
+  --color2: white;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "uniteaSans";
+}
+
+.mainPage {
+  background-color: white;
+  padding: 0 25px;
+}
+
+header {
+  height: 10vh;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color1);
+}
+
+header .fa-bars {
+  font-size: 35px !important;
+  cursor: pointer;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  gap: 20px;
+}
+
+.title {
+  font-family: "uniteaSansBold";
+}
+
+.service_img {
+  display: none;
+}
+
+.img_select {
+  border: 2px solid #e0e0e0;
+  width: 260px;
+  height: 260px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.img_select:hover {
+  border: 2px solid var(--color1);
+}
+
+.label_text {
+  background-color: #e0e0e0;
+  padding: 10px 15px;
+  border-radius: 70px;
+  color: white;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.input {
+  width: 290px;
+  padding: 10px 15px;
+  border-radius: 80px;
+  font-size: 14px;
+}
+
+#service_name {
+  border: 2px solid #e0e0e0;
+  outline: none;
+}
+
+#service_name:hover {
+  border: 2px solid var(--color1);
+}
+
+#submit {
+  background-color: var(--color1);
+  color: white;
+  border: 2px solid var(--color1);
+  cursor: pointer;
+}
+
+#submit:hover {
+  background-color: white;
+  color: var(--color1);
+}
+
+#cancel {
+  display: flex;
+  justify-content: center;
+  border: 2px solid var(--color1);
+  background-color: white;
+  color: var(--color1);
+  cursor: pointer;
+}
+
+#cancel:hover {
+  background-color: var(--color1);
+  color: white;
+}
