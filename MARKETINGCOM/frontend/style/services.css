@@ -26,7 +26,7 @@
 }
 
 #serName {
-  margin-top: 50px;
+  padding: 50px 0;
   font-family: "uniteaSansBold";
 }
 
@@ -70,7 +70,6 @@ header .fa-bars {
   align-items: center;
   flex-direction: column;
   width: 100%;
-  gap: 50px;
 }
 
 .servicePage {
@@ -108,6 +107,13 @@ header .fa-bars {
   font-family: "uniteaSansSemiBold";
 }
 /* imgs */
+
+#service {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 50px 0;
+}
 
 #service button {
   width: 85px;
