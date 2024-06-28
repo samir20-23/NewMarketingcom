@@ -30,7 +30,6 @@ if (isset($_POST['command']) && !empty($_POST['phone_number'])) {
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     echo json_encode('verified');
-    // echo json_encode($sql);
 } else {
     echo json_encode("phoneempty");
 }

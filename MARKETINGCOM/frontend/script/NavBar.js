@@ -5,7 +5,7 @@ iconNavBar.addEventListener("click", () => {
     click = "click";
     
     if(click=="click"){
-        allNavBar.setAttribute("style"," animation: moveNavBar 0.6s alternate")
+        allNavBar.setAttribute("style"," animation: moveNavBar 0.01s alternate")
         allNavBar.innerHTML = `
     <div id="navBar" class="navBar"> 
   <div id="divIconNavBar"><i class="fa fa-times" id="clossNavBar" aria-hidden="true"></i></div> 

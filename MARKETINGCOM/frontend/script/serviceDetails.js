@@ -163,8 +163,8 @@ xhr.onload = function () {
         }
         selected_options.value = commandOptions;
         //whatsapp send
-        let message = JSON.parse(selected_options.value);
         let mynumber = "+2120718087106";
+        let message = JSON.parse(selected_options.value);
         whatsapp.addEventListener("click", function () {
           reload.style.display = "flex";
           setTimeout(() => {
