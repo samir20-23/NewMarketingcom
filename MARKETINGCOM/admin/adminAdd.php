@@ -29,6 +29,7 @@
                 <input class="input" type="text" name="service_name" id="service_name" placeholder="Service name">
                 <input class="input" type="submit" name="submit" id="submit" value="Add">
                 <div class="input" class="cancel" id="cancel">Cancel</div>
+                <p id="error"></p>
             </form>
         </div>
     </div>
