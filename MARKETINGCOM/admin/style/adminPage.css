@@ -135,6 +135,9 @@ img{
 #add {
   display: none;
 }
+#row{
+  border: 2px solid black;
+}
 #edit{
   background-color: rgba(29, 191, 115, 1);
   border-color: rgba(29, 147, 91, 1);
@@ -144,6 +147,7 @@ img{
   color: #fff;
   border: none;
   cursor: pointer;
+  padding: 4.86px 11.35px 4.86px;
 }
 #delete{
   background-color: rgba(255, 76, 76, 1);

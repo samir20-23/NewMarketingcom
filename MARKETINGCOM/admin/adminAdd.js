@@ -105,5 +105,5 @@ submit.addEventListener("click", (event) => {
 
 // cansel
 cancel.addEventListener("click", () => {
-  window.history.back();
+  window.location="adminPage.php";
 });

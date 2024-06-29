@@ -5,34 +5,51 @@ $table = "service";
 $usrname = "root";
 $passcode = "";
 
-// Establish database connection
+ 
 try {
     $connection = new PDO("mysql:host=$host;dbname=$database", $usrname, $passcode);
     $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Fetch service names
-    $select = $connection->query("SELECT service_id, service_name FROM $table");
+    
+    $select = $connection->query("SELECT service_id, service_name  FROM $table WHERE service_price is NULL ");
     $fetchAll = $select->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
 
-// Handle Delete Actions
+ 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    foreach ($fetchAll as $v) {
-        $service_id = $v['service_id'];
-
-        // Delete Form Submission Handling
-        if (isset($_POST["delete_$service_id"])) {
+    foreach ($_POST as $key => $value) {
+        if (strpos($key, 'delete_') === 0) {
+            $service_id = str_replace('delete_', '', $key);
             try {
-                $deleteQuery = "DELETE FROM $table WHERE service_id=:service_id";
-                $delete = $connection->prepare($deleteQuery);
-                $delete->bindParam(":service_id", $service_id);
-                $delete->execute();
+             
+                $selectQuery = "SELECT service_img FROM $table WHERE service_id=:service_id";
+                $select = $connection->prepare($selectQuery);
+                $select->bindParam(":service_id", $service_id);
+                $select->execute();
+                $result = $select->fetch(PDO::FETCH_ASSOC);
 
-                // Redirect to avoid resubmission on refresh
-                header("Location: " . $_SERVER['PHP_SELF']);
-                exit();
+                if ($result) {
+                    $serviceImgPath = "../frontend/" . $result['service_img'];
+
+                  
+                    $deleteQuery = "DELETE FROM $table WHERE service_id=:service_id";
+                    $delete = $connection->prepare($deleteQuery);
+                    $delete->bindParam(":service_id", $service_id);
+                    $delete->execute();
+
+                   
+                    if (file_exists($serviceImgPath)) {
+                        unlink($serviceImgPath);
+                    }
+
+                  
+                    header("Location: " . $_SERVER['PHP_SELF']);
+                    exit();
+                } else {
+                    echo "Record not found.";
+                }
             } catch (PDOException $e) {
                 echo "Error deleting record: " . $e->getMessage();
             }
@@ -49,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="style/adminPage.css">
     <link rel="stylesheet" href="../frontend/style/navBar.css">
-    <title>Document</title>
+    <title>Admin Dashboard</title>
 </head>
 
 <body>
@@ -87,10 +104,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <?php foreach ($fetchAll as $v) : ?>
                                     <tr>
                                         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                                            <!-- XXXXXXXXXXXXXXX -->
-                                            <td><a href="edit?id=<?php echo $v['service_id'] ?>" name="service_name_<?php echo $v['service_id']; ?>"><?php echo $v['service_name']; ?></a></td>
-                                            <td><input type="submit" name="edit" id="edit" value="edit"></td>
-
+                                            
+                                            <td><a href="serServices.html?id=<?php echo $v['service_id'] ?>" name="service_name_<?php echo $v['service_id']; ?>"><?php echo $v['service_name']; ?></a></td>
+                                            <td><a href="adminEdit.html?id=<?php echo $v['service_id'] ?>"  type="submit" name="edit" id="edit"  >edit</a></td>
                                             <td><input type="submit" id="delete" name="delete_<?php echo $v['service_id']; ?>" value="Delete"></td>
                                         </form>
                                     </tr>

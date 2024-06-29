@@ -80,8 +80,4 @@ iconNavBar.addEventListener("click", () => {
   });
 });
 
-// cansel
-cancel.addEventListener("click", () => {
-  window.history.back();
-});
-//cancel
+
