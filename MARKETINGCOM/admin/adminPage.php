@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <i class="fa fa-bars" id="iconNavBar" aria-hidden="true"></i>
         </header>
         <div class="content">
-            <h1 class="title">Admin Dashboard ></h1>
+            <h1 class="title" id="title">Admin Dashboard ></h1>
             <div class="statsBox">
                 <p>Total services</p>
                 <h1 id="total_services"><?php echo count($fetchAll) ?></h1>

@@ -26,6 +26,7 @@ manage.addEventListener("click", () => {
   back.style.display = "inline-block";
   manage.style.display = "none";
   add.style.display = "inline-block";
+  document.getElementById("title").innerHTML="Manage Services >";
 });
 
 back.addEventListener("click", () => {
@@ -34,6 +35,8 @@ back.addEventListener("click", () => {
   back.style.display = "none";
   manage.style.display = "flex";
   add.style.display = "none";
+  document.getElementById("title").innerHTML="Admin Dashboard >";
+
 });
 
 let click = "";
@@ -46,7 +49,7 @@ iconNavBar.addEventListener("click", () => {
     <div id="navBar" class="navBar"> 
   <div id="divIconNavBar"><i class="fa fa-times" id="clossNavBar" aria-hidden="true"></i></div> 
   <div id="contentNavBar">
-    <button id="home">Home</button>
+    <button id="home">admin dashboard</button>
     <button id="logIn">Log In</button>
     <button id="contact">Contact Us</button>
   </div> 
@@ -61,6 +64,7 @@ iconNavBar.addEventListener("click", () => {
     let logIn = document.getElementById("logIn");
     logIn.addEventListener("click", () => {
       window.location = "";
+      
     });
     let contact = document.getElementById("contact");
     contact.addEventListener("click", () => {

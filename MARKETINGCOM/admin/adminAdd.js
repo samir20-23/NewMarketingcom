@@ -19,8 +19,8 @@ iconNavBar.addEventListener("click", () => {
     <div id="navBar" class="navBar"> 
   <div id="divIconNavBar"><i class="fa fa-times" id="clossNavBar" aria-hidden="true"></i></div> 
   <div id="contentNavBar">
-    <button id="home">Home</button>
-    <button id="logIn">Log In</button>
+    <button id="home">Admin Dashboard</button>
+    <button id="logIn">services</button>
     <button id="contact">Contact Us</button>
   </div> 
 </div>
@@ -33,7 +33,7 @@ iconNavBar.addEventListener("click", () => {
     });
     let logIn = document.getElementById("logIn");
     logIn.addEventListener("click", () => {
-      window.location = "";
+      window.location = "adminPage.php";
     });
     let contact = document.getElementById("contact");
     contact.addEventListener("click", () => {
