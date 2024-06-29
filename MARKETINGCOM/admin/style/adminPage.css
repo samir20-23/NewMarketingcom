@@ -100,3 +100,14 @@ header .fa-bars {
   border: 2px solid var(--color1);
   color: var(--color1);
 }
+
+/* adminpage */
+img{
+  width: 100px;
+}
+#croud{
+  width: 100%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

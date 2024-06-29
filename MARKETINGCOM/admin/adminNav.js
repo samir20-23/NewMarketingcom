@@ -2,6 +2,8 @@ let allNavBar = document.getElementById("allNavBar");
 let iconNavBar = document.getElementById("iconNavBar");
 let selectedImageDiv = document.getElementById("selectedImage");
 let submit = document.getElementById("submit");
+let cancel = document.getElementById("cancel");
+
 let click = "";
 iconNavBar.addEventListener("click", () => {
   click = "click";
@@ -95,3 +97,8 @@ submit.addEventListener("click", (event) => {
     }
   };
 });
+
+// cansel
+cancel.addEventListener("click",()=>{
+  window.history.back();
+})
