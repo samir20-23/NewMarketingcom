@@ -121,6 +121,7 @@ span h1 {
 }
 
 .form {
+  top: 0;
   display: none;
   position: fixed;
   align-items: center;

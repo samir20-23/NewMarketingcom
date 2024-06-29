@@ -76,7 +76,6 @@ header .fa-bars {
 
 #serviceTitle {
   display: flex;
-  text-shadow: 0 0 2px var(--color3);
 }
 /* imgs */
 #serviceImg {
