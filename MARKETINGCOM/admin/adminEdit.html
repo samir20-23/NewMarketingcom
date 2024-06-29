@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="style/adminAdd.css">
+    <link rel="stylesheet" href="../frontend/style/navBar.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- navBar element -->
+    <div id="allNavBar"></div>
+    <!-- navBar element -->
+    <div class="mainPage">
+        <header>
+            <h1>LOGO</h1>
+            <i class="fa fa-bars" id="iconNavBar" aria-hidden="true"></i>
+        </header>
+        <div class="content">
+            <h1 class="title">Edit Service</h1>
+            <div class="form">
+                <label id="label_img" class="img_select" for="service_img">
+                    <div id="selectedImage"></div>
+                    <div class="label_text">Select a service image</div>
+                </label>
+                <input type="file" name="serviceImg" id="service_img" class="service_img">
+                <p id="error"></p>
+                <input class="input" type="text" name="serviceName" id="service_name" placeholder="Service name">
+                <input class="input" type="submit" name="submit" id="submit" value="Edit">
+                <div class="input" class="cancel" id="cancel">Cancel</div>
+            </div>
+        </div>
+    </div>
+    <!-- navBar js -->
+    <script src="adminEdit.js"></script>
+</body>
+
+</html>

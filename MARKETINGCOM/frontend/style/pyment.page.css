@@ -1,50 +1,72 @@
-@import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap');
-*{
-    box-sizing: border-box;
+@import url("https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-body{
-    height: 100vh;
-    overflow: hidden;
+body {
+  height: 100vh;
+  overflow: hidden;
 }
 
-.container{
-    display: flex;
-    flex-direction: column;
-    gap: 5vh;
-    justify-content: center;
-    height: 90vh;
-
-}
-.method{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.method div{
-    display: flex;
-    gap: 2vw;
-    align-items: center;
+.page {
+  display: flex;
+  flex-direction: column;
 }
 
-.method div p{
-    font-size: large;
-    font-family: "ABeeZee", sans-serif;
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 5vh;
+  justify-content: center;
+  height: 90vh;
+  padding: 0 30px;
 }
-.method i{
-    color: lightgray;
+.method {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  height: 60px;
+  padding: 0 10px;
 }
 
-div:has(button){
-    width: 100%;
-    display: flex;
-    justify-content: center;
+.method:hover {
+    background-color: rgb(228, 228, 228);
 }
 
-button{
-    border: 1px solid #1497df;
-    color: #1497df;
-    padding: .7rem 4rem;
-    background: transparent;
-    border-radius: 5px;
+.method div {
+  display: flex;
+  gap: 2vw;
+  align-items: center;
+}
+
+.method div p {
+  font-size: large;
+  font-family: "ABeeZee", sans-serif;
+}
+.method i {
+  color: gray;
+}
+
+div:has(button) {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  cursor: pointer;
+  border: 2px solid #1497df;
+  color: #1497df;
+  padding: 0.7rem 4rem;
+  background: transparent;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #1497df;
+  border: 2px solid #1497df;
+  color: white;
 }
