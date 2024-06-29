@@ -9,26 +9,6 @@ let croud = document.getElementById("croud");
 let back = document.getElementById("back");
 let add = document.getElementById("add");
 
-add.addEventListener("click", () => {
-  window.location = "adminAdd.html";
-});
-
-manage.addEventListener("click", () => {
-  hr.style.display = "block";
-  croud.style.display = "flex";
-  back.style.display = "inline-block";
-  manage.style.display = "none";
-  add.style.display = "inline-block";
-});
-
-back.addEventListener("click", () => {
-  hr.style.display = "none";
-  croud.style.display = "none";
-  back.style.display = "none";
-  manage.style.display = "flex";
-  add.style.display = "none";
-});
-
 let click = "";
 iconNavBar.addEventListener("click", () => {
   click = "click";
@@ -71,6 +51,56 @@ iconNavBar.addEventListener("click", () => {
       allNavBar.innerHTML = "";
     }
   });
+});
+
+service_img.addEventListener("change", function (event) {
+  let file = event.target.files[0];
+  if (file) {
+    let reader = new FileReader();
+    reader.onload = function (e) {
+      selectedImageDiv.style.backgroundImage = `url(${e.target.result})`;
+      selectedImageDiv.style.backgroundSize = "cover";
+      selectedImageDiv.style.backgroundPosition = "center";
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
+submit.addEventListener("click", (event) => {
+  event.preventDefault(); // Prevent the default form submission
+
+  let service_name = document.getElementById("service_name");
+  let service_img = document.getElementById("service_img").files[0];
+  let service_img_element = document.getElementById("service_img");
+  let error = document.getElementById("error");
+
+  let formData = new FormData();
+  formData.append("serviceName", service_name.value);
+  formData.append("serviceImg", service_img);
+
+  let request = new XMLHttpRequest();
+  request.open("POST", "adminAdd.php");
+  request.send(formData);
+  request.onload = () => {
+    let response = request.responseText;
+    console.log(response);
+
+    if (response == "imgempty") {
+      error.innerHTML = "Please select an image for this service";
+      error.style.color = "red";
+    }
+    if (response == "namempty") {
+      error.innerHTML = "Please give a name to this service!";
+      error.style.color = "red";
+    }
+    if (response == "verified") {
+      error.innerHTML = "A new service has been added successfully";
+      error.style.color = "green";
+      service_name.value = "";
+      service_img_element.value = "";
+      selectedImageDiv.style.backgroundImage = "";
+    }
+  };
 });
 
 // cansel

@@ -68,6 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <p>Total services</p>
                 <h1 id="total_services"><?php echo count($fetchAll) ?></h1>
                 <button id="manage" class="btn">Manage services</button>
+                <button id="add" class="btn">Add New Service</button>
                 <hr id="hr">
                 <div id="croud">
                     <div id="allcrodtableselecte">
