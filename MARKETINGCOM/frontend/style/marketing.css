@@ -42,16 +42,14 @@ header {
   color: var(--color1); 
   position: fixed;
   padding: 0 55px;
-  width: 100%;
-  margin-top: -26px;
+  width: 100%; 
 }
 
 header .fa-bars {
   font-size: 35px !important;
 }
 
-.content .services {
-  margin-top: 25px;
+.content .services { 
   gap: 50px;
   width: 100%;
   background-color: white;
