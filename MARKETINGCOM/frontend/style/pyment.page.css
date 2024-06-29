@@ -20,6 +20,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    cursor: pointer;
 }
 .method div{
     display: flex;
@@ -32,7 +33,7 @@ body{
     font-family: "ABeeZee", sans-serif;
 }
 .method i{
-    color: lightgray;
+    color: gray;
 }
 
 div:has(button){
