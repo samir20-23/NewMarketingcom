@@ -62,12 +62,13 @@ service_img.addEventListener("change", function (event) {
 submit.addEventListener("click", (event) => {
   event.preventDefault(); // Prevent the default form submission
 
-  let service_name = document.getElementById("service_name").value;
+  let service_name = document.getElementById("service_name");
   let service_img = document.getElementById("service_img").files[0];
+  let service_img_element = document.getElementById("service_img");
   let error = document.getElementById("error");
 
   let formData = new FormData();
-  formData.append("serviceName", service_name);
+  formData.append("serviceName", service_name.value);
   formData.append("serviceImg", service_img);
 
   let request = new XMLHttpRequest();
@@ -78,17 +79,19 @@ submit.addEventListener("click", (event) => {
     console.log(response);
 
     if (response == "imgempty") {
-        error.innerHTML = "Please select an image for this service";
-        error.style.color = "red";
+      error.innerHTML = "Please select an image for this service";
+      error.style.color = "red";
     }
     if (response == "namempty") {
-        error.innerHTML = "Please give a name to this service!";
-        error.style.color = "red";
+      error.innerHTML = "Please give a name to this service!";
+      error.style.color = "red";
     }
     if (response == "verified") {
-        error.innerHTML = "A new service has been added successfully";
-        error.style.color = "green";
+      error.innerHTML = "A new service has been added successfully";
+      error.style.color = "green";
+      service_name.value = "";
+      service_img_element.value = "";
+      selectedImageDiv.style.backgroundImage = "";
     }
   };
-
 });
