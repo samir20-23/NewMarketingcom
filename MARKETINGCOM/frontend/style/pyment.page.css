@@ -1,0 +1,43 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    justify-content: center;
+    height: 90vh;
+
+}
+.method{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.method div{
+    display: flex;
+    align-items: center;
+}
+.method i{
+    color: lightgray;
+}
+
+div:has(button){
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+button{
+    border: 1px solid #1497df;
+    color: #1497df;
+    padding: .7rem 4rem;
+    background: transparent;
+    border-radius: 5px;
+}
