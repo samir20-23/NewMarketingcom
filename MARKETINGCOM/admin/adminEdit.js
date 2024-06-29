@@ -110,7 +110,7 @@ request.onload = () => {
 
 // cansel
 cancel.addEventListener("click", () => {
-  window.history.back();
+  window.location="adminPage.php";
 });
 
 submit.addEventListener("click", () => {
