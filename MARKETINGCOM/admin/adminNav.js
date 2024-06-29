@@ -8,6 +8,13 @@ let hr = document.getElementById("hr");
 let croud = document.getElementById("croud");
 let back = document.getElementById("back");
 let add = document.getElementById("add");
+let closet = document.getElementById("closet");
+let background = document.getElementById("background")
+
+closet.addEventListener('click', e=>{
+  background.style.display = 'none'
+  console.log(closet);
+})
 
 add.addEventListener("click", () => {
   window.location = "adminAdd.html";
@@ -77,3 +84,4 @@ iconNavBar.addEventListener("click", () => {
 cancel.addEventListener("click", () => {
   window.history.back();
 });
+//cancel

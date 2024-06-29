@@ -70,13 +70,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <button id="manage" class="btn">Manage services</button>
                 <button id="add" class="btn">Add New Service</button>
                 <hr id="hr">
+                <div id="background">
+                    <div id="delete-div">
+                        <h1 id="remove">Remove Service</h1>
+                        <p id="sure">Are You sure You want to Remove this Service ?</p><br>
+                        <button class="remove">Remove</button><br><br>
+                        <button id="closet"  class="cancel">Cancel</button>
+                    </div>
+                </div>
                 <div id="croud">
                     <div id="allcrodtableselecte">
                         <table>
                             <tr>
-                                <th>service_name</th>
-                                <th>DELETE</th>
-                                <th><a href="adminAdd.html">ADD</a></th>
                             </tr>
                             <?php if (!empty($fetchAll)) : ?>
                                 <?php foreach ($fetchAll as $v) : ?>
@@ -84,9 +89,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                                             <!-- XXXXXXXXXXXXXXX -->
                                             <td><a href="edit?id=<?php echo $v['service_id'] ?>" name="service_name_<?php echo $v['service_id']; ?>"><?php echo $v['service_name']; ?></a></td>
-                                            <td><input type="submit" name="edit" value="edit"></td>
+                                            <td><input type="submit" name="edit" id="edit" value="edit"></td>
 
-                                            <td><input type="submit" name="delete_<?php echo $v['service_id']; ?>" value="Delete"></td>
+                                            <td><input type="submit" id="delete" name="delete_<?php echo $v['service_id']; ?>" value="Delete"></td>
                                         </form>
                                     </tr>
                                 <?php endforeach; ?>

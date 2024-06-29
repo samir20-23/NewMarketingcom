@@ -135,3 +135,104 @@ img{
 #add {
   display: none;
 }
+#edit{
+  background-color: rgba(29, 191, 115, 1);
+  border-color: rgba(29, 147, 91, 1);
+  width:  77px;
+  height: 29px;
+  border-radius: 21.89px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+#delete{
+  background-color: rgba(255, 76, 76, 1);
+  border-color: rgba(170, 47, 47, 1);
+  width:  77px;
+  height: 29px;
+  border-radius: 21.89px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+#allcrodtableselecte{
+  width: 100%;
+}
+table{
+  justify-content: space-between;
+  width: 100%;
+}
+a{
+  text-decoration: none;
+  color: #000;
+}
+#background{
+  background-color: rgba(20, 151, 223, 0.48);
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  display: none;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+#delete-div{
+  background-color: #fff;
+  z-index: 2;
+  position: absolute;
+  position: fixed;
+  border-radius: 10px;
+  width: 349.5px;
+  height: 255.01px;
+}
+#delete-div button{
+  margin-left: 65px;
+  width: 200px;
+}
+#remove{
+  font-weight: 700;
+  font-size: 32px;
+  text-align: center;
+  line-height: 48px;
+  color: rgba(44, 47, 72, 1);
+}
+#sure{
+  font-weight: 400;
+  font-size: 12.39px;
+  line-height: 18.59px;
+  text-align: center;
+}
+.remove{
+  padding: 10px 14px;
+  border-radius: 20px;
+  background-color: var(--color2);
+  color: var(--color1);
+  border: 2px solid var(--color1);
+  max-width: 200px;
+  cursor: pointer;
+}
+.remove:hover{
+  padding: 10px 14px;
+  border-radius: 20px;
+  background-color: var(--color1);
+  color: var(--color2);
+}
+.cancel{
+  padding: 10px 14px;
+  border-radius: 20px;
+  background-color: var(--color1);
+  color: var(--color2);
+  border: 2px solid var(--color1);
+  max-width: 289.5px;
+  cursor: pointer;
+}
+.cancel:hover{
+  padding: 10px 14px;
+  border-radius: 20px;
+  background-color: var(--color2);
+  color: var(--color1);
+  border: 2px solid var(--color1);
+  max-width: 289.5px;
+  cursor: pointer;
+}
