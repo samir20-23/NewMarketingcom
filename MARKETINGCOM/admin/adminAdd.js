@@ -94,7 +94,7 @@ submit.addEventListener("click", (event) => {
       error.style.color = "red";
     }
     if (response == "verified") {
-      error.innerHTML = "A new service has been added successfully";
+      error.innerHTML = "Service has been Added succesfully";
       error.style.color = "green";
       service_name.value = "";
       service_img_element.value = "";

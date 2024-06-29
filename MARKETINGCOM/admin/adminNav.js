@@ -101,7 +101,7 @@ request.onload = () => {
     <p class="serName">${item.service_name}</p>
     <div class="form_btns">
       <a href="adminEdit.html?id='${item.service_id}'" class="edit">Edit</a>
-      <a href="adminEdit.html" class="delete">Delete</a>
+      <a id="${item.service_id}" class="delete">Delete</a>
     </div>
   </div>`;
   });
