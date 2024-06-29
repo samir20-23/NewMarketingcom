@@ -1,0 +1,50 @@
+@font-face {
+  font-family: "uniteaSans";
+  src: url("../../frontend/fonts/UniteaSans-Regular.ttf") format("truetype");
+  font-weight: 700;
+  size: 19px;
+  font-style: normal;
+  line-height: 25px;
+}
+
+@font-face {
+  font-family: "uniteaSansBold";
+  src: url("../../frontend/fonts/UniteaSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  size: 19px;
+  font-style: normal;
+  line-height: 25px;
+}
+
+@font-face {
+  font-family: "uniteaSansSemiBold";
+  src: url("../../frontend/fonts/UniteaSans-SemiBold.ttf") format("truetype");
+  font-weight: 700;
+  size: 19px;
+  font-style: normal;
+  line-height: 25px;
+}
+:root {
+  --color1: #1497df;
+  --color2: white;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "uniteaSans";
+}
+
+header {
+  height: 10vh;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color1);
+}
+
+header .fa-bars {
+    font-size: 35px !important;
+    cursor: pointer;
+  }
