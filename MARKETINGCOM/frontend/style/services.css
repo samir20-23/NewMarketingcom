@@ -51,7 +51,7 @@ header {
   color: var(--color1);
   padding: 0 40px;
 }
-
+ 
 header .fa-bars {
   font-size: 35px !important;
 }
@@ -62,6 +62,7 @@ header .fa-bars {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 80px;
 }
 
 #services_add {
@@ -132,4 +133,16 @@ header .fa-bars {
     height: 150px;
     transition: 2s;
   }
+}
+#navBar { 
+  background-image: linear-gradient(to bottom, #1497DF, #284e64);
+  position: fixed;
+  width: 100vw;
+  height: 102vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  z-index: 2;
+  margin-top: -2px;
 }

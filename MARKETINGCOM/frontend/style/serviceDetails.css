@@ -25,7 +25,10 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: var(--color1);
+  color: var(--color1); position: fixed;
+  padding: 0 55px;
+  width: 100%;
+  margin-top: -36px;
 }
 
 header .fa-bars {
@@ -33,13 +36,15 @@ header .fa-bars {
 }
 
 .page {
-  padding: 0 40px;
+  padding: 0 50px;
 }
 .content {
   display: flex;
   flex-direction: column;
   margin: 35px 0 0 0;
   gap: 20px;
+  padding-top: 150px;
+
 }
 .content .service {
   width: 200px;

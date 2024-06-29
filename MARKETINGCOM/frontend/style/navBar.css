@@ -6,15 +6,16 @@
     cursor: pointer;
 }
 #navBar { 
-    background-image: linear-gradient(to bottom, #1497DF,#284e64);
+    background-image: linear-gradient(to bottom, #1497DF, #284e64);
     position: fixed;
     width: 100vw;
-    height: 100vh; 
+    height: 102vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
     z-index: 2;
+    margin-top: -28px;
 }
 #divIconNavBar {
     width: 100vw; 
