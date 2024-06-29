@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap');
 *{
     box-sizing: border-box;
 }
@@ -22,7 +23,13 @@ body{
 }
 .method div{
     display: flex;
+    gap: 2vw;
     align-items: center;
+}
+
+.method div p{
+    font-size: large;
+    font-family: "ABeeZee", sans-serif;
 }
 .method i{
     color: lightgray;
