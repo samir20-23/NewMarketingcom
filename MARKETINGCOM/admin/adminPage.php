@@ -42,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,8 +51,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="../frontend/style/navBar.css">
     <title>Document</title>
 </head>
+
 <body>
-    
+
     <!-- navBar element -->
     <div id="allNavBar"></div>
     <!-- navBar element -->
@@ -65,53 +67,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="statsBox">
                 <p>Total services</p>
                 <h1 id="total_services"><?php echo count($fetchAll) ?></h1>
-                <div class="btn">Manage services</div>
+                <button id="manage" class="btn">Manage services</button>
+                <hr id="hr">
+                <div id="croud">
+                    <div id="allcrodtableselecte">
+                        <table>
+                            <tr>
+                                <th>service_name</th>
+                                <th>DELETE</th>
+                                <th><a href="adminAdd.html">ADD</a></th>
+                            </tr>
+                            <?php if (!empty($fetchAll)) : ?>
+                                <?php foreach ($fetchAll as $v) : ?>
+                                    <tr>
+                                        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                                            <!-- XXXXXXXXXXXXXXX -->
+                                            <td><a href="edit?id=<?php echo $v['service_id'] ?>" name="service_name_<?php echo $v['service_id']; ?>"><?php echo $v['service_name']; ?></a></td>
+                                            <td><input type="submit" name="edit" value="edit"></td>
+
+                                            <td><input type="submit" name="delete_<?php echo $v['service_id']; ?>" value="Delete"></td>
+                                        </form>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="btn_div">
+                <button id="back" class="btn">Back</button>
             </div>
         </div>
     </div>
     <!-- navBar js -->
     <script src="adminNav.js"></script>
-
- <hr>
-<div id="croud">
-<div id="allcrodtableselecte">
-    <table>
-        <tr> 
-            <th>service_name</th>
-            <th>DELETE</th>
-            <th><a href="adminAdd.html">ADD</a></th>
-        </tr>
-        <?php if (!empty($fetchAll)) : ?>
-            <?php foreach ($fetchAll as $v) : ?>
-                <tr>
-                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                        <!-- XXXXXXXXXXXXXXX -->
-                        <td><a href="edit?id=<?php echo $v['service_id']?>" name="service_name_<?php echo $v['service_id']; ?>" ><?php echo $v['service_name']; ?></a></td>
-                        <td><input type="submit" name="edit" value="edit"></td>
-                    
-                        <td><input type="submit" name="delete_<?php echo $v['service_id']; ?>" value="Delete"></td>
-                    </form>
-                </tr>
-            <?php endforeach; ?>
-        <?php endif; ?>
-    </table>
-</div>
-</div>
-
-<script src="CROAD_JS.js"></script>
-<script>
-    let tour = document.getElementById("tour");
-    tour.setAttribute("style", `
-        text-shadow: 0 0 2px #031ff4;
-        border-bottom: 5px solid #ff601c;
-        font-size: 26px;
-        font-weight: bold;
-        background-image: url('background.jpg');
-        background-size: cover; /* or another appropriate value */
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-    `);
-</script>
 </body>
+
 </html>

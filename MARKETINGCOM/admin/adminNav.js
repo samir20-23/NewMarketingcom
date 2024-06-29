@@ -3,6 +3,22 @@ let iconNavBar = document.getElementById("iconNavBar");
 let selectedImageDiv = document.getElementById("selectedImage");
 let submit = document.getElementById("submit");
 let cancel = document.getElementById("cancel");
+let manage = document.getElementById("manage");
+let hr = document.getElementById("hr");
+let croud = document.getElementById("croud");
+let back = document.getElementById("back");
+
+manage.addEventListener("click", ()=>{
+  hr.style.display = "block";
+  croud.style.display = "flex";
+  back.style.display = "inline-block";
+})
+
+back.addEventListener("click", ()=>{
+  hr.style.display = "none";
+  croud.style.display = "none";
+  back.style.display = "none";
+})
 
 let click = "";
 iconNavBar.addEventListener("click", () => {

@@ -91,7 +91,18 @@ header .fa-bars {
   background-color: var(--color1);
   color: white;
   border: 2px solid var(--color1);
-  max-width: 300px !important;
+  max-width: 200px;
+}
+
+.btn_div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 25px 0;
+}
+
+.btn_div .btn {
+  padding: 10px 35px;
 }
 
 .btn:hover {
@@ -105,9 +116,18 @@ header .fa-bars {
 img{
   width: 100px;
 }
+
 #croud{
   width: 100%; 
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
+}
+
+#back {
+  display: none;
+}
+
+#hr {
+  display: none;
 }
