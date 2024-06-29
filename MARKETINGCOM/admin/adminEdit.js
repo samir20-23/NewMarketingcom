@@ -110,7 +110,7 @@ request.onload = () => {
 
 // cansel
 cancel.addEventListener("click", () => {
-  window.location="adminPage.php";
+  window.location="adminPage.html";
 });
 
 submit.addEventListener("click", () => {

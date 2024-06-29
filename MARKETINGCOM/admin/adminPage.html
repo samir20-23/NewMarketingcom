@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="style/adminPage.css" />
+    <link rel="stylesheet" href="../frontend/style/navBar.css" />
+    <title>Admin Dashboard</title>
+  </head>
+
+  <body>
+    <!-- navBar element -->
+    <div id="allNavBar"></div>
+    <!-- navBar element -->
+    <div class="mainPage">
+      <header>
+        <h1>LOGO</h1>
+        <i class="fa fa-bars" id="iconNavBar" aria-hidden="true"></i>
+      </header>
+      <div class="content">
+        <h1 class="title" id="title">Admin Dashboard ></h1>
+        <div class="statsBox">
+          <p>Total services</p>
+          <h1 id="total_services">X</h1>
+          <button id="manage" class="btn">Manage services</button>
+          <button id="add" class="btn">Add New Service</button>
+          <hr id="hr" />
+          <div id="background">
+            <div id="delete-div">
+              <h1 id="remove">Remove Service</h1>
+              <p id="sure">Are You sure You want to Remove this Service ?</p>
+              <br />
+              <button class="remove">Remove</button><br /><br />
+              <button id="closet" class="cancel">Cancel</button>
+            </div>
+          </div>
+          <div id="croud">
+            <div id="allcrodtableselecte">
+              <!-- <div class="selectedService">
+                <p class="serName">Service name</p>
+                <div class="form_btns">
+                  <button class="edit">Edit</button>
+                  <button class="delete">Delete</button>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        <div class="btn_div">
+          <button id="back" class="btn">Back</button>
+        </div>
+      </div>
+    </div>
+    <!-- navBar js -->
+    <script src="adminNav.js"></script>
+  </body>
+</html>

@@ -10,6 +10,8 @@ let back = document.getElementById("back");
 let add = document.getElementById("add");
 let closet = document.getElementById("closet");
 let background = document.getElementById("background")
+let allcrodtableselecte = document.getElementById("allcrodtableselecte");
+let total = document.getElementById("total_services");
 
 closet.addEventListener('click', e=>{
   background.style.display = 'none'
@@ -59,7 +61,7 @@ iconNavBar.addEventListener("click", () => {
     // click home login contact
     let home = document.getElementById("home");
     home.addEventListener("click", () => {
-      window.location = "adminPage.php";
+      window.location = "adminPage.html";
     });
     let logIn = document.getElementById("logIn");
     logIn.addEventListener("click", () => {
@@ -83,3 +85,24 @@ iconNavBar.addEventListener("click", () => {
     }
   });
 });
+
+// --------------------------------------------------------------------
+
+let request = new XMLHttpRequest();
+request.open("POST", "adminPage.php");
+request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+request.send();
+request.onload = () => {
+  let response = JSON.parse(request.response);
+  console.log(response);
+  total.innerHTML = response.length;
+  response.services.forEach((item) => {
+    allcrodtableselecte.innerHTML += `<div id="${item.service_id}" class="selectedService">
+    <p class="serName">${item.service_name}</p>
+    <div class="form_btns">
+      <a href="adminEdit.html?id='${item.service_id}'" class="edit">Edit</a>
+      <a href="adminEdit.html" class="delete">Delete</a>
+    </div>
+  </div>`;
+  });
+}

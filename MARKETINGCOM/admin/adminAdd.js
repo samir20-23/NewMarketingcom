@@ -105,5 +105,5 @@ submit.addEventListener("click", (event) => {
 
 // cansel
 cancel.addEventListener("click", () => {
-  window.location="adminPage.php";
+  window.location="adminPage.html";
 });
