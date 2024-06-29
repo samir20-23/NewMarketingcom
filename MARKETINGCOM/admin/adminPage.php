@@ -83,8 +83,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <tr>
                                         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                                             <!-- XXXXXXXXXXXXXXX -->
-                                            <td><a href="edit?id=<?php echo $v['service_id'] ?>" name="service_name_<?php echo $v['service_id']; ?>"><?php echo $v['service_name']; ?></a></td>
-                                            <td><input type="submit" name="edit" value="edit"></td>
+                                            <td><a name="service_name_<?php echo $v['service_id']; ?>"><?php echo $v['service_name']; ?></a></td>
+                                            <td><a type="submit" href="adminEdit.html?id=<?php echo $v['service_id'] ?>" name="edit">edit</a></td>
 
                                             <td><input type="submit" name="delete_<?php echo $v['service_id']; ?>" value="Delete"></td>
                                         </form>
