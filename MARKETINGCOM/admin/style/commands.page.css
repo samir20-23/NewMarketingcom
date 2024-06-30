@@ -54,6 +54,10 @@ header .fa-bars {
     border: 1px solid lightgray;
   }
 
+  .command .command-body{
+    height: 100%;
+  }
+
   .command div:has(img){
     display: flex;
     gap: 3%;
@@ -90,4 +94,13 @@ header .fa-bars {
   }
   .command img{
     width:  25%;
+  }
+
+  @media screen and (min-width: 400px) {
+    .command{
+      height: 15vh;
+    }
+    .command img{
+      width: 15%;
+    }
   }

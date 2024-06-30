@@ -24,13 +24,16 @@ if (isset($_POST['command']) && !empty($_POST['phone_number'])) {
         }
     }
     // after created new user if needed a command is created in db
-    $serviceOptions = str_replace(['"', '\\'], '', $_POST['service_details']);
+    // $serviceOptions = str_replace(['"', '\\'], '', $_POST['service_details']);
+    $serviceOptions = json_encode($_POST['service_details']);
+    $serviceOptions = substr($serviceOptions, 1, -1); 
+    $OptionsfinalState = "'" . $serviceOptions . "'";
     $sql = 'INSERT INTO commander
-    VALUES ((SELECT user_id FROM user WHERE user_phone = "' . $_POST['phone_number'] . '"), ' . $_POST['service_id'] . ', NOW(), "' . $serviceOptions . '");';
+    VALUES ((SELECT user_id FROM user WHERE user_phone = "' . $_POST['phone_number'] . '"), ' . $_POST['service_id'] . ', NOW(), ' . $OptionsfinalState . ');';
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     echo json_encode('verified');
-    // echo json_encode($sql);
+    echo $sql;
     
 } else {
     echo json_encode("phoneempty");
