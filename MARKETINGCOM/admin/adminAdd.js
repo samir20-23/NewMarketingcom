@@ -8,6 +8,19 @@ let hr = document.getElementById("hr");
 let croud = document.getElementById("croud");
 let back = document.getElementById("back");
 let add = document.getElementById("add");
+let service_price = document.getElementById("service_price");
+ 
+const urlParams = new URLSearchParams(window.location.search);
+const sebservices = urlParams.get("name"); 
+const serviceId = urlParams.get("serviceId"); 
+if (sebservices === "sebservice") { 
+  if (service_price) {
+    service_price.style.display = "block";
+  } 
+} else {
+  service_price.style.display = "none";
+}
+
 
 let click = "";
 iconNavBar.addEventListener("click", () => {
@@ -76,7 +89,13 @@ submit.addEventListener("click", (event) => {
 
   let formData = new FormData();
   formData.append("serviceName", service_name.value);
+  formData.append("servicePrice", service_price.value);
   formData.append("serviceImg", service_img);
+
+  formData.append("sebservices", sebservices);
+  formData.append("serviceId", serviceId);
+
+  
 
   let request = new XMLHttpRequest();
   request.open("POST", "adminAdd.php");
@@ -86,17 +105,23 @@ submit.addEventListener("click", (event) => {
     console.log(response);
 
     if (response == "imgempty") {
-      error.innerHTML = "Please select an image for this service";
+      error.innerHTML = "Please select an image for this seb_service";
+      error.style.color = "red";
+    }
+    
+    if (response == "pricempty") {
+      error.innerHTML = "Please give a price to this seb_service!";
       error.style.color = "red";
     }
     if (response == "namempty") {
-      error.innerHTML = "Please give a name to this service!";
+      error.innerHTML = "Please give a name to this seb_service!";
       error.style.color = "red";
     }
     if (response == "verified") {
       error.innerHTML = "Service has been Added succesfully";
       error.style.color = "green";
       service_name.value = "";
+      document.getElementById("service_price").value = "";
       service_img_element.value = "";
       selectedImageDiv.style.backgroundImage = "";
     }
@@ -107,3 +132,14 @@ submit.addEventListener("click", (event) => {
 cancel.addEventListener("click", () => {
   window.location="adminPage.html";
 });
+
+
+// seb  transform
+
+if (sebservices === "sebservice") { 
+  
+  document.querySelector(".title").innerHTML="Add Seb_Service";
+  document.querySelector(".label_text").innerHTML="Select a seb_service image";
+  document.querySelector("#service_name").setAttribute("placeholder","seb_Service name");
+
+}
