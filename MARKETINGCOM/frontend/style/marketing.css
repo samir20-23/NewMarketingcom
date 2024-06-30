@@ -16,6 +16,15 @@
   line-height: 25px;
 }
 
+@font-face {
+  font-family: "uniteaSansSemiBold";
+  src: url("../fonts/UniteaSans-SemiBold.ttf") format("truetype");
+  font-weight: 700;
+  size: 19px;
+  font-style: normal;
+  line-height: 25px;
+}
+
 :root {
   --color1: #1497df;
   --color2:white;
@@ -27,6 +36,61 @@
   box-sizing: border-box;
   font-family: "uniteaSans";
 }
+
+.notificationBox {
+  position: fixed;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(20, 151, 223, 0.48);
+  z-index: 20;
+}
+
+.emoji {
+  width: 120px;
+  height: 120px;
+  background-image: url("../img/Emoji.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.notifText {
+  width: 330px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background-color: white;
+  padding: 25px;
+  border: 2px solid var(--color1);
+  border-radius: 7px;
+}
+
+.notifText p {
+  font-family: "uniteaSansSemiBold";
+  font-size: 25px;
+  color: #2C2F48;
+}
+
+.notifText button {
+  width: 100%;
+  padding: 8px 0;
+  border-radius: 7px;
+  background-color: var(--color1);
+  color: white;
+  border: 2px solid var(--color1);
+  cursor: pointer;
+}
+
+.notifText button:hover {
+  background-color: white;
+  color: var(--color1);
+}
+
 
 .mainPage {
   background-color: white; 

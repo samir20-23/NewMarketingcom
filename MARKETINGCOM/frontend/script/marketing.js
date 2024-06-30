@@ -1,4 +1,17 @@
 let services = document.getElementById("services");
+let close = document.getElementById("close");
+let notificationBox = document.getElementById("notificationBox");
+
+let payment = localStorage.getItem("payment");
+
+close.addEventListener("click", () => {
+  notificationBox.style.display = "none";
+});
+
+if (payment) {
+  notificationBox.style.display = "flex";
+  localStorage.removeItem("payment");
+}
 
 let request = new XMLHttpRequest();
 request.open("GET", "../backend/marketing.php?services");
@@ -18,9 +31,8 @@ request.onload = () => {
 
   service.forEach((element) => {
     element.addEventListener("click", () => {
-      
       const id = element.id;
-      const name = element.getAttribute('name');
+      const name = element.getAttribute("name");
       const url = `services.html?id=${id}&name=${name}`;
       window.location = url;
     });

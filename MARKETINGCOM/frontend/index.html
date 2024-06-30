@@ -9,20 +9,26 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="stylesheet" href="style/navBar.css">
+    <link rel="stylesheet" href="style/navBar.css" />
     <title>Document</title>
   </head>
-  <body> 
-     <header>
-        <h1>LOGO</h1>
-        <i class="fa fa-bars" id="iconNavBar" aria-hidden="true"></i>
-      </header>
+  <body>
+    <div id="notificationBox" class="notificationBox">
+      <div class="notifText">
+        <p>Thank You</p>
+        <div class="emoji"></div>
+        <button id="close">Close</button>
+      </div>
+    </div>
+    <header>
+      <h1>LOGO</h1>
+      <i class="fa fa-bars" id="iconNavBar" aria-hidden="true"></i>
+    </header>
     <!-- navBar element -->
     <div id="allNavBar"></div>
     <!-- navBar element -->
 
     <div class="mainPage">
-    
       <div class="content">
         <div class="services" id="services">
           <!-- <div class="service" id="audio">
@@ -48,15 +54,15 @@
           <div class="service">
             <img src="mages/icon-5.png" class="icons" />
             <h3 class="service-title">Video</h3> -->
-          </div>
-        </div>
-        <div class="btn-div">
-          <button>Learn more</button>
         </div>
       </div>
-    
+      <div class="btn-div">
+        <button>Learn more</button>
+      </div>
+    </div>
+
     <script src="script/marketing.js"></script>
-      <!-- navBar js -->
-      <script src="script/NavBar.js"></script>
+    <!-- navBar js -->
+    <script src="script/NavBar.js"></script>
   </body>
 </html>

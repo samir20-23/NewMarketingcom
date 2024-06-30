@@ -1,0 +1,104 @@
+@font-face {
+  font-family: "uniteaSans";
+  src: url("../fonts/UniteaSans-Regular.ttf") format("truetype");
+  font-weight: 700;
+  size: 19px;
+  font-style: normal;
+  line-height: 25px;
+}
+
+@font-face {
+  font-family: "uniteaSansBold";
+  src: url("../fonts/UniteaSans-ExtraBold.ttf") format("truetype");
+  font-weight: 700;
+  size: 19px;
+  font-style: normal;
+  line-height: 25px;
+}
+
+@font-face {
+  font-family: "uniteaSansSemiBold";
+  src: url("../fonts/UniteaSans-SemiBold.ttf") format("truetype");
+  font-weight: 700;
+  size: 19px;
+  font-style: normal;
+  line-height: 25px;
+}
+
+* {
+  padding: 0;
+  border: 0;
+  margin: 0;
+  font-family: "uniteaSansSemiBold";
+}
+
+:root {
+  --color1: #1497df;
+  --color2: white;
+  --color3: #000000b8;
+}
+
+.page {
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.text {
+  font-family: "uniteaSansSemiBold";
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 36px;
+  text-align: center;
+  color: #2c2f48;
+}
+
+.btn {
+  width: 300px;
+  height: 40px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-family: "uniteaSans";
+  font-size: 15px;
+  padding: 5px;
+}
+
+#whatsapp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--color1);
+  border: 2px solid var(--color1);
+  color: white;
+}
+
+#whatsapp:hover {
+  color: var(--color1);
+  background-color: white;
+}
+
+.fa-whatsapp {
+  font-size: 25px !important;
+}
+
+#cancel {
+  background-color: white;
+  border: 2px solid var(--color1);
+  color: var(--color1);
+}
+
+#cancel:hover {
+  color: white;
+  background-color: var(--color1);
+}
