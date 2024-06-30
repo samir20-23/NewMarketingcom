@@ -1,26 +1,22 @@
-// 
+let allNavBar = document.getElementById("allNavBar");
+let iconNavBar = document.getElementById("iconNavBar");
 let selectedImageDiv = document.getElementById("selectedImage");
 let submit = document.getElementById("submit");
 let cancel = document.getElementById("cancel");
-
-// 
-let allNavBar = document.getElementById("allNavBar");
-let iconNavBar = document.getElementById("iconNavBar");
-
 let manage = document.getElementById("manage");
 let hr = document.getElementById("hr");
 let croud = document.getElementById("croud");
 let back = document.getElementById("back");
 let add = document.getElementById("add");
 let closet = document.getElementById("closet");
-let background = document.getElementById("background")
+let background = document.getElementById("background");
 let allcrodtableselecte = document.getElementById("allcrodtableselecte");
 let total = document.getElementById("total_services");
 
-closet.addEventListener('click', e=>{
-  background.style.display = 'none'
+closet.addEventListener("click", (e) => {
+  background.style.display = "none";
   console.log(closet);
-})
+});
 
 add.addEventListener("click", () => {
   window.location = "adminAdd.html";
@@ -32,17 +28,16 @@ manage.addEventListener("click", () => {
   back.style.display = "inline-block";
   manage.style.display = "none";
   add.style.display = "inline-block";
-  document.getElementById("title").innerHTML="Manage Services >";
+  document.getElementById("title").innerHTML = "Manage Services >";
 });
 
 back.addEventListener("click", () => {
-  hr.style.display = "none";  
+  hr.style.display = "none";
   croud.style.display = "none";
   back.style.display = "none";
   manage.style.display = "flex";
   add.style.display = "none";
-  document.getElementById("title").innerHTML="Admin Dashboard >";
-
+  document.getElementById("title").innerHTML = "Admin Dashboard >";
 });
 
 let click = "";
@@ -70,7 +65,6 @@ iconNavBar.addEventListener("click", () => {
     let logIn = document.getElementById("logIn");
     logIn.addEventListener("click", () => {
       window.location = "";
-      
     });
     let contact = document.getElementById("contact");
     contact.addEventListener("click", () => {
@@ -109,28 +103,28 @@ request.onload = () => {
     </div>
   </div>`;
   });
-  
 
-  // bbbbbbbbbbbbbb
-
-  let Service = document.querySelectorAll(".serName");
-Service.forEach(forService => {
+  // new-----------------------------------------
+  let Service = document.querySelectorAll(".selectedService");
+  Service.forEach((forService) => {
     forService.addEventListener("click", () => {
       // xxxxx
-      
+
       let request2 = new XMLHttpRequest();
       request2.open("POST", "serServices/serservices.php");
-      request2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      //  
-      request2.send("id="+forService.id);
-      // 
-      
- 
+      request2.setRequestHeader(
+        "Content-type",
+        "application/x-www-form-urlencoded"
+      );
+      //
+      request2.send("id=" + forService.id);
+      //
+
       request2.onload = () => {
         let response = JSON.parse(request2.response);
         console.log(response);
         total.innerHTML = response.length;
-        allcrodtableselecte.innerHTML="";
+        allcrodtableselecte.innerHTML = "";
         response.serservices.forEach((item) => {
           allcrodtableselecte.innerHTML += `
           <div id="${item.service_id}" class="selectedService">
@@ -142,29 +136,31 @@ Service.forEach(forService => {
           </div>
         </div>`;
         });
-    
-      // seb services  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-let sebService = document.querySelectorAll(".serName");
-sebService.forEach(forSebService => {
-    forSebService.addEventListener("click", () => {
-      // xxxxx
-      
-      let request3 = new XMLHttpRequest();
-      request3.open("POST", "serServices/serservices.php");
-      request3.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      //  
-      request3.send("id="+forSebService.id);
-      // 
-      
- 
-      request3.onload = () => {
-        let response = JSON.parse(request3.response);
-        console.log(response);
-        total.innerHTML = response.length;
-        allcrodtableselecte.innerHTML="";
-        response.serservices.forEach((item) => {
-          allcrodtableselecte.innerHTML += `
+        // seb services  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+        let sebService = document.querySelectorAll(".selectedService");
+        sebService.forEach((forSebService) => {
+          forSebService.addEventListener("click", () => {
+            // xxxxx
+
+            let request3 = new XMLHttpRequest();
+            request3.open("POST", "serServices/serservices.php");
+            request3.setRequestHeader(
+              "Content-type",
+              "application/x-www-form-urlencoded"
+            );
+            //
+            request3.send("id=" + forSebService.id);
+            //
+
+            request3.onload = () => {
+              let response = JSON.parse(request3.response);
+              console.log(response);
+              total.innerHTML = response.length;
+              allcrodtableselecte.innerHTML = "";
+              response.serservices.forEach((item) => {
+                allcrodtableselecte.innerHTML += `
           <div id="${item.service_id}" class="selectedService">
           
           <p class="serName">${item.service_name}</p>  <p class="serName">${item.service_price}</p>
@@ -173,81 +169,73 @@ sebService.forEach(forSebService => {
             <a id="${item.service_id}" class="delete">Delete</a>
           </div>
         </div>`;
+              });
+            };
+
+            // teeeeeeeexts
+            document.getElementById("title").innerHTML =
+              "Manage Seb_Services >";
+            document.getElementById("totall").innerHTML = "Total seb_services>";
+            document.getElementById("add").innerHTML = "Add New Seb_Services";
+
+            // back
+            back.addEventListener("click", () => {
+              window.location = "adminPage.html";
+            });
+            // add
+
+            let serviceId = forSebService.id;
+            add.addEventListener("click", () => {
+              const url = `adminAdd.html?serviceId=${serviceId}&sebserviceId=${"sebserviceId"}&name=${"sebservice"}`;
+              window.location = url;
+            });
+          });
         });
-    
-      
-    
-      }
-     
-      // teeeeeeeexts 
-  document.getElementById("title").innerHTML="Manage Seb_Services >";
-  document.getElementById("totall").innerHTML="Total seb_services>";
-  document.getElementById("add").innerHTML="Add New Seb_Services";
 
-// back
-back.addEventListener("click", () => {
-window.location="adminPage.html";
-});
-// add
+        // xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+      };
 
-let serviceId =forSebService.id;
-add.addEventListener("click", () => {
-  const url = `adminAdd.html?serviceId=${serviceId}&sebserviceId=${"sebserviceId"}&name=${"sebservice"}`;
-window.location = url; 
-});
+      // teeeeeeeexts
+      document.getElementById("title").innerHTML = "Manage Seb_Services >";
+      document.getElementById("totall").innerHTML = "Total seb_services>";
+      document.getElementById("add").innerHTML = "Add New Seb_Services";
 
+      // back
+      back.addEventListener("click", () => {
+        window.location = "adminPage.html";
+      });
+      // add
 
-
+      let serviceId = forService.id;
+      add.addEventListener("click", () => {
+        const url = `adminAdd.html?serviceId=${serviceId}&name=${"sebservice"}`;
+        window.location = url;
+      });
     });
-});
+  });
 
-// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-    
-      }
-     
-      // teeeeeeeexts 
-  document.getElementById("title").innerHTML="Manage Seb_Services >";
-  document.getElementById("totall").innerHTML="Total seb_services>";
-  document.getElementById("add").innerHTML="Add New Seb_Services";
-
-// back
-back.addEventListener("click", () => {
-window.location="adminPage.html";
-});
-// add
-
-let serviceId =forService.id;
-add.addEventListener("click", () => {
-  const url = `adminAdd.html?serviceId=${serviceId}&name=${"sebservice"}`;
-window.location = url; 
-});
-
-
-
-    });
-});
-
-let confirmDeleteButton = document.getElementById("confirmDelete");
+  let confirmDeleteButton = document.getElementById("confirmDelete");
   let deleteServices = document.querySelectorAll(".delete");
-  deleteServices.forEach(button => {
+  deleteServices.forEach((button) => {
     button.addEventListener("click", function () {
       background.style.display = "flex";
-      confirmDeleteButton.id = button.id
-    })
-  })
+      confirmDeleteButton.id = button.id;
+    });
+  });
 
   confirmDeleteButton.addEventListener("click", function () {
     let request = new XMLHttpRequest();
     request.open("POST", "adminPage.php");
-    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.setRequestHeader(
+      "Content-type",
+      "application/x-www-form-urlencoded"
+    );
     request.send("id=" + confirmDeleteButton.id + "&delete=" + "delete");
     request.onload = () => {
       let response = request.response;
       if (response == "verified") {
         window.location.reload();
       }
-    }
-  })
-
-}
-
+    };
+  });
+};

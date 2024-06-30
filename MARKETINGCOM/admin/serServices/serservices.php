@@ -18,7 +18,7 @@ try {
     $relatedServices = [];
     foreach ($fetchSer as $value) {
         $idser = $value['ser_service_id'];
-        $select = $connection->prepare("SELECT service_id, service_name, service_price FROM service WHERE service_id = :idser AND service_price IS NOT NULL");
+        $select = $connection->prepare("SELECT service_id, service_name, service_price FROM service WHERE service_id = :idser");
         $select->execute(['idser' => $idser]);
         $relatedServices = array_merge($relatedServices, $select->fetchAll(PDO::FETCH_ASSOC));
     }
@@ -27,7 +27,6 @@ try {
 } catch (PDOException $e) {
     echo json_encode(["error" => $e->getMessage()]);
 }
-
 
 
 
