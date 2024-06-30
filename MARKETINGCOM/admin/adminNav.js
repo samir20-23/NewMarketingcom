@@ -13,7 +13,7 @@ let background = document.getElementById("background")
 let allcrodtableselecte = document.getElementById("allcrodtableselecte");
 let total = document.getElementById("total_services");
 
-closet.addEventListener('click', e=>{
+closet.addEventListener('click', e => {
   background.style.display = 'none'
   console.log(closet);
 })
@@ -28,7 +28,7 @@ manage.addEventListener("click", () => {
   back.style.display = "inline-block";
   manage.style.display = "none";
   add.style.display = "inline-block";
-  document.getElementById("title").innerHTML="Manage Services >";
+  document.getElementById("title").innerHTML = "Manage Services >";
 });
 
 back.addEventListener("click", () => {
@@ -37,7 +37,7 @@ back.addEventListener("click", () => {
   back.style.display = "none";
   manage.style.display = "flex";
   add.style.display = "none";
-  document.getElementById("title").innerHTML="Admin Dashboard >";
+  document.getElementById("title").innerHTML = "Admin Dashboard >";
 
 });
 
@@ -66,7 +66,7 @@ iconNavBar.addEventListener("click", () => {
     let logIn = document.getElementById("logIn");
     logIn.addEventListener("click", () => {
       window.location = "";
-      
+
     });
     let contact = document.getElementById("contact");
     contact.addEventListener("click", () => {
@@ -105,4 +105,61 @@ request.onload = () => {
     </div>
   </div>`;
   });
+  let confirmDeleteButton = document.getElementById("confirmDelete");
+  let deleteServices = document.querySelectorAll(".delete");
+  deleteServices.forEach(button => {
+    button.addEventListener("click", function () {
+      background.style.display = "flex";
+      confirmDeleteButton.id = button.id
+    })
+  })
+
+  confirmDeleteButton.addEventListener("click", function () {
+    let request = new XMLHttpRequest();
+    request.open("POST", "adminPage.php");
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.send("id=" + confirmDeleteButton.id + "&delete=" + "delete");
+    request.onload = () => {
+      let response = request.response;
+      if (response == "verified") {
+        window.location.reload();
+      }
+    }
+  })
 }
+
+//delete services
+
+
+// document.addEventListener("DOMContentLoaded", function () {
+//   const deleteButtons = document.querySelectorAll(".deleteButton");
+//   const background = document.getElementById("background");
+//   const closetButton = document.getElementById("closet");
+//   let currentServiceId;
+
+//   deleteButtons.forEach(button => {
+//     button.addEventListener("click", function () {
+//       currentServiceId = this.getAttribute("data-id");
+//       background.style.display = "flex";
+//     });
+//   });
+
+//   closetButton.addEventListener("click", function () {
+//     background.style.display = "none";
+//   });
+
+//   confirmDeleteButton.addEventListener("click", function () {
+//     const form = document.createElement("form");
+//     form.method = "POST";
+
+//     const hiddenField = document.createElement("input");
+//     hiddenField.type = "hidden";
+//     hiddenField.name = "delete_" + currentServiceId;
+//     hiddenField.value = "Delete";
+
+//     form.appendChild(hiddenField);
+//     document.body.appendChild(form);
+//     form.submit();
+//   });
+
+// });
