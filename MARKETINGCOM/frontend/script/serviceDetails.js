@@ -165,15 +165,15 @@ xhr.onload = function () {
         //whatsapp wwwwwwwwwwww
         let serviceName = document.getElementById("title").innerHTML;
         let mynumber = "+2120718087106";
-        let message = `SERVICE: ${serviceName} | PRIMARY OPTIONS: [${selectedInnerHTML.split(",")}] | SECONDARY OPTIONS: [${second_option}, ${last_option}]`;
+        let message = `SERVICE: ${serviceName}\n\nPRIMARY OPTIONS:\n - ${selectedInnerHTML.split(",").join("\n - ")}\n\nSECONDARY OPTIONS:\n - ${second_option}\n - ${last_option}`;
         whatsapp.addEventListener("click", function () {
           reload.style.display = "flex";
           setTimeout(() => {
             reload.style.display = "none";
           }, 2500);
           window.open(
-            `https://web.whatsapp.com/send?phone=${mynumber}&text=${message}`,
-            "_blank"
+             `https://web.whatsapp.com/send?phone=${mynumber}&text=${encodeURIComponent(message)}`,
+    "_blank"
           );
         });
       } else {

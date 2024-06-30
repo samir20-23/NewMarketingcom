@@ -6,10 +6,11 @@ $stmt->execute();
 $commands = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 if (isset($_POST['delete_command'])) {
-    $query = 'DELETE FROM `commander` WHERE user_id = :user_id AND serviec_id = :service_id';
+    $query = 'DELETE FROM `commander` WHERE user_id = :user_id AND serviec_id = :service_id AND date = :date';
     $statment = $conn->prepare($query);
     $statment->bindParam('user_id', $_POST['user_id']);
     $statment->bindParam('serviec_id', $_POST['service_id']);
+    $statment->bindParam('date', $_POST['date']);
     $statment->execute();
 }
 ?>
@@ -31,26 +32,30 @@ if (isset($_POST['delete_command'])) {
     </header>
 
     <main>
-        <?php foreach ($commands as $command) {
-            //     echo "<form action='' method='post'>
-
-            //     <p>commanded ".$command['service_name']." by ".$command['user_name']."</p>
-            //     <input type='submit' name='delete_command' value='Delete'>
-            //     </form>";
-        }
-        ?>
-
-        <div>
-            <div>
-                <div>
-                    <img src="../frontend/images/icon-16.png" alt="" srcset="">
-                    <p>Voice Over</p>
+        <?php foreach ($commands as $command):?>
+            <?php $service_options = json_decode($command['service_details'])?>
+        <div class="command">
+            <div class="command-body" >
+                <img src="../frontend/images/icon-16.png" alt="" srcset="">
+                <div class="command-header" >
+                    <div>
+                        <p class="title" ><?=$command['service_name']?></p>
+                        <p class="price"><?=$command['service_price']?>DH</p>
+                    </div>
+                    <p class="options" ><?=sizeof($service_options->primary_options)>0?implode(',',$service_options->primary_options).' | ':''?> <?=$service_options->second_option.' | '?> <?=$service_options->last_option?></p>
                 </div>
-
+                <form class="command-end" >
+                    <input type="text" name="service_id" value="<?=$command['service_id']?>" hidden>
+                    <input type="text" name="user_id" value="<?=$command['user_id']?>" hidden>
+                    <input type="text" name="date" value="<?=$command['date']?>" hidden>
+                    <label>
+                        <i class="fa fa-trash" ></i>
+                        <input type="submit" name="delete" value="Delete" hidden>
+                    </label>
+                </form>
             </div>
-
-
         </div>
+        <?php endforeach?>
     </main>
 </body>
 
