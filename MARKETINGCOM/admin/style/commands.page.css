@@ -69,6 +69,7 @@ header .fa-bars {
   }
   .command-header > div{
     display: flex;
+    flex-wrap: wrap;
     gap: 2%;
   }
 
