@@ -6,8 +6,11 @@ $stmt->execute();
 $commands = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 if (isset($_POST['delete_command'])) {
-    $query = 'DELETE FROM `commander` WHERE user_id = '.$_POST['user_id'].' AND service_id = '.$_POST['service_id'].' AND date = "'.$_POST['date'].'" ';
+    $query = 'DELETE FROM `commander` WHERE user_id = :user_id AND serviec_id = :service_id AND date = :date';
     $statment = $conn->prepare($query);
+    $statment->bindParam('user_id', $_POST['user_id']);
+    $statment->bindParam('serviec_id', $_POST['service_id']);
+    $statment->bindParam('date', $_POST['date']);
     $statment->execute();
 }
 ?>
@@ -38,17 +41,16 @@ if (isset($_POST['delete_command'])) {
                     <div>
                         <p class="title" ><?=$command['service_name']?></p>
                         <p class="price"><?=$command['service_price']?>DH</p>
-                        <p class="date"><?=$command['date']?></p>
                     </div>
                     <p class="options" ><?=sizeof($service_options->primary_options)>0?implode(',',$service_options->primary_options).' | ':''?> <?=$service_options->second_option.' | '?> <?=$service_options->last_option?></p>
                 </div>
-                <form class="command-end" method="POST" action="" >
+                <form class="command-end" >
                     <input type="text" name="service_id" value="<?=$command['service_id']?>" hidden>
                     <input type="text" name="user_id" value="<?=$command['user_id']?>" hidden>
                     <input type="text" name="date" value="<?=$command['date']?>" hidden>
                     <label>
                         <i class="fa fa-trash" ></i>
-                        <input type="submit" name="delete_command" hidden>
+                        <input type="submit" name="delete" value="Delete" hidden>
                     </label>
                 </form>
             </div>

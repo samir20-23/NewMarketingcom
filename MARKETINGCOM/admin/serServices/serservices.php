@@ -1,22 +1,34 @@
 <?php
 $host = "localhost";
 $database = "marketingcom";
-$table = "service";
 $usrname = "root";
 $passcode = "";
 
+$id = $_POST['id'];
 
 try {
     $connection = new PDO("mysql:host=$host;dbname=$database", $usrname, $passcode);
     $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    // Fetch related services IDs
+    $selectRelation = $connection->prepare("SELECT ser_service_id FROM relation WHERE service_id = :id");
+    $selectRelation->execute(['id' => $id]);
+    $fetchSer = $selectRelation->fetchAll(PDO::FETCH_ASSOC);
 
-    $select = $connection->query("SELECT service_id, service_name  FROM $table WHERE service_price is NULL ");
-    $fetchAll = $select->fetchAll(PDO::FETCH_ASSOC);
-    echo json_encode(["services"=>$fetchAll, "length"=>count($fetchAll)]);
+    $relatedServices = [];
+    foreach ($fetchSer as $value) {
+        $idser = $value['ser_service_id'];
+        $select = $connection->prepare("SELECT service_id, service_name, service_price FROM service WHERE service_id = :idser AND service_price IS NOT NULL");
+        $select->execute(['idser' => $idser]);
+        $relatedServices = array_merge($relatedServices, $select->fetchAll(PDO::FETCH_ASSOC));
+    }
+
+    echo json_encode(["serservices" => $relatedServices, "length" => count($relatedServices)]);
 } catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
+    echo json_encode(["error" => $e->getMessage()]);
 }
+
+
 
 
 // if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -57,3 +69,35 @@ try {
 //         }
 //     }
 // }
+
+
+// xxxxxxxxxxxxxxx
+
+// <?php
+// $host = "localhost";
+// $database = "marketingcom";
+// $table = "service";
+// $usrname = "root";
+// $passcode = "";
+
+
+// // semds 
+// $id =$_POST['id'];
+
+// try {
+//     $connection = new PDO("mysql:host=$host;dbname=$database", $usrname, $passcode);
+//     $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+//     $selectRelation =$connection->query("SELECT service_id, ser_service_id    FROM relation WHERE $id ");
+//     $selectRelation->execute();
+
+//     $select = $connection->query("SELECT service_id, service_name,service_price  FROM $table WHERE service_price is NOT NULL  ");
+//     $fetchAll = $select->fetchAll(PDO::FETCH_ASSOC);
+//     echo json_encode(["serservices"=>$fetchAll, "length"=>count($fetchAll)]);
+
+    
+    
+// } catch (PDOException $e) {
+//     echo "Error: " . $e->getMessage();
+// }
+

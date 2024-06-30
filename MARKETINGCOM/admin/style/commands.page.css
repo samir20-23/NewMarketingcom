@@ -52,20 +52,11 @@ header .fa-bars {
 
   .command{
     border: 1px solid lightgray;
-    margin-bottom: 2vh;
-  }
-
-  .command .command-body{
-    height: 100%;
-    width: 100%;
   }
 
   .command div:has(img){
     display: flex;
     gap: 3%;
-  }
-  .command-header{
-    width: 100%;
   }
   .command-header > div{
     display: flex;
@@ -74,18 +65,10 @@ header .fa-bars {
 
   .command p{
     font-size: large;
-    width: 100%;
-    white-space: pre-wrap;
   }
+
   .command .price{
-    width: fit-content;
     color: lightseagreen;
-  }
-  .command .title{
-    width: 100%;
-  }
-  .command .date{
-    color: gray;
   }
   .command .command-end{
     display: flex;
@@ -107,13 +90,4 @@ header .fa-bars {
   }
   .command img{
     width:  25%;
-  }
-
-  @media screen and (min-width: 400px) {
-    .command{
-      height: 15vh;
-    }
-    .command img{
-      width: 15%;
-    }
   }
