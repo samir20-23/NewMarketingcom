@@ -38,7 +38,7 @@ if (isset($_POST['delete_command'])) {
                     <div>
                         <p class="title" ><?=$command['service_name']?></p>
                         <p class="price"><?=$command['service_price']?>DH</p>
-                        <p class="date"><?=$command['date']?>DH</p>
+                        <p class="date"><?=$command['date']?></p>
                     </div>
                     <p class="options" ><?=sizeof($service_options->primary_options)>0?implode(',',$service_options->primary_options).' | ':''?> <?=$service_options->second_option.' | '?> <?=$service_options->last_option?></p>
                 </div>
