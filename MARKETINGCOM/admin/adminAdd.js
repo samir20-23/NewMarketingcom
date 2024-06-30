@@ -105,16 +105,16 @@ submit.addEventListener("click", (event) => {
     console.log(response);
 
     if (response == "imgempty") {
-      error.innerHTML = "Please select an image for this seb_service";
+      error.innerHTML = "Please select an image for this Sub-Service";
       error.style.color = "red";
     }
     
     if (response == "pricempty") {
-      error.innerHTML = "Please give a price to this seb_service!";
+      error.innerHTML = "Please give a price to this Sub-Service!";
       error.style.color = "red";
     }
     if (response == "namempty") {
-      error.innerHTML = "Please give a name to this seb_service!";
+      error.innerHTML = "Please give a name to this Sub-Service!";
       error.style.color = "red";
     }
     if (response == "verified") {
@@ -138,8 +138,8 @@ cancel.addEventListener("click", () => {
 
 if (sebservices === "sebservice") { 
   
-  document.querySelector(".title").innerHTML="Add Seb_Service";
-  document.querySelector(".label_text").innerHTML="Select a seb_service image";
-  document.querySelector("#service_name").setAttribute("placeholder","seb_Service name");
+  document.querySelector(".title").innerHTML="Add Sub-Service";
+  document.querySelector(".label_text").innerHTML="Select a Sub-Service image";
+  document.querySelector("#service_name").setAttribute("placeholder","Sub-Service name");
 
 }

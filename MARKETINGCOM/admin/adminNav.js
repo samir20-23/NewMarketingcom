@@ -174,9 +174,9 @@ request.onload = () => {
 
             // teeeeeeeexts
             document.getElementById("title").innerHTML =
-              "Manage Seb_Services >";
-            document.getElementById("totall").innerHTML = "Total seb_services>";
-            document.getElementById("add").innerHTML = "Add New Seb_Services";
+              "Manage Sub-Services >";
+            document.getElementById("totall").innerHTML = "Total Sub-Services";
+            document.getElementById("add").innerHTML = "Add New Sub-Services";
 
             // back
             back.addEventListener("click", () => {
@@ -196,9 +196,9 @@ request.onload = () => {
       };
 
       // teeeeeeeexts
-      document.getElementById("title").innerHTML = "Manage Seb_Services >";
-      document.getElementById("totall").innerHTML = "Total seb_services>";
-      document.getElementById("add").innerHTML = "Add New Seb_Services";
+      document.getElementById("title").innerHTML = "Manage Sub-Services >";
+      document.getElementById("totall").innerHTML = "Total Sub-Services";
+      document.getElementById("add").innerHTML = "Add New Sub-Services";
 
       // back
       back.addEventListener("click", () => {

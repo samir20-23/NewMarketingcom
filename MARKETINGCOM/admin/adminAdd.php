@@ -76,7 +76,6 @@ if($sebservices == "sebservice" ){
  
                      $insert->execute();
                      $lastInsertedId = $con->lastInsertId();
-                     echo $lastInsertedId;
                     //  relation
                     $insertRelation = $con->prepare("INSERT INTO relation (service_id,ser_service_id) VALUES(:serviceId,:sebServiceId)");
                     $insertRelation->bindParam(":serviceId", $serviceId);
