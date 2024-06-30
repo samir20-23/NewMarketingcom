@@ -113,7 +113,7 @@ request.onload = () => {
 
   // bbbbbbbbbbbbbb
 
-  let Service = document.querySelectorAll(".selectedService");
+  let Service = document.querySelectorAll(".serName");
 Service.forEach(forService => {
     forService.addEventListener("click", () => {
       // xxxxx
@@ -145,7 +145,7 @@ Service.forEach(forService => {
     
       // seb services  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-let sebService = document.querySelectorAll(".selectedService");
+let sebService = document.querySelectorAll(".serName");
 sebService.forEach(forSebService => {
     forSebService.addEventListener("click", () => {
       // xxxxx
@@ -226,6 +226,28 @@ window.location = url;
 
     });
 });
+
+let confirmDeleteButton = document.getElementById("confirmDelete");
+  let deleteServices = document.querySelectorAll(".delete");
+  deleteServices.forEach(button => {
+    button.addEventListener("click", function () {
+      background.style.display = "flex";
+      confirmDeleteButton.id = button.id
+    })
+  })
+
+  confirmDeleteButton.addEventListener("click", function () {
+    let request = new XMLHttpRequest();
+    request.open("POST", "adminPage.php");
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.send("id=" + confirmDeleteButton.id + "&delete=" + "delete");
+    request.onload = () => {
+      let response = request.response;
+      if (response == "verified") {
+        window.location.reload();
+      }
+    }
+  })
 
 }
 
