@@ -37,6 +37,7 @@
 
 header {
   height: 10vh;
+  padding: 5% 5%;
   background-color: white;
   display: flex;
   align-items: center;
@@ -47,4 +48,46 @@ header {
 header .fa-bars {
     font-size: 35px !important;
     cursor: pointer;
+  }
+
+  .command{
+    border: 1px solid lightgray;
+  }
+
+  .command div:has(img){
+    display: flex;
+    gap: 3%;
+  }
+  .command-header > div{
+    display: flex;
+    gap: 2%;
+  }
+
+  .command p{
+    font-size: large;
+  }
+
+  .command .price{
+    color: lightseagreen;
+  }
+  .command .command-end{
+    display: flex;
+    width: auto;
+    margin-left: auto;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .command .command-end label{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    height: 100%;
+    padding: .5rem;
+  }
+  .command .command-end label:hover{
+    background-color: lightcoral;
+  }
+  .command img{
+    width:  25%;
   }
