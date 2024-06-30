@@ -1,15 +1,18 @@
 let services = document.getElementById("services");
 let close = document.getElementById("close");
 let notificationBox = document.getElementById("notificationBox");
+let homepage = document.getElementById("page");
 
 let payment = localStorage.getItem("payment");
 
 close.addEventListener("click", () => {
   notificationBox.style.display = "none";
+  homepage.style.filter = "blur(0px)";
 });
 
 if (payment) {
   notificationBox.style.display = "flex";
+  homepage.style.filter = "blur(4px)";
   localStorage.removeItem("payment");
 }
 
