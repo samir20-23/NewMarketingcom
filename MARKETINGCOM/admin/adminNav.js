@@ -1,4 +1,4 @@
-// just test push and pull 
+//
 let allNavBar = document.getElementById("allNavBar");
 let iconNavBar = document.getElementById("iconNavBar");
 let selectedImageDiv = document.getElementById("selectedImage");
