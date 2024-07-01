@@ -23,7 +23,7 @@ if (isset($_POST['admin_login'])) {
 }
 
 function navigateToAdminPage(){
-    header("Location: adminPage.php");
+    header("Location: adminPage.html");
 }
 ?>
 <!DOCTYPE html>
