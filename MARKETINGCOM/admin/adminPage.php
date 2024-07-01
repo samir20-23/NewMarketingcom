@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST["delete"])) {
         $connection = new PDO("mysql:host=$host;dbname=$database", $usrname, $passcode);
         $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $select = $connection->query("SELECT service_id, service_name FROM $table WHERE service_price is NULL");
+        $select = $connection->query("SELECT service_id, service_name , service_price FROM $table WHERE service_price is NULL");
         $fetchAll = $select->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode(["services" => $fetchAll, "length" => count($fetchAll)]);
     } catch (PDOException $e) {
