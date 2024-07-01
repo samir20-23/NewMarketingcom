@@ -165,15 +165,21 @@ xhr.onload = function () {
         //whatsapp wwwwwwwwwwww
         let serviceName = document.getElementById("title").innerHTML;
         let mynumber = "+2120718087106";
-        let message = `SERVICE: ${serviceName}\n\nPRIMARY OPTIONS:\n - ${selectedInnerHTML.split(",").join("\n - ")}\n\nSECONDARY OPTIONS:\n - ${second_option}\n - ${last_option}`;
+        let message = `SERVICE: ${serviceName}\n\nPRIMARY OPTIONS:\n - ${selectedInnerHTML
+          .split(",")
+          .join(
+            "\n - "
+          )}\n\nSECONDARY OPTIONS:\n - ${second_option}\n - ${last_option}`;
         whatsapp.addEventListener("click", function () {
           reload.style.display = "flex";
           setTimeout(() => {
             reload.style.display = "none";
           }, 2500);
           window.open(
-             `https://web.whatsapp.com/send?phone=${mynumber}&text=${encodeURIComponent(message)}`,
-    "_blank"
+            `https://web.whatsapp.com/send?phone=${mynumber}&text=${encodeURIComponent(
+              message
+            )}`,
+            "_blank"
           );
         });
       } else {
@@ -193,69 +199,84 @@ xhr.onerror = function () {
 xhr.send();
 
 // login
-//NNNNNNNNNNNNNNNNNNNNNNNNNN
 
 let submit = document.getElementById("submit");
-
 submit.addEventListener("click", () => {
-  let fullname = document.getElementById("fullname");
-  let number = document.getElementById("number");
-
-  let xhr = new XMLHttpRequest();
-  xhr.open("POST", `../backend/userActivity.php`, true);
-  var formData = new FormData();
-  formData.append("command", "command");
-  formData.append("phone_number", number.value);
-  formData.append("user_name", fullname.value);
-  formData.append("service_id", id);
-  formData.append("service_details", selected_options.value);
-
-  // Send the request with the data
-  xhr.send(formData);
-  xhr.onload = function () {
-    if (xhr.status >= 200 && xhr.status < 400) {
-      let response = xhr.responseText;
-      console.log(response);
-      if (response == `"phoneempty"`) {
-        error.innerHTML = "please enter phone number";
-        error.style.color = "red";
-      }
-      if (response == `"numberinvald"`) {
-        error.innerHTML = "number is invalid";
-        error.style.color = "red";
-      }
-      if (response == `"nameinvalid"`) {
-        error.innerHTML = "please enter a valid name";
-        error.style.color = "red";
-      }
-      if (response == `"verified"`) {
-        localStorage.setItem("userName", fullname.value);
-        localStorage.setItem("userPhone", number.value);
-        error.innerHTML = "Command submited successfully !";
-        error.style.color = "green";
-
-        fullname.type = "hidden";
-        number.type = "hidden";
-        confirmP.innerHTML = "";
-
-        console.log(selected_options.value);
-      }
+  if (fullname.value != "") {
+    if (number.value != "") {
+      localStorage.setItem("userName", fullname.value);
+      localStorage.setItem("userPhone", number.value);
+      localStorage.setItem("options", selected_options.value);
+      window.location = `pyment.html?id="${id}"`;
     } else {
-      console.error("Request failed with status:", xhr.status);
+      error.innerHTML = "please enter phone number";
+      error.style.color = "red";
     }
-  };
-
-  // open data name
-
-  xhr.onerror = function () {
-    console.error("Request failed");
-  };
-
-  // let second_option = document.getElementById("second").value;
-  // let last_option = document.getElementById("last").value;
-  // let primary_options = document.querySelectorAll(".selected");
-  // primary_options.forEach((element) => {
-  //   console.log(element.innerHTML);
-  // });
-  // console.log(second_option, last_option);
+  } else {
+    error.innerHTML = "please enter a valid name";
+    error.style.color = "red";
+  }
 });
+
+// submit.addEventListener("click", () => {
+//   let fullname = document.getElementById("fullname");
+//   let number = document.getElementById("number");
+
+//   let xhr = new XMLHttpRequest();
+//   xhr.open("POST", `../backend/userActivity.php`, true);
+//   var formData = new FormData();
+//   formData.append("command", "command");
+//   formData.append("phone_number", number.value);
+//   formData.append("user_name", fullname.value);
+//   formData.append("service_id", id);
+//   formData.append("service_details", selected_options.value);
+
+//   // Send the request with the data
+//   xhr.send(formData);
+//   xhr.onload = function () {
+//     if (xhr.status >= 200 && xhr.status < 400) {
+//       let response = xhr.responseText;
+//       console.log(response);
+//       if (response == `"phoneempty"`) {
+//         error.innerHTML = "please enter phone number";
+//         error.style.color = "red";
+//       }
+//       if (response == `"numberinvald"`) {
+//         error.innerHTML = "number is invalid";
+//         error.style.color = "red";
+//       }
+//       if (response == `"nameinvalid"`) {
+//         error.innerHTML = "please enter a valid name";
+//         error.style.color = "red";
+//       }
+//       if (response == `"verified"`) {
+//         localStorage.setItem("userName", fullname.value);
+//         localStorage.setItem("userPhone", number.value);
+//         error.innerHTML = "Command submited successfully !";
+//         error.style.color = "green";
+
+//         fullname.type = "hidden";
+//         number.type = "hidden";
+//         confirmP.innerHTML = "";
+
+//         console.log(selected_options.value);
+//       }
+//     } else {
+//       console.error("Request failed with status:", xhr.status);
+//     }
+//   };
+
+//   // open data name
+
+//   xhr.onerror = function () {
+//     console.error("Request failed");
+//   };
+
+//   // let second_option = document.getElementById("second").value;
+//   // let last_option = document.getElementById("last").value;
+//   // let primary_options = document.querySelectorAll(".selected");
+//   // primary_options.forEach((element) => {
+//   //   console.log(element.innerHTML);
+//   // });
+//   // console.log(second_option, last_option);
+// });
