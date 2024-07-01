@@ -1,5 +1,9 @@
 <?php
 require_once('../backend/config/connect.php');
+session_start();
+if (!isset($_SESSION['admin'])) {
+    header("Location: index.php");
+}
 $sql = 'SELECT commander.user_id, commander.service_id, user_name, service_name, service_img, service_price ,date , service_details FROM commander INNER JOIN user USING(user_id) INNER JOIN service USING(service_id) ';
 $stmt = $conn->prepare($sql);
 $stmt->execute();
