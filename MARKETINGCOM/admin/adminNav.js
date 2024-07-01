@@ -13,10 +13,11 @@ let closet = document.getElementById("closet");
 let background = document.getElementById("background");
 let allcrodtableselecte = document.getElementById("allcrodtableselecte");
 let total = document.getElementById("total_services");
+let mainPage = document.getElementById("mainPage");
 
 closet.addEventListener("click", (e) => {
   background.style.display = "none";
-  console.log(closet);
+  mainPage.style.filter = "blur(0px)";
 });
 
 add.addEventListener("click", () => {
@@ -221,6 +222,7 @@ request.onload = () => {
     button.addEventListener("click", function (event) {
       event.stopPropagation();
       background.style.display = "flex";
+      mainPage.style.filter = "blur(5px)";
       confirmDeleteButton.id = button.id;
     });
   });

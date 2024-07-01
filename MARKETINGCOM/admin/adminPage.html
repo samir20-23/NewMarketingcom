@@ -13,10 +13,22 @@
   </head>
 
   <body>
+    <div id="background">
+      <div id="delete-div">
+        <div class="section">
+          <h1 id="remove">Remove Service</h1>
+          <p id="sure">Are You sure You want to Remove this Service ?</p>
+        </div>
+        <div class="section">
+          <button id="confirmDelete" class="remove">Remove</button>
+          <button id="closet" class="cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
     <!-- navBar element -->
     <div id="allNavBar"></div>
     <!-- navBar element -->
-    <div class="mainPage">
+    <div id="mainPage" class="mainPage">
       <header>
         <h1>LOGO</h1>
         <i class="fa fa-bars" id="iconNavBar" aria-hidden="true"></i>
@@ -29,20 +41,7 @@
           <button id="manage" class="btn">Manage services</button>
           <button id="add" class="btn">Add New Service</button>
           <hr id="hr" />
-          <div id="background">
-            <div id="delete-div">
-              <h1 id="remove">Remove Service</h1>
-              <p id="sure">Are You sure You want to Remove this Service ?</p>
-              <br />
-              <button id="confirmDelete" class="remove">Remove</button><br /><br />
-              <button id="closet" class="cancel">Cancel</button>
-            </div>
-          </div>
-         
           <div id="croud">
-            
-         
-
             <div id="allcrodtableselecte">
               <!-- <div class="selectedService">
                 <p class="serName">Service name</p>
@@ -62,7 +61,6 @@
     <!-- navBar js -->
     <script src="adminNav.js"></script>
     <!-- <script src="serServices/serservices.js"></script> -->
-     <div id="serservicesScript"></div>
+    <div id="serservicesScript"></div>
   </body>
-
 </html>
