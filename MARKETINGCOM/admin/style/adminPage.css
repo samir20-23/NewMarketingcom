@@ -57,7 +57,7 @@ header .fa-bars {
 }
 
 .content {
-  color: #2C2F48;
+  color: #2c2f48;
   display: flex;
   flex-direction: column;
 }
@@ -114,12 +114,12 @@ header .fa-bars {
 }
 
 /* adminpage */
-img{
+img {
   width: 100px;
 }
 
-#croud{
-  width: 100%; 
+#croud {
+  width: 100%;
   display: none;
   justify-content: center;
   align-items: center;
@@ -137,92 +137,90 @@ img{
   display: none;
 }
 
-
-#allcrodtableselecte{
+#allcrodtableselecte {
   width: 100%;
 }
 
-table{
+table {
   justify-content: space-between;
   width: 100%;
 }
-a{
+
+a {
   text-decoration: none;
   color: #000;
 }
-#background{
+
+#background {
+  z-index: 10;
   background-color: rgba(20, 151, 223, 0.48);
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   align-items: center;
   display: none;
   justify-content: center;
-  position: absolute;
   top: 0;
   right: 0;
   position: fixed;
 }
-#delete-div{
+
+.section {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+#delete-div {
+  gap: 25px;
+  padding: 35px;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
   background-color: #fff;
-  z-index: 2;
-  position: absolute;
-  position: fixed;
   border-radius: 10px;
-  width: 349.5px;
-  height: 255.01px;
 }
-#delete-div button{
-  margin-left: 65px;
-  width: 200px;
-}
-#remove{
-  font-weight: 700;
-  font-size: 32px;
-  text-align: center;
-  line-height: 48px;
-  color: rgba(44, 47, 72, 1);
-}
-#sure{
-  font-weight: 400;
-  font-size: 12.39px;
-  line-height: 18.59px;
-  text-align: center;
-}
-.remove{
+
+#delete-div button {
+  width: 300px;
   padding: 10px 14px;
-  border-radius: 20px;
-  background-color: var(--color2);
-  color: var(--color1);
+  border-radius: 70px;
   border: 2px solid var(--color1);
-  max-width: 200px;
-  cursor: pointer;
-}
-.remove:hover{
-  padding: 10px 14px;
-  border-radius: 20px;
-  background-color: var(--color1);
-  color: var(--color2);
-}
-.cancel{
-  padding: 10px 14px;
-  border-radius: 20px;
-  background-color: var(--color1);
-  color: var(--color2);
-  border: 2px solid var(--color1);
-  max-width: 289.5px;
-  cursor: pointer;
-}
-.cancel:hover{
-  padding: 10px 14px;
-  border-radius: 20px;
-  background-color: var(--color2);
-  color: var(--color1);
-  border: 2px solid var(--color1);
-  max-width: 289.5px;
   cursor: pointer;
 }
 
+#remove {
+  font-family: "uniteaSansBold";
+  font-size: 35px;
+}
+
+#sure {
+  font-family: "uniteaSans";
+  font-size: 17px;
+}
+
+.remove {
+  background-color: white;
+  color: var(--color1);
+}
+
+.remove:hover {
+  color: white;
+  background-color: var(--color1);
+}
+
+.cancel {
+  color: white;
+  background-color: var(--color1);
+}
+
+.cancel:hover {
+  color: var(--color1);
+  background-color: white;
+}
+
 .selectedService {
+  gap: 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -236,8 +234,11 @@ a{
 }
 
 .form_btns {
+  width: 40%;
   display: flex;
+  justify-content: space-between;
   gap: 10px;
+  max-width: 270px;
 }
 
 .form_btns a {
@@ -250,6 +251,8 @@ a{
   border-radius: 20px;
   color: white;
   cursor: pointer;
+  width: 50%;
+  max-width: 130px;
 }
 
 .serName {
@@ -258,21 +261,28 @@ a{
 }
 
 .edit {
-  background-color: #1DBF73;
-  border: 2px solid #1DBF73;
+  background-color: #1dbf73;
+  border: 2px solid #1dbf73;
 }
 
 .delete {
-  background-color: #FF4C4C;
-  border: 2px solid #FF4C4C;
+  background-color: #ff4c4c;
+  border: 2px solid #ff4c4c;
 }
 
 .delete:hover {
-  color: #FF4C4C;
+  color: #ff4c4c;
   background-color: white;
 }
 
 .edit:hover {
-  color: #1DBF73;
+  color: #1dbf73;
   background-color: white;
+}
+
+@media only screen and (max-width: 600px) {
+  .serName {
+    font-size: 3vw !important;
+    max-width: 20%;
+  }
 }

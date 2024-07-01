@@ -5,30 +5,46 @@ $usrname = "root";
 $passcode = "";
 
 $id = $_POST['id'];
+$price = $_POST['price'];
 
-try {
-    $connection = new PDO("mysql:host=$host;dbname=$database", $usrname, $passcode);
-    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+if ($_SERVER["REQUEST_METHOD"] == "POST" && $price == "null") {
+    
+    try {
+        $connection = new PDO("mysql:host=$host;dbname=$database", $usrname, $passcode);
+        $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Fetch related services IDs
-    $selectRelation = $connection->prepare("SELECT ser_service_id FROM relation WHERE service_id = :id");
-    $selectRelation->execute(['id' => $id]);
-    $fetchSer = $selectRelation->fetchAll(PDO::FETCH_ASSOC);
+        // Fetch related services IDs
+        $selectRelation = $connection->prepare("SELECT ser_service_id FROM relation WHERE service_id = :id");
+        $selectRelation->execute(['id' => $id]);
+        $fetchSer = $selectRelation->fetchAll(PDO::FETCH_ASSOC);
 
-    $relatedServices = [];
-    foreach ($fetchSer as $value) {
-        $idser = $value['ser_service_id'];
-        $select = $connection->prepare("SELECT service_id, service_name, service_price FROM service WHERE service_id = :idser");
-        $select->execute(['idser' => $idser]);
-        $relatedServices = array_merge($relatedServices, $select->fetchAll(PDO::FETCH_ASSOC));
+        $relatedServices = [];
+        foreach ($fetchSer as $value) {
+            $idser = $value['ser_service_id'];
+            $select = $connection->prepare("SELECT service_id, service_name, service_price FROM service WHERE service_id = :idser");
+            $select->execute(['idser' => $idser]);
+            $relatedServices = array_merge($relatedServices, $select->fetchAll(PDO::FETCH_ASSOC));
+        }
+
+        echo json_encode(["serservices" => $relatedServices, "length" => count($relatedServices), "service" => "service"]);
+    } catch (PDOException $e) {
+        echo json_encode(["error" => $e->getMessage()]);
     }
-
-    echo json_encode(["serservices" => $relatedServices, "length" => count($relatedServices)]);
-} catch (PDOException $e) {
-    echo json_encode(["error" => $e->getMessage()]);
 }
 
+if ($_SERVER["REQUEST_METHOD"] == "POST" && $price != "null") {
+    try {
+        $connection = new PDO("mysql:host=$host;dbname=$database", $usrname, $passcode);
+        $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+        $selectRelation = $connection->prepare("SELECT option_id, primary_options, secondary_options, last_options, service_id FROM service_options WHERE service_id = :id ");
+        $selectRelation->execute(['id' => $id]);
+        $relatedServices = $selectRelation->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode(["optionn" => $relatedServices, "length" => count($relatedServices), "service" => "sebservice"]);
+    } catch (PDOException $e) {
+        echo json_encode(["error" => $e->getMessage()]);
+    }
+}   
 
 // if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //     foreach ($_POST as $key => $value) {
@@ -99,4 +115,3 @@ try {
 // } catch (PDOException $e) {
 //     echo "Error: " . $e->getMessage();
 // }
-

@@ -1,4 +1,3 @@
-//
 let allNavBar = document.getElementById("allNavBar");
 let iconNavBar = document.getElementById("iconNavBar");
 let selectedImageDiv = document.getElementById("selectedImage");
@@ -13,10 +12,11 @@ let closet = document.getElementById("closet");
 let background = document.getElementById("background");
 let allcrodtableselecte = document.getElementById("allcrodtableselecte");
 let total = document.getElementById("total_services");
+let mainPage = document.getElementById("mainPage");
 
 closet.addEventListener("click", (e) => {
   background.style.display = "none";
-  console.log(closet);
+  mainPage.style.filter = "blur(0px)";
 });
 
 add.addEventListener("click", () => {
@@ -96,7 +96,7 @@ request.onload = () => {
   console.log(response);
   total.innerHTML = response.length;
   response.services.forEach((item) => {
-    allcrodtableselecte.innerHTML += `<div id="${item.service_id}" class="selectedService">
+    allcrodtableselecte.innerHTML += `<div id="${item.service_id}" name="${item.service_price}" class="selectedService">
     <p class="serName">${item.service_name}</p>
     <div class="form_btns">
       <a href="adminEdit.html?id='${item.service_id}'" class="edit">Edit</a>
@@ -118,7 +118,9 @@ request.onload = () => {
         "application/x-www-form-urlencoded"
       );
       //
-      request2.send("id=" + forService.id);
+      request2.send(
+        "id=" + forService.id + "&price=" + forService.getAttribute("name")
+      );
       //
 
       request2.onload = () => {
@@ -128,7 +130,7 @@ request.onload = () => {
         allcrodtableselecte.innerHTML = "";
         response.serservices.forEach((item) => {
           allcrodtableselecte.innerHTML += `
-          <div id="${item.service_id}" class="selectedService">
+          <div id="${item.service_id}" name="${item.service_price}" class="selectedService">
           
           <p class="serName">${item.service_name}</p>  <p class="serName">${item.service_price}</p>
           <div class="form_btns">
@@ -152,7 +154,13 @@ request.onload = () => {
               "application/x-www-form-urlencoded"
             );
             //
-            request3.send("id=" + forSebService.id);
+
+            request3.send(
+              "id=" +
+                forSebService.id +
+                "&price=" +
+                forSebService.getAttribute("name")
+            );
             //
 
             request3.onload = () => {
@@ -160,9 +168,53 @@ request.onload = () => {
               console.log(response);
               total.innerHTML = response.length;
               allcrodtableselecte.innerHTML = "";
-              response.serservices.forEach((item) => {
-                allcrodtableselecte.innerHTML += `
-          <div id="${item.service_id}" class="selectedService">
+              // ifffffffffff
+              if (response.service == "service") {
+                response.serservices.forEach((item) => {
+                  allcrodtableselecte.innerHTML += `
+          <div id="${item.service_id}" name="${item.service_price}"  class="selectedService">
+          
+          <p class="serName">${item.service_name}</p> 
+           <p class="serName">${item.service_price}</p>
+          <div class="form_btns">
+            <a href="adminEdit.html?id='${item.service_id}'" class="edit">Edit</a>
+            <a id="${item.service_id}" class="delete">Delete</a>
+          </div>
+        </div>`;
+                });
+
+                // ????????????????????????????????????
+                let sebService = document.querySelectorAll(".selectedService");
+                sebService.forEach((forSebService) => {
+                  forSebService.addEventListener("click", () => {
+                    // xxxxx
+
+                    let request3 = new XMLHttpRequest();
+                    request3.open("POST", "serServices/serservices.php");
+                    request3.setRequestHeader(
+                      "Content-type",
+                      "application/x-www-form-urlencoded"
+                    );
+                    //
+
+                    request3.send(
+                      "id=" +
+                        forSebService.id +
+                        "&price=" +
+                        forSebService.getAttribute("name")
+                    );
+                    //
+
+                    request3.onload = () => {
+                      let response = JSON.parse(request3.response);
+                      console.log(response);
+                      total.innerHTML = response.length;
+                      allcrodtableselecte.innerHTML = "";
+                      // ifffffffffff
+                      if (response.service == "service") {
+                        response.serservices.forEach((item) => {
+                          allcrodtableselecte.innerHTML += `
+          <div id="${item.service_id}" name="${item.service_price}"  class="selectedService">
           
           <p class="serName">${item.service_name}</p>  <p class="serName">${item.service_price}</p>
           <div class="form_btns">
@@ -170,7 +222,103 @@ request.onload = () => {
             <a id="${item.service_id}" class="delete">Delete</a>
           </div>
         </div>`;
-              });
+                        });
+                        let sebService =
+                          document.querySelectorAll(".selectedService");
+                        sebService.forEach((forSebService) => {
+                          forSebService.addEventListener("click", () => {
+                            // heeeeeeeeeeeeaaar
+                            let request3 = new XMLHttpRequest();
+                            request3.open(
+                              "POST",
+                              "serServices/serservices.php"
+                            );
+                            request3.setRequestHeader(
+                              "Content-type",
+                              "application/x-www-form-urlencoded"
+                            );
+                            //
+
+                            request3.send(
+                              "id=" +
+                                forSebService.id +
+                                "&price=" +
+                                forSebService.getAttribute("name")
+                            );
+                            request3.onload = () => {
+                              let response = JSON.parse(request3.response);
+                              console.log(response);
+                              total.innerHTML = response.length;
+                              allcrodtableselecte.innerHTML = "";
+                              response.optionn.forEach((item) => {
+                                const last_options = item.last_options.replace(/,/g, ' ');
+                                const primary_options = item.primary_options.replace(/,/g, ' ');
+                                const secondary_options = item.secondary_options.replace(/,/g, ' ');
+                  
+                                allcrodtableselecte.innerHTML += `
+            <div id="${item.option_id}" name="${item.service_price}"  class="selectedService">
+               <p class="serName">${secondary_options}</p> 
+               <p class="serName">${primary_options}</p>
+               <p class="serName">${last_options}</p> 
+               <div class="form_btns">
+                  <a href="adminEdit.html?id='${item.option_id}'" class="edit">Edit</a>
+                  <a id="${item.option_id}" class="delete">Delete</a>
+               </div>
+            </div>`;
+                              });
+                            };
+                            //
+                            // heeeeeeeeeeeeaaar
+                          });
+                        });
+                      }
+                    };
+
+                    // teeeeeeeexts
+                    document.getElementById("title").innerHTML =
+                      "Manage Sub-Services >";
+                    document.getElementById("totall").innerHTML =
+                      "Total Sub-Services";
+                    document.getElementById("add").innerHTML =
+                      "Add New Sub-Services";
+
+                    // back
+                    back.addEventListener("click", () => {
+                      window.location = "adminPage.html";
+                    });
+                    // add
+
+                    let serviceId = forSebService.id;
+                    add.addEventListener("click", () => {
+                      const url = `adminAdd.html?serviceId=${serviceId}&sebserviceId=${"sebserviceId"}&name=${"sebservice"}`;
+                      window.location = url;
+                    });
+                  });
+                });
+                // ????????????????????????????????????
+              }
+              // ........
+              if (response.service == "sebservice") { 
+                response.optionn.forEach((item) => {
+
+                  const last_options = item.last_options.replace(/,/g, ' ');
+                  const primary_options = item.primary_options.replace(/,/g, ' ');
+                  const secondary_options = item.secondary_options.replace(/,/g, ' ');
+                  
+                  allcrodtableselecte.innerHTML += `
+            <div id="${item.option_id}" class="selectedService">
+            
+            <p class="serName">${secondary_options}</p> 
+             <p class="serName">${primary_options}</p>
+            <p class="serName">${last_options}</p> 
+            <div class="form_btns">
+              <a href="adminEdit.html?id='${item.option_id}'" class="edit">Edit</a>
+              <a id="${item.option_id}" class="delete">Delete</a>
+            </div>
+          </div>`;
+                });
+              }
+              // ifffffffffff
             };
 
             // teeeeeeeexts
@@ -221,6 +369,7 @@ request.onload = () => {
     button.addEventListener("click", function (event) {
       event.stopPropagation();
       background.style.display = "flex";
+      mainPage.style.filter = "blur(5px)";
       confirmDeleteButton.id = button.id;
     });
   });
