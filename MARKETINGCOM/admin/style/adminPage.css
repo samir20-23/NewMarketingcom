@@ -220,6 +220,7 @@ a {
 }
 
 .selectedService {
+  gap: 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -233,8 +234,11 @@ a {
 }
 
 .form_btns {
+  width: 40%;
   display: flex;
+  justify-content: space-between;
   gap: 10px;
+  max-width: 270px;
 }
 
 .form_btns a {
@@ -247,11 +251,14 @@ a {
   border-radius: 20px;
   color: white;
   cursor: pointer;
+  width: 50%;
+  max-width: 130px;
 }
 
 .serName {
   font-size: 20px !important;
   user-select: none;
+  max-width: 20%;
 }
 
 .edit {
@@ -272,4 +279,10 @@ a {
 .edit:hover {
   color: #1dbf73;
   background-color: white;
+}
+
+@media only screen and (max-width: 600px) {
+  .serName {
+    font-size: 3vw !important;
+  }
 }

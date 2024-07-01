@@ -251,11 +251,15 @@ request.onload = () => {
                               total.innerHTML = response.length;
                               allcrodtableselecte.innerHTML = "";
                               response.optionn.forEach((item) => {
+                                const last_options = item.last_options.replace(/,/g, ' ');
+                                const primary_options = item.primary_options.replace(/,/g, ' ');
+                                const secondary_options = item.secondary_options.replace(/,/g, ' ');
+                  
                                 allcrodtableselecte.innerHTML += `
             <div id="${item.option_id}" name="${item.service_price}"  class="selectedService">
-               <p class="serName">${item.secondary_options}</p> 
-               <p class="serName">${item.primary_options}</p>
-               <p class="serName">${item.last_options}</p> 
+               <p class="serName">${secondary_options}</p> 
+               <p class="serName">${primary_options}</p>
+               <p class="serName">${last_options}</p> 
                <div class="form_btns">
                   <a href="adminEdit.html?id='${item.option_id}'" class="edit">Edit</a>
                   <a id="${item.option_id}" class="delete">Delete</a>
@@ -294,14 +298,19 @@ request.onload = () => {
                 // ????????????????????????????????????
               }
               // ........
-              if (response.service == "sebservice") {
+              if (response.service == "sebservice") { 
                 response.optionn.forEach((item) => {
+
+                  const last_options = item.last_options.replace(/,/g, ' ');
+                  const primary_options = item.primary_options.replace(/,/g, ' ');
+                  const secondary_options = item.secondary_options.replace(/,/g, ' ');
+                  
                   allcrodtableselecte.innerHTML += `
             <div id="${item.option_id}" class="selectedService">
             
-            <p class="serName">${item.secondary_options}</p> 
-             <p class="serName">${item.primary_options}</p>
-            <p class="serName">${item.last_options}</p> 
+            <p class="serName">${secondary_options}</p> 
+             <p class="serName">${primary_options}</p>
+            <p class="serName">${last_options}</p> 
             <div class="form_btns">
               <a href="adminEdit.html?id='${item.option_id}'" class="edit">Edit</a>
               <a id="${item.option_id}" class="delete">Delete</a>
