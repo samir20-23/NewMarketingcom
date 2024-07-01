@@ -217,7 +217,8 @@ request.onload = () => {
   let confirmDeleteButton = document.getElementById("confirmDelete");
   let deleteServices = document.querySelectorAll(".delete");
   deleteServices.forEach((button) => {
-    button.addEventListener("click", function () {
+    button.addEventListener("click", function (event) {
+      event.stopPropagation();
       background.style.display = "flex";
       confirmDeleteButton.id = button.id;
     });
