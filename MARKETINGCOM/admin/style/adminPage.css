@@ -258,7 +258,6 @@ a {
 .serName {
   font-size: 20px !important;
   user-select: none;
-  max-width: 20%;
 }
 
 .edit {
@@ -284,5 +283,6 @@ a {
 @media only screen and (max-width: 600px) {
   .serName {
     font-size: 3vw !important;
+    max-width: 20%;
   }
 }
