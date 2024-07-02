@@ -96,14 +96,25 @@ request.onload = () => {
   console.log(response);
   total.innerHTML = response.length;
   response.services.forEach((item) => {
+  // editinggg 
+  let tcheckType ="";
+ if(item.service_price === null){
+  tcheckType= "service";
+ }else{
+  tcheckType= "sebservice";
+ }
+//  tcheckType
+   //                                              editinggg 
     allcrodtableselecte.innerHTML += `<div id="${item.service_id}" name="${item.service_price}" class="selectedService">
     <p class="serName">${item.service_name}</p>
     <div class="form_btns">
-      <a href="adminEdit.html?id='${item.service_id}'" class="edit">Edit</a>
+      <a href="adminEdit.html?id=${item.service_id}&name=${tcheckType}" class="edit">Edit</a>
       <a id="${item.service_id}" class="delete">Delete</a>
     </div>
   </div>`;
+   //                                              editinggg 
   });
+ 
 
   // new-----------------------------------------
   let Service = document.querySelectorAll(".selectedService");
@@ -129,12 +140,22 @@ request.onload = () => {
         total.innerHTML = response.length;
         allcrodtableselecte.innerHTML = "";
         response.serservices.forEach((item) => {
+
+            // editinggg 
+  let tcheckType ="";
+  if(item.service_price === null){
+   tcheckType= "service";
+  }else{
+   tcheckType= "sebservice";
+  }
+ //  tcheckType
+    //                                              editinggg 
           allcrodtableselecte.innerHTML += `
           <div id="${item.service_id}" name="${item.service_price}" class="selectedService">
           
           <p class="serName">${item.service_name}</p>  <p class="serName">${item.service_price}</p>
           <div class="form_btns">
-            <a href="adminEdit.html?id='${item.service_id}'" class="edit">Edit</a>
+            <a href="adminEdit.html?id=${item.service_id}&name=${tcheckType}" class="edit">Edit</a>
             <a id="${item.service_id}" class="delete">Delete</a>
           </div>
         </div>`;
@@ -171,13 +192,22 @@ request.onload = () => {
               // ifffffffffff
               if (response.service == "service") {
                 response.serservices.forEach((item) => {
+                      // editinggg 
+  let tcheckType ="";
+  if(item.service_price === null){
+   tcheckType= "service";
+  }else{
+   tcheckType= "sebservice";
+  }
+ //   href="adminEdit.html?id=${item.service_id}&name=${tcheckType}"
+    //                                              editinggg 
                   allcrodtableselecte.innerHTML += `
           <div id="${item.service_id}" name="${item.service_price}"  class="selectedService">
           
           <p class="serName">${item.service_name}</p> 
            <p class="serName">${item.service_price}</p>
           <div class="form_btns">
-            <a href="adminEdit.html?id='${item.service_id}'" class="edit">Edit</a>
+            <a  href="adminEdit.html?id=${item.service_id}&name=${tcheckType}" class="edit">Edit</a>
             <a id="${item.service_id}" class="delete">Delete</a>
           </div>
         </div>`;
@@ -213,12 +243,21 @@ request.onload = () => {
                       // ifffffffffff
                       if (response.service == "service") {
                         response.serservices.forEach((item) => {
+                           // editinggg 
+  let tcheckType ="";
+  if(item.service_price === null){
+   tcheckType= "service";
+  }else{
+   tcheckType= "sebservice";
+  }
+ //   href="adminEdit.html?id=${item.service_id}&name=${tcheckType}"
+    //                                              editinggg 
                           allcrodtableselecte.innerHTML += `
           <div id="${item.service_id}" name="${item.service_price}"  class="selectedService">
           
           <p class="serName">${item.service_name}</p>  <p class="serName">${item.service_price}</p>
           <div class="form_btns">
-            <a href="adminEdit.html?id='${item.service_id}'" class="edit">Edit</a>
+            <a href="adminEdit.html?id=${item.service_id}&name=${tcheckType}" class="edit">Edit</a>
             <a id="${item.service_id}" class="delete">Delete</a>
           </div>
         </div>`;
@@ -255,13 +294,14 @@ request.onload = () => {
                                 const primary_options = item.primary_options.replace(/,/g, ' ');
                                 const secondary_options = item.secondary_options.replace(/,/g, ' ');
                   
+                          
                                 allcrodtableselecte.innerHTML += `
-            <div id="${item.option_id}" name="${item.service_price}"  class="selectedService">
-               <p class="serName">${secondary_options}</p> 
+            <div id="${item.option_id}" name="${item.service_price}"  class="selectedService"> 
                <p class="serName">${primary_options}</p>
+               <p class="serName">${secondary_options}</p>
                <p class="serName">${last_options}</p> 
                <div class="form_btns">
-                  <a href="adminEdit.html?id='${item.option_id}'" class="edit">Edit</a>
+                  <a href="adminEdit.html?id=${item.option_id}&name=${"option"}" class="edit">Edit</a>
                   <a id="${item.option_id}" class="delete">Delete</a>
                </div>
             </div>`;
@@ -304,7 +344,7 @@ request.onload = () => {
                   const last_options = item.last_options.replace(/,/g, ' ');
                   const primary_options = item.primary_options.replace(/,/g, ' ');
                   const secondary_options = item.secondary_options.replace(/,/g, ' ');
-                  
+ 
                   allcrodtableselecte.innerHTML += `
             <div id="${item.option_id}" class="selectedService">
             
@@ -312,7 +352,7 @@ request.onload = () => {
              <p class="serName">${primary_options}</p>
             <p class="serName">${last_options}</p> 
             <div class="form_btns">
-              <a href="adminEdit.html?id='${item.option_id}'" class="edit">Edit</a>
+              <a href="adminEdit.html?id=${item.option_id}&name=${"option"}" class="edit">Edit</a>
               <a id="${item.option_id}" class="delete">Delete</a>
             </div>
           </div>`;

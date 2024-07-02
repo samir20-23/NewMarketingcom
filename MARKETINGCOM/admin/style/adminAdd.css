@@ -154,3 +154,21 @@ header .fa-bars {
 #service_price{
   display: none;
 }
+
+/* inputs options */
+
+#allinputs{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+#allinputs textarea{
+  width: 100%;
+  height: 200px;
+}
+@media only screen and (max-width: 400px) {
+  #allinputs textarea{
+    width: 100%;
+    height: 300px;
+  }
+}
