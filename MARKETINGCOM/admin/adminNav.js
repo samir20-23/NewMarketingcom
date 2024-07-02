@@ -140,6 +140,24 @@ request.onload = () => {
         </div>`;
         });
 
+        // ------------------------
+
+        let confirmDeleteButton = document.getElementById("confirmDelete");
+        let deleteServices = document.querySelectorAll(".delete");
+
+        console.log(deleteServices);
+
+        deleteServices.forEach((button) => {
+          button.addEventListener("click", function (event) {
+            event.stopPropagation();
+            background.style.display = "flex";
+            mainPage.style.filter = "blur(5px)";
+            confirmDeleteButton.id = button.id;
+          });
+        });
+
+        // ------------------------
+
         // seb services  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
         let sebService = document.querySelectorAll(".selectedService");
@@ -183,6 +201,25 @@ request.onload = () => {
         </div>`;
                 });
 
+                // ------------------------
+
+                let confirmDeleteButton =
+                  document.getElementById("confirmDelete");
+                let deleteServices = document.querySelectorAll(".delete");
+
+                console.log(deleteServices);
+
+                deleteServices.forEach((button) => {
+                  button.addEventListener("click", function (event) {
+                    event.stopPropagation();
+                    background.style.display = "flex";
+                    mainPage.style.filter = "blur(5px)";
+                    confirmDeleteButton.id = button.id;
+                  });
+                });
+
+                // ------------------------
+
                 // ????????????????????????????????????
                 let sebService = document.querySelectorAll(".selectedService");
                 sebService.forEach((forSebService) => {
@@ -223,6 +260,27 @@ request.onload = () => {
           </div>
         </div>`;
                         });
+
+                        // ------------------------
+
+                        let confirmDeleteButton =
+                          document.getElementById("confirmDelete");
+                        let deleteServices =
+                          document.querySelectorAll(".delete");
+
+                        console.log(deleteServices);
+
+                        deleteServices.forEach((button) => {
+                          button.addEventListener("click", function (event) {
+                            event.stopPropagation();
+                            background.style.display = "flex";
+                            mainPage.style.filter = "blur(5px)";
+                            confirmDeleteButton.id = button.id;
+                          });
+                        });
+
+                        // ------------------------
+
                         let sebService =
                           document.querySelectorAll(".selectedService");
                         sebService.forEach((forSebService) => {
@@ -251,10 +309,15 @@ request.onload = () => {
                               total.innerHTML = response.length;
                               allcrodtableselecte.innerHTML = "";
                               response.optionn.forEach((item) => {
-                                const last_options = item.last_options.replace(/,/g, ' ');
-                                const primary_options = item.primary_options.replace(/,/g, ' ');
-                                const secondary_options = item.secondary_options.replace(/,/g, ' ');
-                  
+                                const last_options = item.last_options.replace(
+                                  /,/g,
+                                  " "
+                                );
+                                const primary_options =
+                                  item.primary_options.replace(/,/g, " ");
+                                const secondary_options =
+                                  item.secondary_options.replace(/,/g, " ");
+
                                 allcrodtableselecte.innerHTML += `
             <div id="${item.option_id}" name="${item.service_price}"  class="selectedService">
                <p class="serName">${secondary_options}</p> 
@@ -298,13 +361,18 @@ request.onload = () => {
                 // ????????????????????????????????????
               }
               // ........
-              if (response.service == "sebservice") { 
+              if (response.service == "sebservice") {
                 response.optionn.forEach((item) => {
+                  const last_options = item.last_options.replace(/,/g, " ");
+                  const primary_options = item.primary_options.replace(
+                    /,/g,
+                    " "
+                  );
+                  const secondary_options = item.secondary_options.replace(
+                    /,/g,
+                    " "
+                  );
 
-                  const last_options = item.last_options.replace(/,/g, ' ');
-                  const primary_options = item.primary_options.replace(/,/g, ' ');
-                  const secondary_options = item.secondary_options.replace(/,/g, ' ');
-                  
                   allcrodtableselecte.innerHTML += `
             <div id="${item.option_id}" class="selectedService">
             
@@ -365,6 +433,9 @@ request.onload = () => {
 
   let confirmDeleteButton = document.getElementById("confirmDelete");
   let deleteServices = document.querySelectorAll(".delete");
+
+  console.log(deleteServices);
+
   deleteServices.forEach((button) => {
     button.addEventListener("click", function (event) {
       event.stopPropagation();
