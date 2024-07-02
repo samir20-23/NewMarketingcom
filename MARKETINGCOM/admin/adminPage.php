@@ -5,7 +5,7 @@ $table = "service";
 $usrname = "root";
 $passcode = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST["delete"])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST["delete"]) && !isset($_POST["deleteOption"])) {
 
     try {
         $connection = new PDO("mysql:host=$host;dbname=$database", $usrname, $passcode);
@@ -79,4 +79,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete"])) {
         echo "Error deleting record: " . $e->getMessage();
     }
 }
-?>
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["deleteOption"]) && !isset($_POST["delete"])) {
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $service_id = $_POST["id"];
+        $connection = new PDO("mysql:host=$host;dbname=$database", $usrname, $passcode);
+        $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        try {
+            $deleteServiceOptionsQuery = "DELETE FROM service_options WHERE option_id = :service_id";
+            $deleteServiceOptions = $connection->prepare($deleteServiceOptionsQuery);
+            $deleteServiceOptions->bindParam(":service_id", $service_id);
+            $deleteServiceOptions->execute();
+
+            echo "verified";
+        } catch (PDOException $e) {
+            "AN ERROR HAPPENED" . $e->getMessage();
+        }
+    }
+}

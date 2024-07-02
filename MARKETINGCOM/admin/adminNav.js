@@ -96,15 +96,15 @@ request.onload = () => {
   console.log(response);
   total.innerHTML = response.length;
   response.services.forEach((item) => {
-  // editinggg 
-  let tcheckType ="";
- if(item.service_price === null){
-  tcheckType= "service";
- }else{
-  tcheckType= "sebservice";
- }
-//  tcheckType
-   //                                              editinggg 
+    // editinggg
+    let tcheckType = "";
+    if (item.service_price === null) {
+      tcheckType = "service";
+    } else {
+      tcheckType = "sebservice";
+    }
+    //  tcheckType
+    //                                              editinggg
     allcrodtableselecte.innerHTML += `<div id="${item.service_id}" name="${item.service_price}" class="selectedService">
     <p class="serName">${item.service_name}</p>
     <div class="form_btns">
@@ -112,9 +112,8 @@ request.onload = () => {
       <a id="${item.service_id}" class="delete">Delete</a>
     </div>
   </div>`;
-   //                                              editinggg 
+    //                                              editinggg
   });
- 
 
   // new-----------------------------------------
   let Service = document.querySelectorAll(".selectedService");
@@ -140,16 +139,15 @@ request.onload = () => {
         total.innerHTML = response.length;
         allcrodtableselecte.innerHTML = "";
         response.serservices.forEach((item) => {
-
-            // editinggg 
-  let tcheckType ="";
-  if(item.service_price === null){
-   tcheckType= "service";
-  }else{
-   tcheckType= "sebservice";
-  }
- //  tcheckType
-    //                                              editinggg 
+          // editinggg
+          let tcheckType = "";
+          if (item.service_price === null) {
+            tcheckType = "service";
+          } else {
+            tcheckType = "sebservice";
+          }
+          //  tcheckType
+          //                                              editinggg
           allcrodtableselecte.innerHTML += `
           <div id="${item.service_id}" name="${item.service_price}" class="selectedService">
           
@@ -210,15 +208,15 @@ request.onload = () => {
               // ifffffffffff
               if (response.service == "service") {
                 response.serservices.forEach((item) => {
-                      // editinggg 
-  let tcheckType ="";
-  if(item.service_price === null){
-   tcheckType= "service";
-  }else{
-   tcheckType= "sebservice";
-  }
- //   href="adminEdit.html?id=${item.service_id}&name=${tcheckType}"
-    //                                              editinggg 
+                  // editinggg
+                  let tcheckType = "";
+                  if (item.service_price === null) {
+                    tcheckType = "service";
+                  } else {
+                    tcheckType = "sebservice";
+                  }
+                  //   href="adminEdit.html?id=${item.service_id}&name=${tcheckType}"
+                  //                                              editinggg
                   allcrodtableselecte.innerHTML += `
           <div id="${item.service_id}" name="${item.service_price}"  class="selectedService">
           
@@ -280,15 +278,15 @@ request.onload = () => {
                       // ifffffffffff
                       if (response.service == "service") {
                         response.serservices.forEach((item) => {
-                           // editinggg 
-  let tcheckType ="";
-  if(item.service_price === null){
-   tcheckType= "service";
-  }else{
-   tcheckType= "sebservice";
-  }
- //   href="adminEdit.html?id=${item.service_id}&name=${tcheckType}"
-    //                                              editinggg 
+                          // editinggg
+                          let tcheckType = "";
+                          if (item.service_price === null) {
+                            tcheckType = "service";
+                          } else {
+                            tcheckType = "sebservice";
+                          }
+                          //   href="adminEdit.html?id=${item.service_id}&name=${tcheckType}"
+                          //                                              editinggg
                           allcrodtableselecte.innerHTML += `
           <div id="${item.service_id}" name="${item.service_price}"  class="selectedService">
           
@@ -348,34 +346,86 @@ request.onload = () => {
                               total.innerHTML = response.length;
                               allcrodtableselecte.innerHTML = "";
                               response.optionn.forEach((item) => {
-// <<<<<<< HEAD
-                                const last_options = item.last_options.replace(/,/g, ' ');
-                                const primary_options = item.primary_options.replace(/,/g, ' ');
-                                const secondary_options = item.secondary_options.replace(/,/g, ' ');
-                  
-                          
-// =======
-//                                 const last_options = item.last_options.replace(
-//                                   /,/g,
-//                                   " "
-//                                 );
-//                                 const primary_options =
-//                                   item.primary_options.replace(/,/g, " ");
-//                                 const secondary_options =
-//                                   item.secondary_options.replace(/,/g, " ");
+                                // <<<<<<< HEAD
+                                const last_options = item.last_options.replace(
+                                  /,/g,
+                                  " "
+                                );
+                                const primary_options =
+                                  item.primary_options.replace(/,/g, " ");
+                                const secondary_options =
+                                  item.secondary_options.replace(/,/g, " ");
 
-// >>>>>>> 97ca57e380f9975dd773a6db8f442923a7615e7d
+                                // =======
+                                //                                 const last_options = item.last_options.replace(
+                                //                                   /,/g,
+                                //                                   " "
+                                //                                 );
+                                //                                 const primary_options =
+                                //                                   item.primary_options.replace(/,/g, " ");
+                                //                                 const secondary_options =
+                                //                                   item.secondary_options.replace(/,/g, " ");
+
+                                // >>>>>>> 97ca57e380f9975dd773a6db8f442923a7615e7d
                                 allcrodtableselecte.innerHTML += `
-            <div id="${item.option_id}" name="${item.service_price}"  class="selectedService"> 
+            <div id="${item.option_id}" name="${
+                                  item.service_price
+                                }"  class="selectedService"> 
                <p class="serName">${primary_options}</p>
                <p class="serName">${secondary_options}</p>
                <p class="serName">${last_options}</p> 
                <div class="form_btns">
-                  <a href="adminEdit.html?id=${item.option_id}&name=${"option"}" class="edit">Edit</a>
-                  <a id="${item.option_id}" class="delete">Delete</a>
+                  <a href="adminEdit.html?id=${
+                    item.option_id
+                  }&name=${"option"}" class="edit">Edit</a>
+                  <a id="${item.option_id}" class="deleteop">Delete</a>
                </div>
             </div>`;
                               });
+
+                              let confirmDeleteButton =
+                                document.getElementById("confirmDelete");
+                              let deleteServices =
+                                document.querySelectorAll(".deleteop");
+
+                              console.log(deleteServices);
+
+                              deleteServices.forEach((button) => {
+                                button.addEventListener(
+                                  "click",
+                                  function (event) {
+                                    event.stopPropagation();
+                                    background.style.display = "flex";
+                                    mainPage.style.filter = "blur(5px)";
+                                    confirmDeleteButton.id = button.id;
+                                  }
+                                );
+                              });
+
+                              confirmDeleteButton.addEventListener(
+                                "click",
+                                function () {
+                                  let request = new XMLHttpRequest();
+                                  request.open("POST", "adminPage.php");
+                                  request.setRequestHeader(
+                                    "Content-type",
+                                    "application/x-www-form-urlencoded"
+                                  );
+                                  request.send(
+                                    "id=" +
+                                      confirmDeleteButton.id +
+                                      "&deleteOption=" +
+                                      "deleteOption"
+                                  );
+                                  request.onload = () => {
+                                    let response = request.response;
+                                    console.log(response);
+                                    if (response == "verified") {
+                                      window.location.reload();
+                                    }
+                                  };
+                                }
+                              );
                             };
                             //
                             // heeeeeeeeeeeeaaar
@@ -410,11 +460,16 @@ request.onload = () => {
               // ........
               if (response.service == "sebservice") {
                 response.optionn.forEach((item) => {
+                  const last_options = item.last_options.replace(/,/g, " ");
+                  const primary_options = item.primary_options.replace(
+                    /,/g,
+                    " "
+                  );
+                  const secondary_options = item.secondary_options.replace(
+                    /,/g,
+                    " "
+                  );
 
-                  const last_options = item.last_options.replace(/,/g, ' ');
-                  const primary_options = item.primary_options.replace(/,/g, ' ');
-                  const secondary_options = item.secondary_options.replace(/,/g, ' ');
- 
                   allcrodtableselecte.innerHTML += `
             <div id="${item.option_id}" class="selectedService">
             
@@ -422,10 +477,49 @@ request.onload = () => {
             <p class="serName">${secondary_options}</p> 
             <p class="serName">${last_options}</p> 
             <div class="form_btns">
-              <a href="adminEdit.html?id=${item.option_id}&name=${"option"}" class="edit">Edit</a>
-              <a id="${item.option_id}" class="delete">Delete</a>
+              <a href="adminEdit.html?id=${
+                item.option_id
+              }&name=${"option"}" class="edit">Edit</a>
+              <a id="${item.option_id}" class="deleteop">Delete</a>
             </div>
           </div>`;
+                });
+
+                let confirmDeleteButton =
+                  document.getElementById("confirmDelete");
+                let deleteServices = document.querySelectorAll(".deleteop");
+
+                console.log(deleteServices);
+
+                deleteServices.forEach((button) => {
+                  button.addEventListener("click", function (event) {
+                    event.stopPropagation();
+                    background.style.display = "flex";
+                    mainPage.style.filter = "blur(5px)";
+                    confirmDeleteButton.id = button.id;
+                  });
+                });
+
+                confirmDeleteButton.addEventListener("click", function () {
+                  let request = new XMLHttpRequest();
+                  request.open("POST", "adminPage.php");
+                  request.setRequestHeader(
+                    "Content-type",
+                    "application/x-www-form-urlencoded"
+                  );
+                  request.send(
+                    "id=" +
+                      confirmDeleteButton.id +
+                      "&deleteOption=" +
+                      "deleteOption"
+                  );
+                  request.onload = () => {
+                    let response = request.response;
+                    console.log(response);
+                    if (response == "verified") {
+                      window.location.reload();
+                    }
+                  };
                 });
               }
               // ifffffffffff
