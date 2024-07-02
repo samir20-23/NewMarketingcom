@@ -24,6 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete"])) {
     $connection = new PDO("mysql:host=$host;dbname=$database", $usrname, $passcode);
     $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     try {
+        // Start a transaction
+        $connection->beginTransaction();
+
         // Select the service image path
         $selectQuery = "SELECT service_img FROM $table WHERE service_id=:service_id";
         $select = $connection->prepare($selectQuery);
@@ -40,13 +43,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete"])) {
             $deleteServiceOptions->bindParam(":service_id", $service_id);
             $deleteServiceOptions->execute();
 
-            // Delete related rows in the relation table
+            // Delete related rows in the relation table where service_id or ser_service_id matches
             $deleteRelationsQuery = "DELETE FROM relation WHERE service_id=:service_id OR ser_service_id=:service_id";
             $deleteRelations = $connection->prepare($deleteRelationsQuery);
             $deleteRelations->bindParam(":service_id", $service_id);
             $deleteRelations->execute();
 
-            // Delete the service
+            // Delete sub-services that reference the main service
+            $deleteSubServicesQuery = "DELETE FROM $table WHERE service_id IN (SELECT ser_service_id FROM relation WHERE service_id=:service_id)";
+            $deleteSubServices = $connection->prepare($deleteSubServicesQuery);
+            $deleteSubServices->bindParam(":service_id", $service_id);
+            $deleteSubServices->execute();
+
+            // Delete the main service
             $deleteQuery = "DELETE FROM $table WHERE service_id=:service_id";
             $delete = $connection->prepare($deleteQuery);
             $delete->bindParam(":service_id", $service_id);
@@ -57,11 +66,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete"])) {
                 unlink($serviceImgPath);
             }
 
+            // Commit the transaction
+            $connection->commit();
+
             echo "verified";
         } else {
             echo "Record not found.";
         }
     } catch (PDOException $e) {
+        // Roll back the transaction if something failed
+        $connection->rollBack();
         echo "Error deleting record: " . $e->getMessage();
     }
 }
