@@ -17,9 +17,7 @@ closet.addEventListener("click", (e) => {
   mainPage.style.filter = "blur(0px)";
 });
 
-add.addEventListener("click", () => {
-  window.location = "adminAdd.html";
-});
+
 
 manage.addEventListener("click", () => {
   hr.style.display = "block";
@@ -66,7 +64,10 @@ request.onload = () => {
   </div>`;
     //                                              editinggg
   });
-
+  add.addEventListener("click", () => {
+    const url = `adminAdd.html?&name=${"service"}`;
+    window.location = url;
+  });
   // new-----------------------------------------
   let Service = document.querySelectorAll(".selectedService");
   Service.forEach((forService) => {
