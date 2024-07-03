@@ -619,7 +619,6 @@ request.onload = () => {
                  </div>
               </div>`;
                                 });
-                                document.getElementById("totall").style.background="green";
                                 add.addEventListener("click", () => {
                                   const url = `adminAdd.html?typeId=${typeId}&name=${"option"}`;
                                   window.location = url;
@@ -677,7 +676,6 @@ request.onload = () => {
                         "Manage option >";
                       document.getElementById("totall").innerHTML = "Total option";
                       document.getElementById("add").innerHTML = "Add New option";
-                      document.getElementById("totall").style.background="black";
                       };
            
                       // teeeeeeeexts
@@ -953,7 +951,6 @@ request.onload = () => {
                                         "Manage option >";
                                       document.getElementById("totall").innerHTML = "Total option";
                                       document.getElementById("add").innerHTML = "Add New option";
-                                      document.getElementById("totall").style.background="blue";
                                       };
                                       //
                                       // heeeeeeeeeeeeaaar
@@ -964,7 +961,6 @@ request.onload = () => {
                                 "Manage option >";
                               document.getElementById("totall").innerHTML = "Total option";
                               document.getElementById("add").innerHTML = "Add New option";
-                              document.getElementById("totall").style.background="hotpink";
                               };
            
                               // teeeeeeeexts
@@ -1247,7 +1243,6 @@ request.onload = () => {
               "Manage option >";
             document.getElementById("totall").innerHTML = "Total option";
             document.getElementById("add").innerHTML = "Add New option";
-            document.getElementById("totall").style.background="coral";
             };
            
             // teeeeeeeexts
@@ -1356,7 +1351,6 @@ request.onload = () => {
            "Manage Option >";
            document.getElementById("totall").innerHTML = "Total Option";
            document.getElementById("add").innerHTML = "Add New Option";
-           document.getElementById("totall").style.background="blue";
            
            };
            
@@ -1462,7 +1456,6 @@ request.onload = () => {
                       "Manage Option >";
                     document.getElementById("totall").innerHTML = "Total Option";
                     document.getElementById("add").innerHTML = "Add New Option";
-                    document.getElementById("totall").style.background = "blue";
                 
            
                       // back
@@ -1562,7 +1555,6 @@ request.onload = () => {
                 "Manage Option >";
               document.getElementById("totall").innerHTML = "Total Option";
               document.getElementById("add").innerHTML = "Add New Option";
-              document.getElementById("totall").style.background = "blue";
               };
            
               // teeeeeeeexts
