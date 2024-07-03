@@ -8,14 +8,16 @@ $passcode = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_POST["delete"]) && !isset($_POST["deleteOption"])) {
 
     try {
-        $connection = new PDO("mysql:host=$host;dbname=$database", $usrname, $passcode);
-        $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn = new PDO("mysql:host=$host;dbname=$database", $usrname, $passcode);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $select = $connection->query("SELECT service_id, service_name , service_price FROM $table WHERE service_price is NULL");
-        $fetchAll = $select->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode(["services" => $fetchAll, "length" => count($fetchAll)]);
+        $sql = 'SELECT s.service_id, s.service_name, s.service_price, s.service_img FROM service s LEFT JOIN relation r ON s.service_id = r.ser_service_id WHERE r.service_id IS NULL;';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode(["services" => $result, "length" => count($result)]);
     } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
+        echo "Connection failed: " . $e->getMessage();
     }
 }
 
