@@ -5,8 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $error = "";
     $uploads_dir = '../frontend/images/';
-
-
+ 
     function moveUploadedFile($file, $uploads_dir)
     {
         $original_name = basename($file["name"]);
@@ -16,10 +15,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         return false;
     }
-    $serviceId = $_POST["serviceId"];
 
-    $sebservices = $_POST["sebservices"];
-    if ($sebservices != "sebservice") {
+    $typee = $_POST["typee"];
+   
+    if ($typee == "service") {
+      
         if (!empty($_FILES["serviceImg"]) && $_FILES['serviceImg']['error'] == UPLOAD_ERR_OK) {
             if (!empty($_POST["serviceName"])) {
                 $serviceImg = moveUploadedFile($_FILES["serviceImg"], $uploads_dir);
@@ -27,7 +27,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($serviceImg) {
                     $serviceName = filter_var($_POST["serviceName"], FILTER_SANITIZE_STRING);
                     $serviceImgPro = "images/" . $serviceImg;
-
+  // formData.append("serviceName", service_name.value); 
+//     formData.append("serviceImg", service_img); 
+//     formData.append("typee", typee);
                     try {
                         $con = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
                         $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -54,7 +56,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // ---------------------
-    if ($sebservices == "sebservice") {
+    if ($typee == "sebservice") {
+    $serviceId = $_POST["serviceId"];
+        
         if (!empty($_FILES["serviceImg"]) && $_FILES['serviceImg']['error'] == UPLOAD_ERR_OK) {
             if (!empty($_POST["serviceName"])) {
                 $serviceImg = moveUploadedFile($_FILES["serviceImg"], $uploads_dir);
@@ -68,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     $serviceName = filter_var($_POST["serviceName"], FILTER_SANITIZE_STRING);
                     $serviceImgPro = "images/" . $serviceImg;
-
+ 
                     try {
                         $con = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
                         $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -100,6 +104,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         } else {
             echo "imgempty";
+        }
+    }
+    
+    if ($typee == "optionadd") {
+        $id = filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
+
+        if (!empty($_POST["primaryOption"])) {
+            if (!empty($_POST["secondaryOption"])) {
+                if (!empty($_POST["lastOption"])) {
+ 
+                    $primaryOption = filter_var($_POST["primaryOption"], FILTER_SANITIZE_STRING);
+                    $secondaryOption = filter_var($_POST["secondaryOption"], FILTER_SANITIZE_STRING);
+                    $lastOption = filter_var($_POST["lastOption"], FILTER_SANITIZE_STRING);
+ 
+                    try {
+                        $con = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                        $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+ $stmt = $con->prepare("INSERT INTO service_options (primary_options, secondary_options, last_options, service_id) VALUES (:primaryOption, :secondaryOption, :lastOption, :id)");
+$stmt->bindParam(':primaryOption', $primaryOption, PDO::PARAM_STR);
+$stmt->bindParam(':secondaryOption', $secondaryOption, PDO::PARAM_STR);
+$stmt->bindParam(':lastOption', $lastOption, PDO::PARAM_STR);
+$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+$stmt->execute();
+
+echo "verified";
+
+                    } catch (PDOException $e) {
+                        echo "Error: " . $e->getMessage();
+                    }
+                } else {
+                    echo "lastempty";
+                }
+            } else {
+                echo "secondaryempty";
+            }
+        } else {
+            echo "primaryempty";
         }
     }
 }
