@@ -270,7 +270,12 @@ a {
   border: 2px solid #ff4c4c;
 }
 
-.delete:hover .deleteop:hover{
+.delete:hover {
+  color: #ff4c4c;
+  background-color: white;
+}
+
+.deleteop:hover {
   color: #ff4c4c;
   background-color: white;
 }
