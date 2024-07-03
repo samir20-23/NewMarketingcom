@@ -24,10 +24,12 @@
   font-style: normal;
   line-height: 25px;
 }
+
 :root {
   --color1: #1497df;
   --color2: white;
 }
+
 * {
   padding: 0;
   margin: 0;
@@ -35,9 +37,13 @@
   font-family: "uniteaSans";
 }
 
+.mainPage {
+  background-color: white;
+  padding: 0 25px;
+}
+
 header {
   height: 10vh;
-  padding: 5% 5%;
   background-color: white;
   display: flex;
   align-items: center;
@@ -46,75 +52,160 @@ header {
 }
 
 header .fa-bars {
-    font-size: 35px !important;
-    cursor: pointer;
-  }
+  font-size: 35px !important;
+  cursor: pointer;
+}
 
-  .command{
-    border: 1px solid lightgray;
-    margin-bottom: 2vh;
-  }
+.command {
+  border: 1px solid lightgray;
+  margin-bottom: 2vh;
+}
 
-  .command .command-body{
-    height: 100%;
-    width: 100%;
-  }
+.command .command-body {
+  height: 100%;
+  width: 100%;
+}
 
-  .command div:has(img){
-    display: flex;
-    gap: 3%;
-  }
-  .command-header{
-    width: 100%;
-  }
-  .command-header > div{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2%;
-  }
+.command div:has(img) {
+  display: flex;
+  gap: 3%;
+}
+.command-header {
+  width: 100%;
+}
+.command-header > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+}
 
-  .command p{
-    font-size: large;
-    width: 100%;
-    white-space: pre-wrap;
-  }
-  .command .price{
-    width: fit-content;
-    color: lightseagreen;
-  }
-  .command .title{
-    width: 100%;
-  }
-  .command .date{
-    color: gray;
-  }
-  .command .command-end{
-    display: flex;
-    width: auto;
-    margin-left: auto;
-    justify-content: space-between;
-    align-items: center;
-  }
+.command p {
+  font-size: large;
+  width: 100%;
+  white-space: pre-wrap;
+}
+.command .price {
+  width: fit-content;
+  color: lightseagreen;
+}
+.command .title {
+  width: 100%;
+}
+.command .date {
+  color: gray;
+}
+.command .command-end {
+  display: flex;
+  width: auto;
+  margin-left: auto;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  .command .command-end label{
-    display: flex;
-    width: 100%;
-    align-items: center;
-    height: 100%;
-    padding: .5rem;
-  }
-  .command .command-end label:hover{
-    background-color: lightcoral;
-  }
-  .command img{
-    width:  25%;
-  }
+.command .command-end label {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  height: 100%;
+  padding: 0.5rem;
+}
+.command .command-end label:hover {
+  background-color: lightcoral;
+}
+.command img {
+  width: 25%;
+}
 
-  @media screen and (min-width: 400px) {
-    .command{
-      height: 15vh;
-    }
-    .command img{
-      width: 15%;
-    }
+/* ---------- NAVBAR CSS ----------- */
+:root {
+  --color1: #1497df;
+  --color2: white;
+}
+#iconNavBar {
+  cursor: pointer;
+}
+#navBar {
+  background-image: linear-gradient(to bottom, #1497df, #284e64);
+  position: fixed;
+  width: 100vw;
+  height: 102vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  z-index: 2;
+}
+#divIconNavBar {
+  width: 100vw;
+}
+#clossNavBar {
+  float: right;
+  font-size: 35px;
+  margin: 15px 41px 0px 0px;
+  color: white;
+  cursor: pointer;
+}
+#contentNavBar {
+  width: 100vw;
+  height: 400px;
+  background-color: white;
+  border-radius: 8px 8px 0px 0px;
+  padding: 0px 60px 2px 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10.39px;
+}
+#contentNavBar button {
+  width: 400px;
+  height: 60.25px;
+  padding: 12.13px 20.79px 12.13px 20.79px;
+  border-radius: 6.93px;
+  background: var(--color1);
+  border: none;
+  font-size: 22px;
+  color: white;
+  cursor: pointer;
+}
+#contentNavBar button:hover {
+  background: var(--color2);
+  border: 2px solid var(--color1);
+  color: var(--color1);
+}
+
+@keyframes moveNavBar {
+  0% {
+    opacity: 0;
   }
+  100% {
+    opacity: 10;
+  }
+}
+@media (max-width: 800px) {
+  #divIconNavBar {
+    width: 100vw;
+  }
+  #clossNavBar {
+    margin: 19px 42px 0px 0px;
+  }
+  #contentNavBar {
+    width: 100vw;
+  }
+  #contentNavBar button {
+    width: 255px;
+    height: 45.25px;
+    font-size: 18px;
+  }
+}
+
+/* ---------- NAVBAR CSS ----------- */
+
+@media screen and (min-width: 400px) {
+  .command {
+    height: 15vh;
+  }
+  .command img {
+    width: 15%;
+  }
+}

@@ -1,5 +1,3 @@
-let allNavBar = document.getElementById("allNavBar");
-let iconNavBar = document.getElementById("iconNavBar");
 let selectedImageDiv = document.getElementById("selectedImage");
 let submit = document.getElementById("submit");
 let cancel = document.getElementById("cancel");
@@ -20,51 +18,6 @@ if (sebservices === "sebservice") {
 } else {
   service_price.style.display = "none";
 }
-
-
-let click = "";
-iconNavBar.addEventListener("click", () => {
-  click = "click";
-
-  if (click == "click") {
-    allNavBar.setAttribute("style", " animation: moveNavBar 0.01s alternate");
-    allNavBar.innerHTML = `
-    <div id="navBar" class="navBar"> 
-  <div id="divIconNavBar"><i class="fa fa-times" id="clossNavBar" aria-hidden="true"></i></div> 
-  <div id="contentNavBar">
-    <button id="home">Admin Dashboard</button>
-    <button id="logIn">services</button>
-    <button id="contact">Contact Us</button>
-  </div> 
-</div>
-    `;
-
-    // click home login contact
-    let home = document.getElementById("home");
-    home.addEventListener("click", () => {
-      window.location = "adminPage.php";
-    });
-    let logIn = document.getElementById("logIn");
-    logIn.addEventListener("click", () => {
-      window.location = "adminPage.php";
-    });
-    let contact = document.getElementById("contact");
-    contact.addEventListener("click", () => {
-      window.location = "";
-    });
-  } else {
-    allNavBar.innerHTML = "";
-  }
-
-  let clossNavBar = document.getElementById("clossNavBar");
-  clossNavBar.addEventListener("click", () => {
-    allNavBar.setAttribute("style", "");
-    click = "";
-    if (click == "") {
-      allNavBar.innerHTML = "";
-    }
-  });
-});
 
 service_img.addEventListener("change", function (event) {
   let file = event.target.files[0];
