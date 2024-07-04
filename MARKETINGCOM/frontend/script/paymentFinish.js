@@ -22,7 +22,6 @@ cancel.addEventListener("click", () => {
   window.location = "index.html";
 });
 // inserting command to db
-if (isRequestSent==false) {
   let xhr = new XMLHttpRequest();
   xhr.open("POST", `../backend/userActivity.php`, true);
   var formData = new FormData();
@@ -45,8 +44,7 @@ if (isRequestSent==false) {
     console.error("Request failed");
   };
   xhr.send(formData);
-  isRequestSent = true;
-}
+
 
 function getServiceOptionJson(
   primary = primaryOptions,
