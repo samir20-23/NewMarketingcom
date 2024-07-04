@@ -1,28 +1,25 @@
 <?php
 require '../../vendor/autoload.php';
 require_once '../backend/config/connect.php';
+require_once __DIR__ . '/../../vendor/stripe/stripe-php/init.php';
 
 $id = $_POST['id'];
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
-    // set the PDO error mode to exception
-
-    $stmt = $conn->query("SELECT service_price FROM service where service_id = $id");
+    $stmt = $conn->query("SELECT service_price FROM service WHERE service_id = $id");
     $result = $stmt->fetch();
-
-    $price = $result["service_price"];
 
     if (!$result) {
         die("Service price not found.");
     }
 
+    $price = $result["service_price"];
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
+    exit;
 }
-
-
 
 \Stripe\Stripe::setApiKey('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -45,25 +42,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             'card' => [
                 'number' => $card_number,
                 'exp_month' => $exp_month,
-                'exp_year' => $exp_year,
+                'exp_year' => '20' . $exp_year, // Ensure the year is in the correct format
                 'cvc' => $cvv,
                 'name' => $card_name,
             ],
         ]);
 
         $charge = \Stripe\Charge::create([
-            'amount' => $price, // Amount in cents (e.g., $10.00)
+            'amount' => $price * 100, // Convert to cents
             'currency' => 'usd',
             'source' => $token->id,
             'description' => 'Example charge',
         ]);
 
-        echo 'Payment successful!';
+        echo 'Payment successful! Amount charged: $' . number_format($price, 2);
     } catch (\Stripe\Exception\CardException $e) {
-        echo 'Error: ' . $e->getError()->message;
+        echo 'Card declined: ' . $e->getError()->message;
+    } catch (\Stripe\Exception\RateLimitException $e) {
+        echo 'Too many requests made to the API too quickly: ' . $e->getMessage();
+    } catch (\Stripe\Exception\InvalidRequestException $e) {
+        echo 'Invalid parameters were supplied to Stripe\'s API: ' . $e->getMessage();
+    } catch (\Stripe\Exception\AuthenticationException $e) {
+        echo 'Authentication with Stripe\'s API failed: ' . $e->getMessage();
+    } catch (\Stripe\Exception\ApiConnectionException $e) {
+        echo 'Network communication with Stripe failed: ' . $e->getMessage();
     } catch (\Stripe\Exception\ApiErrorException $e) {
-        echo 'Error: ' . $e->getMessage();
+        echo 'Stripe API error: ' . $e->getMessage();
     } catch (Exception $e) {
-        echo 'Error: ' . $e->getMessage();
+        echo 'An unexpected error occurred: ' . $e->getMessage();
     }
 }
