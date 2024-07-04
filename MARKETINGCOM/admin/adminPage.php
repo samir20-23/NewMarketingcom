@@ -1,4 +1,16 @@
 <?php
+session_start();
+if (!isset($_SESSION['admin'])) {
+    echo json_encode("getout");
+    die();
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["logout"])) {
+    $_SESSION['admin'] = null;
+    echo json_encode("getout");
+    die();
+}
+
 $host = "localhost";
 $database = "marketingcom";
 $table = "service";

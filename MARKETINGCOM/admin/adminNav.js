@@ -19,20 +19,35 @@ iconNavBar.addEventListener("click", () => {
 
     // click home command log
     let home = document.getElementById("home");
+    let command = document.getElementById("command");
+    let log = document.getElementById("log");
+
     home.addEventListener("click", () => {
       window.location = "adminPage.html";
     });
-    let command = document.getElementById("command");
+
     command.addEventListener("click", () => {
       window.location = "commands.php";
     });
-    let log = document.getElementById("log");
+    
     log.addEventListener("click", () => {
-      window.location = "index.php";
+      let request = new XMLHttpRequest();
+      request.open("POST", "adminPage.php");
+      request.setRequestHeader(
+        "Content-type",
+        "application/x-www-form-urlencoded"
+      );
+      request.send("logout=" + "logout");
+      request.onload = () => {
+        let response = JSON.parse(request.response);
+        console.log(response);
+        if (response = "getout") {
+          window.location = "index.php";
+        }
+      };
     });
-  } else {
-    allNavBar.innerHTML = "";
-  }
+
+  } 
 
   let clossNavBar = document.getElementById("clossNavBar");
   clossNavBar.addEventListener("click", () => {

@@ -44,6 +44,11 @@ request.send();
 request.onload = () => {
   let response = JSON.parse(request.response);
   console.log(response);
+  if (response == "getout") {
+    window.location = "index.php";
+    exit();
+  }
+
   total.innerHTML = response.length;
   response.services.forEach((item) => {
     // editinggg
