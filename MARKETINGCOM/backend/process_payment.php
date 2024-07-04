@@ -1,7 +1,8 @@
 <?php
-require_once 'git autoload.php';
+require '../../vendor/autoload.php';
 
-\Stripe\Stripe::setApiKey('your_stripe_secret_key');
+
+\Stripe\Stripe::setApiKey('sk_test_4eC39HqLyjWDarjtT1zdp7dc'); 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $card_number = $_POST['card_number'];
