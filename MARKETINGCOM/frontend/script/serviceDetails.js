@@ -204,6 +204,9 @@ let submit = document.getElementById("submit");
 submit.addEventListener("click", () => {
   if (fullname.value != "") {
     if (number.value != "") {
+      error.innerHTML = "Thanks for identifying yourself ! you won't need to do this again until you log-out";
+      error.style.color = "green";
+      error.style.textAlign = "center";
       localStorage.setItem("userName", fullname.value);
       localStorage.setItem("userPhone", number.value);
       localStorage.setItem("options", selected_options.value);
