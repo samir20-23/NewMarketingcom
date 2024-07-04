@@ -157,7 +157,7 @@ if (typee === "sebservice") {
 
  
 if(typee == "option"){ 
-    document.querySelector(".title").innerHTML = "Edit Service options";
+    document.querySelector(".title").innerHTML = "Add Service options";
     document.getElementById("service_price").style.display = "none";
     document.getElementById("service_name").style.display = "none";
     document.getElementById("service_img").style.display = "none";
@@ -202,19 +202,19 @@ if(typee == "option"){
                 console.log(response);
           
                 if (response == "primaryempty") {
-                  error.innerHTML = "Please select an primary for this sub-service";
+                  error.innerHTML = "Please add primary options to this sub-service";
                   error.style.color = "red";
                 }
                 if (response == "secondaryempty") {
-                  error.innerHTML = "Please give a secondary to this sub-service!";
+                  error.innerHTML = "Please add Secondary options to this sub-service";
                   error.style.color = "red";
                 }
                 if (response == "lastempty") {
-                  error.innerHTML = "Please give a last option to this sub-service!";
+                  error.innerHTML = "Please add Last optins primary options to this sub-service";
                   error.style.color = "red";
                 }
                 if (response == "verified") {
-                  error.innerHTML = "succesfully";
+                  error.innerHTML = "Added options successfully";
                   error.style.color = "green";
                   primary_options.value = "";
                   secondary_options.value = "";

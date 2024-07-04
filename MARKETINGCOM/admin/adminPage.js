@@ -674,18 +674,18 @@ request.onload = () => {
                           });
                         }
                         document.getElementById("title").innerHTML =
-                        "Manage option >";
-                      document.getElementById("totall").innerHTML = "Total option";
-                      document.getElementById("add").innerHTML = "Add New option";
+                        "Manage Sub-Services >";
+                      document.getElementById("totall").innerHTML = "Total Sub-Services";
+                      document.getElementById("add").innerHTML = "Add new Sub-Service";
                       };
            
                       // teeeeeeeexts
                       document.getElementById("title").innerHTML =
-                        "Manage OPTION >";
+                        "Manage Sub-Services >";
                       document.getElementById("totall").innerHTML =
-                        "Total OPTION";
+                        "Total Sub-Services";
                       document.getElementById("add").innerHTML =
-                        "Add New OPTION";
+                        "Add new Sub-Service";
            
                       // back
                       back.addEventListener("click", () => {
@@ -949,9 +949,9 @@ request.onload = () => {
                                           }
                                         );
                                         document.getElementById("title").innerHTML =
-                                        "Manage option >";
-                                      document.getElementById("totall").innerHTML = "Total option";
-                                      document.getElementById("add").innerHTML = "Add New option";
+                                        "Manage Sub-Services >";
+                                      document.getElementById("totall").innerHTML = "Total Sub-Services";
+                                      document.getElementById("add").innerHTML = "Add new Sub-Service";
                                       };
                                       //
                                       // heeeeeeeeeeeeaaar
@@ -959,9 +959,9 @@ request.onload = () => {
                                   });
                                 }
                                 document.getElementById("title").innerHTML =
-                                "Manage option >";
-                              document.getElementById("totall").innerHTML = "Total option";
-                              document.getElementById("add").innerHTML = "Add New option";
+                                "Manage Sub-Services >";
+                              document.getElementById("totall").innerHTML = "Total Sub-Services";
+                              document.getElementById("add").innerHTML = "Add new Sub-Service";
                               };
            
                               // teeeeeeeexts
@@ -1241,9 +1241,9 @@ request.onload = () => {
                 });
               }
               document.getElementById("title").innerHTML =
-              "Manage option >";
-            document.getElementById("totall").innerHTML = "Total option";
-            document.getElementById("add").innerHTML = "Add New option";
+              "Manage Sub-Services >";
+            document.getElementById("totall").innerHTML = "Total Sub-Services";
+            document.getElementById("add").innerHTML = "Add new Sub-Service";
             };
            
             // teeeeeeeexts
@@ -1349,9 +1349,9 @@ request.onload = () => {
            }
            // OPTIONSTART
            document.getElementById("title").innerHTML =
-           "Manage Option >";
-           document.getElementById("totall").innerHTML = "Total Option";
-           document.getElementById("add").innerHTML = "Add New Option";
+           "Manage Sub-Services >";
+           document.getElementById("totall").innerHTML = "Total Sub-Services";
+           document.getElementById("add").innerHTML = "Add new Sub-Service";
            
            };
            
@@ -1454,9 +1454,9 @@ request.onload = () => {
            
                       // teeeeeeeexts
                       document.getElementById("title").innerHTML =
-                      "Manage Option >";
-                    document.getElementById("totall").innerHTML = "Total Option";
-                    document.getElementById("add").innerHTML = "Add New Option";
+                      "Manage Sub-Services >";
+                    document.getElementById("totall").innerHTML = "Total Sub-Services";
+                    document.getElementById("add").innerHTML = "Add new Sub-Service";
                 
            
                       // back
@@ -1553,9 +1553,9 @@ request.onload = () => {
                 }
                 // OPTIONSTART
                 document.getElementById("title").innerHTML =
-                "Manage Option >";
-              document.getElementById("totall").innerHTML = "Total Option";
-              document.getElementById("add").innerHTML = "Add New Option";
+                "Manage Sub-Services >";
+              document.getElementById("totall").innerHTML = "Total Sub-Services";
+              document.getElementById("add").innerHTML = "Add new Sub-Service";
               };
            
               // teeeeeeeexts
