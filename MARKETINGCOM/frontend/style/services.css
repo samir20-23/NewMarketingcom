@@ -92,6 +92,7 @@ header .fa-bars {
   box-shadow: 0 0 19px -12px var(--color1);
 }
 #serviceImg div {
+  max-width: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;

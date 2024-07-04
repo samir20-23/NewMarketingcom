@@ -13,7 +13,7 @@ console.log(service_id + " " + service_options + " " + fullName + " " + phoneNum
 
 method.forEach(element => {
   element.addEventListener("click", () => {
-    window.location = `pymentForm.html?id=${service_id}`;
+    window.location = `pymentForm.html?id=${service_id}&number=${phoneNumber}`;
   })
 });
 

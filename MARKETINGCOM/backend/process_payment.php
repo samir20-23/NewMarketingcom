@@ -4,17 +4,27 @@ require_once '../backend/config/connect.php';
 require_once __DIR__ . '/../../vendor/stripe/stripe-php/init.php';
 
 $id = $_POST['id'];
+$number = $_POST['number'];
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
     $stmt = $conn->query("SELECT service_price FROM service WHERE service_id = $id");
     $result = $stmt->fetch();
 
+    $stmt2 = $conn->query("SELECT user_id FROM user WHERE user_phone = $number");
+    $result2 = $stmt2->fetch();
+
     if (!$result) {
         die("Service price not found.");
     }
 
+    if (!$result2) {
+        die("user does not exist with this number: " . $number);
+    }
+
     $price = $result["service_price"];
+    $id = $result2["user_id"];
+
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
@@ -55,7 +65,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             'description' => 'Example charge',
         ]);
 
-        echo 'Payment successful! Amount charged: $' . number_format($price, 2);
+        try {
+
+            
+
+        } catch (PDOException $e) {
+            echo "ERROR HAPPENED " . $e->getMessage();
+            die();
+        }
+
+        echo 'verified';
     } catch (\Stripe\Exception\CardException $e) {
         echo 'Card declined: ' . $e->getError()->message;
     } catch (\Stripe\Exception\RateLimitException $e) {
