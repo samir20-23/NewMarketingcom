@@ -8,9 +8,14 @@
     <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
+    
     <div class="container">
+        <div id="error">
+            <img src="../frontend/img/error.png" alt="">
+            <p id="errorForm"></p>
+        </div>
         <h2>Payment Form</h2>
-        <form id="payment-form" method="post" action="../backend/process_payment.php">
+        <div id="payment-form" >
             <div class="form-group">
                 <input type="text" name="card_number" id="card_number" placeholder="Card Number" required>
             </div>
@@ -24,7 +29,8 @@
                 <input type="text" name="card_name" id="card_name" placeholder="Name on Card" required>
             </div>
             <button type="submit">Pay</button>
-        </form>
+        </div>
     </div>
+    <script src="../frontend/script/pymentForm.js"></script>
 </body>
 </html>

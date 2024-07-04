@@ -5,8 +5,17 @@ const service_id = urlParams.get("id");
 const service_options = localStorage.getItem("options");
 const fullName = localStorage.getItem("userName");
 const phoneNumber = localStorage.getItem("userPhone");
+let method = document.querySelectorAll(".method");
+
+console.log(method)
 
 console.log(service_id + " " + service_options + " " + fullName + " " + phoneNumber)
+
+method.forEach(element => {
+  element.addEventListener("click", () => {
+    window.location = `pymentForm.html?id=${service_id}`;
+  })
+});
 
 cancel.addEventListener("click", () => {
   window.history.back();

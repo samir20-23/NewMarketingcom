@@ -60,3 +60,22 @@ button:hover {
     border: 1px solid #1497df;
     color: #1497df;
 }
+
+#error{
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    display: none;
+}
+img{
+    width: 40px;
+    display: flex;
+    align-items: center;
+}
