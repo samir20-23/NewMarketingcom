@@ -42,6 +42,12 @@ body {
   align-items: center;
 }
 
+.method a {
+  display: flex;
+  gap: 2vw;
+  align-items: center;
+}
+
 .method div p {
   font-size: large;
   font-family: "ABeeZee", sans-serif;
