@@ -70,3 +70,11 @@ button:hover {
   border: 2px solid #1497df;
   color: white;
 }
+a{
+  display: flex;
+  text-decoration: none;
+  color: #000;
+}
+a p{
+  margin-left: 5vh;
+}
