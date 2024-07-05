@@ -21,8 +21,6 @@ if (isset($_POST['command']) && !empty($_POST['phone_number'])) {
                 $stmt->execute();
             }
         }
-        // after created new user if needed a command is created in db
-        // $serviceOptions = str_replace(['"', '\\'], '', $_POST['service_details']);
         echo json_encode('verified');
     } else {
         die(json_encode("nameinvalid"));

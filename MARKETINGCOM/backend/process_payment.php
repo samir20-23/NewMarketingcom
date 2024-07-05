@@ -5,7 +5,9 @@ require_once __DIR__ . '/../../vendor/stripe/stripe-php/init.php';
 
 $service_id = $_POST['id'];
 $number = $_POST['number'];
-$serviceOptions = str_replace(['"', '\\'], '', $_POST['options']);
+$serviceOptions = json_encode($_POST['options']);
+$serviceOptions = substr($serviceOptions, 1, -1);
+$OptionsfinalState = "'" . $serviceOptions . "'";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
@@ -74,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':user_id', $user_id);
             $stmt->bindParam(':service_id', $service_id);
-            $stmt->bindParam(':service_options', $serviceOptions);
+            $stmt->bindParam(':service_options', $OptionsfinalState);
 
             $stmt->execute();
         } catch (PDOException $e) {

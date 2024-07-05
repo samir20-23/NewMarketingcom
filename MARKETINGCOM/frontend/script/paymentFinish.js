@@ -46,7 +46,7 @@ if(contacte == "contacte"){
 
 // inserting command to db
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", `../backend/userActivity.php`, true);
+  xhr.open("POST", `../backend/commandsActivity.php`, true);
   var formData = new FormData();
   formData.append("command", "command");
   formData.append("phone_number", phoneNumber);

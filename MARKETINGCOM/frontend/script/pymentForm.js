@@ -3,6 +3,7 @@ const id = urlParams.get("id");
 const number = urlParams.get("number");
 const options = urlParams.get("options");
 let service_options = JSON.stringify(options);
+console.log(options);
 
 let cardNumber = document.getElementById("card_number");
 let expDate = document.getElementById("exp_date");
