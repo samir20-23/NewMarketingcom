@@ -345,6 +345,10 @@ request.onload = () => {
                                 const url = `adminAdd.html?typeId=${typeId}&name=${"option"}`;
                                 window.location = url;
                               });
+                              document.getElementById("title").innerHTML =
+"Manage Option >";
+document.getElementById("totall").innerHTML = "Total Option";
+document.getElementById("add").innerHTML = "Add New Option";
                               let confirmDeleteButton =
                                 document.getElementById("confirmDelete");
                               let deleteServices =
@@ -391,7 +395,10 @@ request.onload = () => {
                             };
                             //
                             // heeeeeeeeeeeeaaar
-                          
+                            document.getElementById("title").innerHTML =
+                            "Manage Option >";
+                            document.getElementById("totall").innerHTML = "Total Option";
+                            document.getElementById("add").innerHTML = "Add New Option";
                           });
                           
                         });
@@ -402,11 +409,9 @@ request.onload = () => {
            
                     // teeeeeeeexts
                     document.getElementById("title").innerHTML =
-                      "Manage Sub-Services >";
-                    document.getElementById("totall").innerHTML =
-                      "Total Sub-Services";
-                    document.getElementById("add").innerHTML =
-                      "Add New Sub-Services";
+                    "Manage Option >";
+                    document.getElementById("totall").innerHTML = "Total Option";
+                    document.getElementById("add").innerHTML = "Add New Option";
            
                     // back
                     back.addEventListener("click", () => {
@@ -629,6 +634,10 @@ request.onload = () => {
                                   const url = `adminAdd.html?typeId=${typeId}&name=${"option"}`;
                                   window.location = url;
                                 });
+                                document.getElementById("title").innerHTML =
+"Manage Option >";
+document.getElementById("totall").innerHTML = "Total Option";
+document.getElementById("add").innerHTML = "Add New Option";
                                 let confirmDeleteButton =
                                   document.getElementById("confirmDelete");
                                 let deleteServices =
@@ -678,10 +687,7 @@ request.onload = () => {
                             });
                           });
                         }
-                        document.getElementById("title").innerHTML =
-                        "Manage Sub-Services >";
-                      document.getElementById("totall").innerHTML = "Total Sub-Services";
-                      document.getElementById("add").innerHTML = "Add new Sub-Service";
+ 
                       };
            
                       // teeeeeeeexts
@@ -910,6 +916,10 @@ request.onload = () => {
                                           const url = `adminAdd.html?typeId=${typeId}&name=${"option"}`;
                                           window.location = url;
                                         });
+                                        document.getElementById("title").innerHTML =
+"Manage Option >";
+document.getElementById("totall").innerHTML = "Total Option";
+document.getElementById("add").innerHTML = "Add New Option";
                                         let confirmDeleteButton =
                                           document.getElementById("confirmDelete");
                                         let deleteServices =
@@ -953,29 +963,24 @@ request.onload = () => {
                                             };
                                           }
                                         );
-                                        document.getElementById("title").innerHTML =
-                                        "Manage Sub-Services >";
-                                      document.getElementById("totall").innerHTML = "Total Sub-Services";
-                                      document.getElementById("add").innerHTML = "Add new Sub-Service";
+                                       document.getElementById("title").innerHTML =
+"Manage Option >";
+document.getElementById("totall").innerHTML = "Total Option";
+document.getElementById("add").innerHTML = "Add New Option";
                                       };
                                       //
                                       // heeeeeeeeeeeeaaar
                                     });
                                   });
                                 }
-                                document.getElementById("title").innerHTML =
-                                "Manage Sub-Services >";
-                              document.getElementById("totall").innerHTML = "Total Sub-Services";
-                              document.getElementById("add").innerHTML = "Add new Sub-Service";
+    
                               };
            
                               // teeeeeeeexts
-                              document.getElementById("title").innerHTML =
-                                "Manage Sub-Services >";
-                              document.getElementById("totall").innerHTML =
-                                "Total Sub-Services";
-                              document.getElementById("add").innerHTML =
-                                "Add New Sub-Services";
+                            document.getElementById("title").innerHTML =
+"Manage Sub-services >";
+document.getElementById("totall").innerHTML = "Total Sub-services";
+document.getElementById("add").innerHTML = "Add New Sub-services";
            
                               // back
                               back.addEventListener("click", () => {
@@ -1196,6 +1201,10 @@ request.onload = () => {
                         const url = `adminAdd.html?typeId=${typeId}&name=${"option"}`;
                         window.location = url;
                       });
+                      document.getElementById("title").innerHTML =
+"Manage Option >";
+document.getElementById("totall").innerHTML = "Total Option";
+document.getElementById("add").innerHTML = "Add New Option";
                       let confirmDeleteButton =
                         document.getElementById("confirmDelete");
                       let deleteServices =
@@ -1246,18 +1255,16 @@ request.onload = () => {
                 });
               }
               document.getElementById("title").innerHTML =
-              "Manage Sub-Services >";
-            document.getElementById("totall").innerHTML = "Total Sub-Services";
-            document.getElementById("add").innerHTML = "Add new Sub-Service";
+              "Manage Option >";
+              document.getElementById("totall").innerHTML = "Total Option";
+              document.getElementById("add").innerHTML = "Add New Option";
             };
            
             // teeeeeeeexts
             document.getElementById("title").innerHTML =
-              "Manage Sub-Services >";
-            document.getElementById("totall").innerHTML =
-              "Total Sub-Services";
-            document.getElementById("add").innerHTML =
-              "Add New Sub-Services";
+            "Manage Option >";
+            document.getElementById("totall").innerHTML = "Total Option";
+            document.getElementById("add").innerHTML = "Add New Option";
            
             // back
             back.addEventListener("click", () => {
@@ -1306,6 +1313,10 @@ request.onload = () => {
            const url = `adminAdd.html?typeId=${typeId}&name=${"option"}`;
            window.location = url;
            });
+           document.getElementById("title").innerHTML =
+"Manage Option >";
+document.getElementById("totall").innerHTML = "Total Option";
+document.getElementById("add").innerHTML = "Add New Option";
            
            let confirmDeleteButton =
            document.getElementById("confirmDelete");
@@ -1353,15 +1364,15 @@ request.onload = () => {
            });
            }
            // OPTIONSTART
-           document.getElementById("title").innerHTML =
-           "Manage Sub-Services >";
-           document.getElementById("totall").innerHTML = "Total Sub-Services";
-           document.getElementById("add").innerHTML = "Add new Sub-Service";
+
            
            };
            
            // teeeeeeeexts
-           
+           document.getElementById("title").innerHTML =
+"Manage Option >";
+document.getElementById("totall").innerHTML = "Total Option";
+document.getElementById("add").innerHTML = "Add New Option";
            // back
            back.addEventListener("click", () => {
            window.location = "adminPage.html";
@@ -1408,6 +1419,10 @@ request.onload = () => {
                             const url = `adminAdd.html?typeId=${typeId}&name=${"option"}`;
                             window.location = url;
                           });
+                          document.getElementById("title").innerHTML =
+"Manage Option >";
+document.getElementById("totall").innerHTML = "Total Option";
+document.getElementById("add").innerHTML = "Add New Option";
            
                           let confirmDeleteButton =
                             document.getElementById("confirmDelete");
@@ -1459,9 +1474,9 @@ request.onload = () => {
            
                       // teeeeeeeexts
                       document.getElementById("title").innerHTML =
-                      "Manage Sub-Services >";
-                    document.getElementById("totall").innerHTML = "Total Sub-Services";
-                    document.getElementById("add").innerHTML = "Add new Sub-Service";
+                      "Manage Sub-services >";
+                      document.getElementById("totall").innerHTML = "Total Sub-services";
+                      document.getElementById("add").innerHTML = "Add New Sub-services";
                 
            
                       // back
@@ -1511,6 +1526,10 @@ request.onload = () => {
                     const url = `adminAdd.html?typeId=${typeId}&name=${"option"}`;
                     window.location = url;
                   });
+                  document.getElementById("title").innerHTML =
+"Manage Option >";
+document.getElementById("totall").innerHTML = "Total Option";
+document.getElementById("add").innerHTML = "Add New Option";
            
                   let confirmDeleteButton =
                     document.getElementById("confirmDelete");
@@ -1557,14 +1576,14 @@ request.onload = () => {
                   });
                 }
                 // OPTIONSTART
-                document.getElementById("title").innerHTML =
-                "Manage Sub-Services >";
-              document.getElementById("totall").innerHTML = "Total Sub-Services";
-              document.getElementById("add").innerHTML = "Add new Sub-Service";
+             
               };
            
               // teeeeeeeexts
-              
+                 document.getElementById("title").innerHTML =
+                "Manage Sub-Services >";
+              document.getElementById("totall").innerHTML = "Total Sub-Services";
+              document.getElementById("add").innerHTML = "Add new Sub-Service";
 
            
               // back
@@ -1614,6 +1633,10 @@ request.onload = () => {
                   const url = `adminAdd.html?typeId=${typeId}&name=${"option"}`;
                   window.location = url;
                 });
+                document.getElementById("title").innerHTML =
+"Manage Option >";
+document.getElementById("totall").innerHTML = "Total Option";
+document.getElementById("add").innerHTML = "Add New Option";
 
                 let confirmDeleteButton =
                   document.getElementById("confirmDelete");
