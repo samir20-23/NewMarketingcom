@@ -3,18 +3,29 @@ require '../../vendor/autoload.php';
 require_once '../backend/config/connect.php';
 require_once __DIR__ . '/../../vendor/stripe/stripe-php/init.php';
 
-$id = $_POST['id'];
+$service_id = $_POST['id'];
+$number = $_POST['number'];
+$serviceOptions = str_replace(['"', '\\'], '', $_POST['options']);
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
-    $stmt = $conn->query("SELECT service_price FROM service WHERE service_id = $id");
+    $stmt = $conn->query("SELECT service_price FROM service WHERE service_id = $service_id");
     $result = $stmt->fetch();
+
+    $stmt2 = $conn->query("SELECT user_id FROM user WHERE user_phone = $number");
+    $result2 = $stmt2->fetch();
 
     if (!$result) {
         die("Service price not found.");
     }
 
+    if (!$result2) {
+        die("user does not exist with this number: " . $number);
+    }
+
     $price = $result["service_price"];
+    $user_id = $result2["user_id"];
+
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
@@ -30,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $card_name = $_POST['card_name'];
 
     if (empty($card_name) || empty($card_number) || empty($cvv) || empty($exp_date)) {
-        die("Please enter all information.");
+        die("Please fill all required inputs !");
     }
 
     // Split expiration date into month and year
@@ -55,7 +66,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             'description' => 'Example charge',
         ]);
 
-        echo 'Payment successful! Amount charged: $' . number_format($price, 2);
+        try {
+            $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $sql = "INSERT INTO commander (user_id, service_id, date, service_details) VALUES (:user_id, :service_id, now(), :service_options)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':user_id', $user_id);
+            $stmt->bindParam(':service_id', $service_id);
+            $stmt->bindParam(':service_options', $serviceOptions);
+
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+
+
+        echo 'verified';
     } catch (\Stripe\Exception\CardException $e) {
         echo 'Card declined: ' . $e->getError()->message;
     } catch (\Stripe\Exception\RateLimitException $e) {

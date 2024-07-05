@@ -46,7 +46,7 @@ xhr.send();
 
 method.forEach(element => {
   element.addEventListener("click", () => {
-    window.location = `pymentForm.html?id=${service_id}`;
+    window.location = `pymentForm.html?id=${service_id}&number=${phoneNumber}&options=${localStorage.getItem("options")}`;
   })
 });
 

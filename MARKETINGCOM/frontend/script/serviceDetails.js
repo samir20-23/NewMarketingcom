@@ -211,21 +211,36 @@ xhr.send();
 
 let submit = document.getElementById("submit");
 submit.addEventListener("click", () => {
-  if (fullname.value != "") {
-    if (number.value != "") {
-      error.innerHTML = "Thanks for identifying yourself ! you won't need to do this again until you log-out";
+  let request = new XMLHttpRequest();
+  request.open("POST", "../backend/userActivity.php");
+  request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  request.send(
+    "user_name=" + fullname.value + "&phone_number=" + number.value + "&command=" + "command"
+  );
+
+  request.onload = () => {
+    let response = JSON.parse(request.response);
+    console.log(response);
+
+    if (response == "nameinvalid") {
+      error.innerHTML = "please enter a valid name";
+      error.style.color = "red";
+    }
+
+    if (response == "phoneempty") {
+      error.innerHTML = "please enter phone number";
+      error.style.color = "red";
+    }
+
+    if (response == "verified") {
+      error.innerHTML =
+        "Thanks for identifying yourself ! you won't need to do this again until you log-out";
       error.style.color = "green";
       error.style.textAlign = "center";
       localStorage.setItem("userName", fullname.value);
       localStorage.setItem("userPhone", number.value);
       localStorage.setItem("options", selected_options.value);
       window.location = `pyment.html?id="${id}"`;
-    } else {
-      error.innerHTML = "please enter phone number";
-      error.style.color = "red";
     }
-  } else {
-    error.innerHTML = "please enter a valid name";
-    error.style.color = "red";
-  }
+  };
 });

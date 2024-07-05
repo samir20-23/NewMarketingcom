@@ -1,3 +1,10 @@
+let mynumber = "+2120718087106";
+// number phone
+
+
+
+
+
 let whatsapp = document.getElementById("whatsapp");
 let cancel = document.getElementById("cancel");
 let isRequestSent = false;
@@ -11,10 +18,18 @@ const secondOption = urlParams.get("second_option");
 const last_option = urlParams.get("last_option");
 const phoneNumber = urlParams.get("phone");
 const userName = urlParams.get("user_name");
+ 
 
-let mynumber = "+2120718087106";
 whatsapp.addEventListener("click", () => {
-  window.open(`https://web.whatsapp.com/send?phone=${mynumber}`, "_blank");
+
+  if (window.matchMedia("(max-width: 600px)").matches) {
+    // Mobile version
+    window.open(`whatsapp://send?phone=${encodeURIComponent(mynumber)}`);
+} else {
+    // Web version
+    window.open(`https://web.whatsapp.com/send?phone=${mynumber}`, "_blank");
+}
+
 });
 
 cancel.addEventListener("click", () => {

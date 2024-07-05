@@ -132,6 +132,7 @@ header .fa-bars {
   justify-content: center;
   gap: 20px;
   cursor: pointer;
+  max-width: 200px;
 }
  
 
