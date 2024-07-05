@@ -241,23 +241,17 @@ if (verification === "option") {
   request.onload = () => {
     let response = JSON.parse(request.response);
     console.log(response);
-
-    const last_options = response.optionn[0].last_options.replace(/,/g," | | ");
-    const primary_options = response.optionn[0].primary_options.replace(/,/g," | | ");
-    const secondary_options = response.optionn[0].secondary_options.replace(/,/g, " | | ");
+ 
     console.log(last_options);
 
-    document.getElementById("optionInput1").value = primary_options;
-    document.getElementById("optionInput2").value = secondary_options;
-    document.getElementById("optionInput3").value = last_options;
+    document.getElementById("optionInput1").value = response.optionn[0].primary_options;
+    document.getElementById("optionInput2").value = response.optionn[0].secondary_options;
+    document.getElementById("optionInput3").value = response.optionn[0].last_options;
   };
 
   // cansel
 
-  submit.addEventListener("click", () => {
-    const last_options = response.optionn[0].last_options.replace(/ \| \| /g, ',');
-    const primary_options = response.optionn[0].primary_options.replace(/ \| \| /g, ',');
-    const secondary_options = response.optionn[0].secondary_options.replace(/ \| \| /g, ','); 
+  submit.addEventListener("click", () => { 
     let formData = new FormData();
     formData.append("typee", verification);
     formData.append("primaryOption", primary_options);
