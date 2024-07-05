@@ -254,9 +254,13 @@ if (verification === "option") {
   submit.addEventListener("click", () => { 
     let formData = new FormData();
     formData.append("typee", verification);
-    formData.append("primaryOption", primary_options);
-    formData.append("secondaryOption", secondary_options);
-    formData.append("lastOption", last_options);
+    const lastOptions = last_options.value.replace(/(\s|\.)/g, ',');
+    const primaryOptions = primary_options.value.replace(/(\s|\.)/g, ',');
+    const secondaryOptions = secondary_options.value.replace(/(\s|\.)/g, ',');
+
+    formData.append("primaryOption", primaryOptions);
+    formData.append("secondaryOption", secondaryOptions);
+    formData.append("lastOption", lastOptions);
     formData.append("id", id);
     formData.append("update", "update");
 
