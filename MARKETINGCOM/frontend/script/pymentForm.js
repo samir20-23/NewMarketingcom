@@ -2,8 +2,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
 const number = urlParams.get("number");
 const options = urlParams.get("options");
-
-let service_options = JSON.parse(options);
+let service_options = JSON.stringify(options);
 
 let cardNumber = document.getElementById("card_number");
 let expDate = document.getElementById("exp_date");

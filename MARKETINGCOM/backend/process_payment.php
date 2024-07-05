@@ -5,7 +5,7 @@ require_once __DIR__ . '/../../vendor/stripe/stripe-php/init.php';
 
 $service_id = $_POST['id'];
 $number = $_POST['number'];
-$serviceOptions = $_POST['options'];
+$serviceOptions = str_replace(['"', '\\'], '', $_POST['options']);
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $card_name = $_POST['card_name'];
 
     if (empty($card_name) || empty($card_number) || empty($cvv) || empty($exp_date)) {
-        die("Please enter all information.");
+        die("Please fill all required inputs !");
     }
 
     // Split expiration date into month and year
