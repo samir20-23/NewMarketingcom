@@ -11,16 +11,22 @@ if (isset($_POST['admin_login'])) {
     $sql = 'SELECT * FROM `admin` WHERE `email`= "'.$_POST['email'].'"';
     $stmt = $conn->prepare($sql);
     $stmt->execute();
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC)[0];
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
     if (empty($result)) {
         $error = 'Invalid Data';
-    }elseif($result['password'] === $_POST['password']){
-        echo'<script>sessionStorage.setItem("admin", "true");</script>';
-        $_SESSION['admin'] = 'true';
-        navigateToAdminPage();
+    } else {
+        $admin = $result[0]; // Since $result is an array of results, access the first element
+        if ($admin['password'] === $_POST['password']) {
+            echo '<script>sessionStorage.setItem("admin", "true");</script>';
+            $_SESSION['admin'] = 'true';
+            navigateToAdminPage();
+        } else {
+            $error = 'Invalid Password';
+        }
     }
-    
 }
+
 
 function navigateToAdminPage(){
     header("Location: adminPage.html");

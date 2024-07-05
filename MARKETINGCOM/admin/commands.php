@@ -50,7 +50,7 @@ if (isset($_POST['delete_command'])) {
                                 <p class="price"><?= $command['service_price'] ?>DH</p>
                                 <p class="date"><?= $command['date'] ?></p>
                             </div>
-                            <p class="options"><?= sizeof($service_options->primary_options) > 0 ? implode(',', $service_options->primary_options) . ' | ' : '' ?> <?= $service_options->second_option . ' | ' ?> <?= $service_options->last_option ?></p>
+                            <p class="options"><?=sizeof($service_options->primary_options) > 0 || $service_options->primary_options !== null? implode(',', $service_options->primary_options) . ' | ' : '' ?> <?= $service_options->second_option != null || $service_options->second_option != '' ?$service_options->second_option. ' | ':'' ?> <?= $service_options->last_option!=null || $service_options->last_option!=''?$service_options->last_option:"" ?></p>
                         </div>
                         <form class="command-end" method="POST" action="">
                             <input type="text" name="service_id" value="<?= $command['service_id'] ?>" hidden>

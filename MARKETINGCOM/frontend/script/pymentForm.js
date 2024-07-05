@@ -1,6 +1,9 @@
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
 const number = urlParams.get("number");
+const options = urlParams.get("options");
+
+let service_options = JSON.parse(options);
 
 let cardNumber = document.getElementById("card_number");
 let expDate = document.getElementById("exp_date");
@@ -28,7 +31,9 @@ payButton.addEventListener("click", () => {
       "&id=" +
       id +
       "&number=" +
-      number
+      number +
+      "&options=" +
+      service_options
   );
   request.onload = () => {
     let response = request.response;

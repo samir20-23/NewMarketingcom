@@ -3,12 +3,13 @@ require '../../vendor/autoload.php';
 require_once '../backend/config/connect.php';
 require_once __DIR__ . '/../../vendor/stripe/stripe-php/init.php';
 
-$id = $_POST['id'];
+$service_id = $_POST['id'];
 $number = $_POST['number'];
+$serviceOptions = $_POST['options'];
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
-    $stmt = $conn->query("SELECT service_price FROM service WHERE service_id = $id");
+    $stmt = $conn->query("SELECT service_price FROM service WHERE service_id = $service_id");
     $result = $stmt->fetch();
 
     $stmt2 = $conn->query("SELECT user_id FROM user WHERE user_phone = $number");
@@ -23,7 +24,7 @@ try {
     }
 
     $price = $result["service_price"];
-    $id = $result2["user_id"];
+    $user_id = $result2["user_id"];
 
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
@@ -66,13 +67,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ]);
 
         try {
+            $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            
+            $sql = "INSERT INTO commander (user_id, service_id, date, service_details) VALUES (:user_id, :service_id, now(), :service_options)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':user_id', $user_id);
+            $stmt->bindParam(':service_id', $service_id);
+            $stmt->bindParam(':service_options', $serviceOptions);
 
+            $stmt->execute();
         } catch (PDOException $e) {
-            echo "ERROR HAPPENED " . $e->getMessage();
-            die();
+            echo "Error: " . $e->getMessage();
         }
+
 
         echo 'verified';
     } catch (\Stripe\Exception\CardException $e) {
