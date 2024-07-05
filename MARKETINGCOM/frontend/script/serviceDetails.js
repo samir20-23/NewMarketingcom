@@ -1,3 +1,13 @@
+
+let mynumber = "+2120718087106";
+// number phone whatssap
+
+
+
+
+ 
+
+
 let man = document.getElementById("man");
 let nameService = document.querySelectorAll(".nameService");
 let price = document.getElementById("price");
@@ -10,10 +20,9 @@ let selects = document.getElementById("selects");
 let whatsapp = document.getElementById("whatsapp");
 let selecterr = document.getElementById("selecterr");
 let selected_options = document.getElementById("selected_options");
-let reload = document.getElementById("reload");
-reload.style.display = "none";
+ 
 let responsestate = document.getElementById("response_state");
-// RELOAD
+ 
 // id
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
@@ -164,23 +173,23 @@ xhr.onload = function () {
         selected_options.value = commandOptions;
         //whatsapp wwwwwwwwwwww
         let serviceName = document.getElementById("title").innerHTML;
-        let mynumber = "+2120718087106";
+       
         let message = `SERVICE: ${serviceName}\n\nPRIMARY OPTIONS:\n - ${selectedInnerHTML
           .split(",")
           .join(
             "\n - "
           )}\n\nSECONDARY OPTIONS:\n - ${second_option}\n - ${last_option}`;
-        whatsapp.addEventListener("click", function () {
-          reload.style.display = "flex";
-          setTimeout(() => {
-            reload.style.display = "none";
+        whatsapp.addEventListener("click", function () { 
+          setTimeout(() => { 
           }, 2500);
-          window.open(
-            `https://web.whatsapp.com/send?phone=${mynumber}&text=${encodeURIComponent(
-              message
-            )}`,
-            "_blank"
-          );
+          if (window.matchMedia("(max-width: 600px)").matches) {
+            // Mobile version
+            window.open(`whatsapp://send?phone=${encodeURIComponent(mynumber)}&text=${encodeURIComponent(message)}`);
+        } else {
+            // Web version
+            window.open(`https://web.whatsapp.com/send?phone=${mynumber}&text=${encodeURIComponent(message)}`, "_blank");
+        }
+        
         });
       } else {
         selecterr.innerHTML = "please select a primary option!";
