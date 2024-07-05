@@ -176,3 +176,8 @@ header .fa-bars {
     padding: 0 5px;
   }
 }
+
+  @media only screen and (max-width: 395px) {
+  .content .services {
+  gap: 27px;  }
+  }

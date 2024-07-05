@@ -126,7 +126,7 @@ header .fa-bars {
 
 @media only screen and (max-width: 510px) {
   #serviceImg {
-    gap: 5px;
+    gap: 20px;
     transition: 2s;
   }
   #serviceImg img {

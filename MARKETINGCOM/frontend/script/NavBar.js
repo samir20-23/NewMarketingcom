@@ -14,8 +14,7 @@ iconNavBar.addEventListener("click", () => {
     <button id="contact">Contact Us</button>
     <button id="logIn">Log In</button>
   </div> 
-</div>
-    `;
+</div> `;
 
     // click home login contact
     let logIn = document.getElementById("logIn");
@@ -38,7 +37,8 @@ iconNavBar.addEventListener("click", () => {
     });
 
     contact.addEventListener("click", () => {
-      window.location = "";
+   
+      window.location = `../frontend/paymentFinish.html?contacte=${'contacte'}`;
     });
   } else {
     allNavBar.innerHTML = "";

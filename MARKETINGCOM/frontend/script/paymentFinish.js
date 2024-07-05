@@ -18,8 +18,7 @@ const secondOption = urlParams.get("second_option");
 const last_option = urlParams.get("last_option");
 const phoneNumber = urlParams.get("phone");
 const userName = urlParams.get("user_name");
- 
-
+const contacte = urlParams.get("contacte"); 
 whatsapp.addEventListener("click", () => {
 
   if (window.matchMedia("(max-width: 600px)").matches) {
@@ -31,11 +30,20 @@ whatsapp.addEventListener("click", () => {
 }
 
 });
-
-cancel.addEventListener("click", () => {
+ 
+ 
+if(contacte == "contacte"){
+  cancel.addEventListener("click", () => { 
+    window.location = "index.html";
+  });
+}else{
+  cancel.addEventListener("click", () => {
   localStorage.setItem("payment", "done");
   window.location = "index.html";
 });
+}
+ 
+
 // inserting command to db
   let xhr = new XMLHttpRequest();
   xhr.open("POST", `../backend/userActivity.php`, true);
