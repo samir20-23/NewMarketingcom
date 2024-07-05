@@ -242,15 +242,9 @@ if (verification === "option") {
     let response = JSON.parse(request.response);
     console.log(response);
 
-    const last_options = response.optionn[0].last_options.replace(/,/g, " ");
-    const primary_options = response.optionn[0].primary_options.replace(
-      /,/g,
-      " "
-    );
-    const secondary_options = response.optionn[0].secondary_options.replace(
-      /,/g,
-      " "
-    );
+    const last_options = response.optionn[0].last_options.replace(/,/g," | | ");
+    const primary_options = response.optionn[0].primary_options.replace(/,/g," | | ");
+    const secondary_options = response.optionn[0].secondary_options.replace(/,/g, " | | ");
     console.log(last_options);
 
     document.getElementById("optionInput1").value = primary_options;
@@ -261,11 +255,14 @@ if (verification === "option") {
   // cansel
 
   submit.addEventListener("click", () => {
+    const last_options = response.optionn[0].last_options.replace(/ \| \| /g, ',');
+    const primary_options = response.optionn[0].primary_options.replace(/ \| \| /g, ',');
+    const secondary_options = response.optionn[0].secondary_options.replace(/ \| \| /g, ','); 
     let formData = new FormData();
     formData.append("typee", verification);
-    formData.append("primaryOption", primary_options.value);
-    formData.append("secondaryOption", secondary_options.value);
-    formData.append("lastOption", last_options.value);
+    formData.append("primaryOption", primary_options);
+    formData.append("secondaryOption", secondary_options);
+    formData.append("lastOption", last_options);
     formData.append("id", id);
     formData.append("update", "update");
 
