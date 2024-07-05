@@ -1,11 +1,11 @@
 <?php
-require '../../vendor/autoload.php';
-require_once '../backend/config/connect.php';
-require_once __DIR__ . '/../../vendor/stripe/stripe-php/init.php';
+// require '../../vendor/autoload.php';
+// require_once 'config/connect.php';
+// require_once __DIR__ . '/../../vendor/stripe/stripe-php/init.php';
 
 $service_id = $_POST['id'];
 $number = $_POST['number'];
-$serviceOptions = json_encode($_POST['options']);
+$serviceOptions = $_POST['options'];
 $serviceOptions = substr($serviceOptions, 1, -1);
 $OptionsfinalState = "'" . $serviceOptions . "'";
 
@@ -72,11 +72,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $sql = "INSERT INTO commander (user_id, service_id, date, service_details) VALUES (:user_id, :service_id, now(), :service_options)";
+            $sql = "INSERT INTO commander (user_id, service_id, date, service_details) VALUES (:user_id, :service_id, now(), ".$OptionsfinalState.")";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':user_id', $user_id);
             $stmt->bindParam(':service_id', $service_id);
             $stmt->bindParam(':service_options', $OptionsfinalState);
+            
 
             $stmt->execute();
         } catch (PDOException $e) {
