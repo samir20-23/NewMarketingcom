@@ -1,7 +1,7 @@
 <?php
-// require '../../vendor/autoload.php';
-// require_once 'config/connect.php';
-// require_once __DIR__ . '/../../vendor/stripe/stripe-php/init.php';
+require '../../vendor/autoload.php';
+require_once 'config/connect.php';
+require_once __DIR__ . '/../../vendor/stripe/stripe-php/init.php';
 
 $service_id = $_POST['id'];
 $number = $_POST['number'];
@@ -76,7 +76,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':user_id', $user_id);
             $stmt->bindParam(':service_id', $service_id);
-            $stmt->bindParam(':service_options', $OptionsfinalState);
             
 
             $stmt->execute();

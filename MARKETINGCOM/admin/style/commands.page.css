@@ -203,7 +203,7 @@ header .fa-bars {
 
 @media screen and (min-width: 400px) {
   .command {
-    height: 15vh;
+    height: 20vh;
   }
   .command img {
     width: 15%;
