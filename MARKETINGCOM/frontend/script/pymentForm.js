@@ -11,11 +11,14 @@ let cvv = document.getElementById("cvv");
 let cardName = document.getElementById("card_name");
 let errorForm = document.getElementById("errorForm");
 let errorDiv = document.getElementById("error");
+//reload
+let loader =document.querySelector(".loader");
 
 // Accessing the form submit button
 let payButton = document.querySelector('#payment-form button[type="submit"]');
 
 payButton.addEventListener("click", () => {
+  loader.style.display="block";
   let request = new XMLHttpRequest();
   request.open("POST", "../backend/process_payment.php");
   request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -39,10 +42,12 @@ payButton.addEventListener("click", () => {
     let response = request.response;
     console.log(response);
     if (response == "verified") {
+      loader.style.display="none";
       window.location = "paymentFinish.html";
     } else {
       errorDiv.style.display = "flex";
       errorForm.innerHTML = response;
+      loader.style.display="none";
     }
   };
 });
