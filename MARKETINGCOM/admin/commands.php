@@ -91,10 +91,22 @@ $commands = fetchCommands($conn);
                 } else {
                     $service_options = [];
                 }
+
+                // Fetch service_img based on service_id
+                $service_id = $command['service_id'];
+                $stmt = $conn->prepare('SELECT service_img FROM service WHERE service_id = :service_id');
+                $stmt->bindParam(':service_id', $service_id, PDO::PARAM_INT);
+                $stmt->execute();
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                $service_img = isset($result['service_img']) ? $result['service_img'] : '';
                 ?>
                 <div class="command" data-commander-id="<?= htmlspecialchars($command['commander_id']) ?>">
                     <div class="command-body">
-                        <img src="../frontend/images/icon-16.png" alt="" srcset="">
+                        <?php if (!empty($service_img)) : ?>
+                            <img src="../frontend/<?= htmlspecialchars($service_img) ?>" alt="Service Image" srcset="">
+                        <?php else : ?>
+                            <img src="../frontend/images/icon-16.png" alt="Default Image" srcset="">
+                        <?php endif; ?>
                         <div class="command-header">
                             <div>
                                 <p class="title"><?= htmlspecialchars($command['service_name']) ?></p>
@@ -106,13 +118,15 @@ $commands = fetchCommands($conn);
                                     <div class="option-group">
                                         <span class="option-title"><?= htmlspecialchars($key) ?>:</span>
                                         <div class="option-items">
-                                            <?php if (is_array($value)) : ?>
-                                                <?php foreach ($value as $index => $item) : ?>
-                                                    <span class="option-item"><?= "$index=$item" ?></span>
-                                                <?php endforeach; ?>
-                                            <?php else : ?>
-                                                <span class="option-item"><?= htmlspecialchars($value) ?></span>
-                                            <?php endif; ?>
+                                            <?php 
+                                            if (is_array($value)) {
+                                                foreach ($value as $index => $item) {
+                                                    echo '<span class="option-item">' . htmlspecialchars("$index=$item") . '</span>';
+                                                }
+                                            } else {
+                                                echo '<span class="option-item">' . htmlspecialchars($value) . '</span>';
+                                            }
+                                            ?>
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
@@ -130,22 +144,25 @@ $commands = fetchCommands($conn);
             var $command = $(this).closest('.command');
             var commander_id = $command.data('commander-id');
 
-            $.ajax({
-                type: 'POST',
-                url: '',
-                data: {
-                    delete_command: true,
-                    commander_id: commander_id
-                },
-                success: function(response) {
-                    var result = JSON.parse(response);
-                    if (result.status === 'success') {
-                        $command.remove();
-                    } else {
-                        alert('Error deleting command.');
+            // Ask for confirmation
+            if (confirm('Are you sure you want to delete this command?')) {
+                $.ajax({
+                    type: 'POST',
+                    url: '',
+                    data: {
+                        delete_command: true,
+                        commander_id: commander_id
+                    },
+                    success: function(response) {
+                        var result = JSON.parse(response);
+                        if (result.status === 'success') {
+                            $command.remove();
+                        } else {
+                            alert('Error deleting command.');
+                        }
                     }
-                }
-            });
+                });
+            }
         });
     });
     </script>

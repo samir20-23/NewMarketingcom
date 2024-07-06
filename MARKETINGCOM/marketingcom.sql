@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2024 at 05:16 AM
+-- Generation Time: Jul 06, 2024 at 04:38 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -50,8 +50,16 @@ CREATE TABLE `commander` (
   `user_id` int(11) NOT NULL,
   `service_id` int(11) NOT NULL,
   `date` datetime NOT NULL,
-  `service_details` varchar(600) NOT NULL
+  `service_details` varchar(600) NOT NULL,
+  `commander_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `commander`
+--
+
+INSERT INTO `commander` (`user_id`, `service_id`, `date`, `service_details`, `commander_id`) VALUES
+(22, 112, '2024-07-06 03:36:52', '{\"primary_options\":[\"\"],\"second_option\":\"\",\"last_option\":\"\"}', 1);
 
 -- --------------------------------------------------------
 
@@ -238,6 +246,13 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `user_name`, `user_phone`) VALUES
+(22, ' samir', '0696179900');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -246,6 +261,12 @@ CREATE TABLE `user` (
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
+
+--
+-- Indexes for table `commander`
+--
+ALTER TABLE `commander`
+  ADD PRIMARY KEY (`commander_id`);
 
 --
 -- Indexes for table `relation`
@@ -277,6 +298,12 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `commander`
+--
+ALTER TABLE `commander`
+  MODIFY `commander_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `service`
 --
 ALTER TABLE `service`
@@ -292,7 +319,7 @@ ALTER TABLE `service_options`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Constraints for dumped tables
