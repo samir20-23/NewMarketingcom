@@ -185,9 +185,9 @@ if(typee == "option"){
     //  last_options
   
             submit.addEventListener("click", () => {
-              const last_optionss = last_options.value.replace(/(\s|\.)/g, ',');
-              const primary_optionss = primary_options.value.replace(/(\s|\.)/g, ',');
-              const secondary_optionss= secondary_options.value.replace(/(\s|\.)/g, ',');
+              const last_optionss = last_options.value.replace(/\./g, ',');
+              const primary_optionss = primary_options.value.replace(/\./g, ',');
+              const secondary_optionss= secondary_options.value.replace(/\./g, ',');
               
               let formData = new FormData();
               formData.append("typee","optionadd");
