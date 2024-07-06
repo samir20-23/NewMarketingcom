@@ -46,6 +46,34 @@ $commands = fetchCommands($conn);
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="adminNav.js" defer></script>
     <script src="script/commands.page.js" defer></script>
+    <style>
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .option-group {
+            margin-bottom: 10px;
+        }
+
+        .option-title {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .option-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .option-item {
+            background-color: #f0f0f0;
+            padding: 3px 8px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     <div id="allNavBar"></div>
@@ -57,7 +85,12 @@ $commands = fetchCommands($conn);
         <main>
             <?php foreach ($commands as $command) : ?>
                 <?php 
-                $service_options = json_decode($command['service_details']); 
+                // Ensure service_details is not null and decode it
+                if (!empty($command['service_details'])) {
+                    $service_options = json_decode($command['service_details'], true); 
+                } else {
+                    $service_options = [];
+                }
                 ?>
                 <div class="command" data-commander-id="<?= htmlspecialchars($command['commander_id']) ?>">
                     <div class="command-body">
@@ -68,28 +101,22 @@ $commands = fetchCommands($conn);
                                 <p class="price"><?= htmlspecialchars($command['service_price']) ?>DH</p>
                                 <p class="date"><?= htmlspecialchars($command['date']) ?></p>
                             </div>
-                            <p class="options">
-                                <?php
-                                if (!empty($service_options->primary_options)) {
-                                    echo implode(',', $service_options->primary_options) . ' | ';
-                                }
-                                
-                                if (!empty($service_options->secondary_options)) {
-                                    foreach ($service_options->secondary_options as $key => $value) {
-                                        echo "$key: $value | ";
-                                    }
-                                }
-                                
-                                if (!empty($service_options->last_options)) {
-                                    foreach ($service_options->last_options as $nested_key => $nested_value) {
-                                        echo "$nested_key: ";
-                                        foreach ($nested_value as $nested_subkey => $nested_subvalue) {
-                                            echo "$nested_subkey=$nested_subvalue ";
-                                        }
-                                    }
-                                }
-                                ?>
-                            </p>
+                            <div class="options">
+                                <?php foreach ($service_options as $key => $value) : ?>
+                                    <div class="option-group">
+                                        <span class="option-title"><?= htmlspecialchars($key) ?>:</span>
+                                        <div class="option-items">
+                                            <?php if (is_array($value)) : ?>
+                                                <?php foreach ($value as $index => $item) : ?>
+                                                    <span class="option-item"><?= "$index=$item" ?></span>
+                                                <?php endforeach; ?>
+                                            <?php else : ?>
+                                                <span class="option-item"><?= htmlspecialchars($value) ?></span>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
                         </div>
                         <button class="delete-command"><i class="fa fa-trash"></i> Delete</button>
                     </div>
