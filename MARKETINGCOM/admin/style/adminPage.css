@@ -227,6 +227,7 @@ a {
   padding: 5px;
   border-radius: 5px;
   cursor: pointer;
+  border-bottom:1px solid #00000024;
 }
 
 .selectedService:hover {
@@ -287,7 +288,7 @@ a {
 
 @media only screen and (max-width: 600px) {
   .serName {
-    font-size: 3vw !important;
+    font-size: 4.5vw  !important;
     max-width: 20%;
   }
 }
