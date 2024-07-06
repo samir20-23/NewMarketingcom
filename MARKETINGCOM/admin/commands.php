@@ -46,34 +46,7 @@ $commands = fetchCommands($conn);
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="adminNav.js" defer></script>
     <script src="script/commands.page.js" defer></script>
-    <style>
-        .options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .option-group {
-            margin-bottom: 10px;
-        }
-
-        .option-title {
-            font-weight: bold;
-            margin-right: 5px;
-        }
-
-        .option-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-        }
-
-        .option-item {
-            background-color: #f0f0f0;
-            padding: 3px 8px;
-            border-radius: 5px;
-        }
-    </style>
+   
 </head>
 <body>
     <div id="allNavBar"></div>
@@ -108,7 +81,7 @@ $commands = fetchCommands($conn);
                             <img src="../frontend/images/icon-16.png" alt="Default Image" srcset="">
                         <?php endif; ?>
                         <div class="command-header">
-                            <div>
+                            <div class="details">
                                 <p class="title"><?= htmlspecialchars($command['service_name']) ?></p>
                                 <p class="price"><?= htmlspecialchars($command['service_price']) ?>DH</p>
                                 <p class="date"><?= htmlspecialchars($command['date']) ?></p>
@@ -132,7 +105,7 @@ $commands = fetchCommands($conn);
                                 <?php endforeach; ?>
                             </div>
                         </div>
-                        <button class="delete-command"><i class="fa fa-trash"></i> Delete</button>
+                        <button class="delete-command"><i class="fa fa-trash"></i> <p>Delete</p></button>
                     </div>
                 </div>
             <?php endforeach ?>
