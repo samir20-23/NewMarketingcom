@@ -1,11 +1,15 @@
 ```markdown
-# Setup Instructions for MarketingCom Project
-
-### Step 1: Clone the Repository
+### Setup Instructions for MarketingCom Project
+ 
+### Step 0: Clone the Repository
 ```bash
 git clone https://github.com/samir20-23/NewMarketingcom.git htdocs
 ```
-
+### Step 1: switch to branch 'master'
+```bash
+git branch
+git checkout master 
+```
 ### Step 2: Start Apache and MySQL
 - Open your XAMPP Control Panel.
 - Start **Apache**.
